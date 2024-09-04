@@ -1,0 +1,7 @@
+<div class="form-field">
+    {{>Label labelFor=fieldLabel text=labelText }}
+    {{>Input type=inputType placeholder=placeholder value=value }}
+    {{#if error}}
+        {{>ErrorMessage errorMessage=errorMessage }}
+    {{/if}}
+</div>
