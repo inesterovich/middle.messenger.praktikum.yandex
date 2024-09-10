@@ -7,6 +7,8 @@ import { ErrorMessage } from './components/ErrorMessage';
 import { Field } from './components/Field';
 import { Form } from './components/Form';
 import { Button } from './components/Button';
+import { Footer } from './components/Footer';
+import { Link } from './components/Link';
 
 Handlebars.registerPartial('Label', Label);
 Handlebars.registerPartial('Input', Input);
@@ -14,10 +16,12 @@ Handlebars.registerPartial('ErrorMessage', ErrorMessage);
 Handlebars.registerPartial('Field', Field);
 Handlebars.registerPartial('Form', Form);
 Handlebars.registerPartial('Button', Button);
+Handlebars.registerPartial('Link', Link);
+Handlebars.registerPartial('Footer', Footer);
 
 export class App {
     constructor() {
-        this.state = 'currentPage';
+        this.state = 'auth';
         this.appElement = document.getElementById('app');
         this.pagesContent = {
             authPage: [
@@ -109,12 +113,63 @@ export class App {
             ],
         }
     }
+
+    changePage(page) {
+        this.state = page;
+        this.render();
+      
+    }
+    
+    attachListeners() {
+        const footerLinks = document.querySelectorAll('.footer-link');
+        footerLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.changePage(e.target.dataset.page);
+          });
+        });
+    }
+
     render() {
+
+        let template;
+
+        switch (this.state) {
+            case 'auth':
+                template = Handlebars.compile(Pages.AuthPage);
+                this.appElement.innerHTML = template({ fields: this.pagesContent.authPage})
+                break;
+            case 'register':
+                template = Handlebars.compile(Pages.RegisterPage);
+                this.appElement.innerHTML = template({fields: this.pagesContent.registerPage})
+                break;
+            case 'profile':
+                break;
+            case 'editProfile':
+                break;
+            case 'serverError':
+                template = Handlebars.compile(Pages.ServerErrorPage);
+                this.appElement.innerHTML = template({ statusCode: 500})
+                break;
+            case 'notFound':
+                    template = Handlebars.compile(Pages.NotFoundPage);
+                    this.appElement.innerHTML = template()
+                    break;
+            default:
+                break;
+        }
+
+        this.attachListeners();
+
+      
+
+
+        /* 
         const template = Handlebars.compile(Pages.RegisterPage);
 
         this.appElement.innerHTML = template({
             fields: this.pagesContent.registerPage
-        })
+        }) */
 
     }
 }
