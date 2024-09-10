@@ -1,1 +1,1 @@
-export { default as TestPage } from './TestPage.hbs?raw';
+export { default as BlankPage } from './BlankPage.hbs?raw';

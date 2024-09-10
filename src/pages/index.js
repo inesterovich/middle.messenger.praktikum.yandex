@@ -1,1 +1,5 @@
-export { TestPage } from './TestPage';
+export { BlankPage as TestPage } from './TestPage';
+export { AuthPage } from './AuthPage';
+export { RegisterPage } from './RegisterPage';
+export { ServerErrorPage } from './ServerErrorPage';
+export { NotFoundPage } from './NotFoundPage';

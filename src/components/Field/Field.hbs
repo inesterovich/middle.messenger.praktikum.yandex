@@ -1,6 +1,6 @@
 <div class="form-field">
-    {{>Label labelFor=fieldLabel text=labelText }}
-    {{>Input type=inputType placeholder=placeholder value=value }}
+    {{>Label labelFor=labelFor labelText=labelText }}
+    {{>Input id=id type=inputType placeholder=placeholder name=name value=value }}
     {{#if error}}
         {{>ErrorMessage errorMessage=errorMessage }}
     {{/if}}
