@@ -1,8 +1,17 @@
 
-     <form action="">
+     <form class="form" action="">
+        <h2 class="form-title">{{formTitle}}</h2>
         {{#each fields }}
        {{> Field this}}
         {{/each }}
+
+        {{#if buttons.length}}
+        <div class="form-buttons">
+        {{#each buttons}}
+        {{>Button this}}
+        {{/each}}
+        </div>
+        {{/if }}
 
      </form>
  

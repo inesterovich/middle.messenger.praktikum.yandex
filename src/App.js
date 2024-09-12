@@ -10,6 +10,7 @@ import { Button } from './components/Button';
 import { Footer } from './components/Footer';
 import { Link } from './components/Link';
 
+
 Handlebars.registerPartial('Label', Label);
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('ErrorMessage', ErrorMessage);
@@ -24,7 +25,8 @@ export class App {
         this.state = 'auth';
         this.appElement = document.getElementById('app');
         this.pagesContent = {
-            authPage: [
+            authPage: {
+                fields: [
                 {
                 id:'login',
                 labelFor: 'login',
@@ -39,15 +41,31 @@ export class App {
                     id:'password',
                     labelFor: 'password',
                     labelText: 'Пароль',
-                    inputType: 'text',
+                    inputType: 'password',
                     placeholder: 'Пароль',
                     name: 'password',
                     value: '',
                     errorMessage: 'Неверный пароль'
                 },
                 
-            ],
-            registerPage: [
+                ],
+                buttons: [
+                    {
+                    id: 'submit',
+                    mode: 'primary',
+                    type: 'submit',
+                    text: 'Авторизоваться'
+                    },
+                    {
+                        id: 'register',
+                        mode: 'secondary',
+                        type: 'button',
+                        text: 'Нет аккаунта?'
+                    },
+                ]
+            },
+            registerPage: {
+                fields: [
                 {
                     id:'email',
                     labelFor: 'email',
@@ -110,7 +128,21 @@ export class App {
                     errorMessage: 'Неверный пароль'
                 },
                 
-            ],
+                ],
+                buttons: [{
+                    id: "register",
+                    mode: "primary",
+                    type: "submit",
+                    text: "Зарегистрироваться"
+                },
+                {
+                    id: "login",
+                    mode: "secondary",
+                    type: "button",
+                    text: "Войти"
+                },
+                ]
+            },
         }
     }
 
@@ -137,11 +169,13 @@ export class App {
         switch (this.state) {
             case 'auth':
                 template = Handlebars.compile(Pages.AuthPage);
-                this.appElement.innerHTML = template({ fields: this.pagesContent.authPage})
+                this.appElement.innerHTML = template({ fields: this.pagesContent.authPage.fields, buttons: this.pagesContent.authPage.buttons})
                 break;
             case 'register':
                 template = Handlebars.compile(Pages.RegisterPage);
-                this.appElement.innerHTML = template({fields: this.pagesContent.registerPage})
+                this.appElement.innerHTML = template({
+                    fields: this.pagesContent.registerPage.fields,
+                buttons: this.pagesContent.registerPage.buttons})
                 break;
             case 'profile':
                 break;

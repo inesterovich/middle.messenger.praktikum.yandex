@@ -1,8 +1,9 @@
 <div class="app">
-    <main>
- {{>Form fields=fields}}
-    {{>Button id="submit" class="button" type="submit" text="Авторизоваться"}}
-    {{>Button id="register" class="button" type="button" text="Нет аккаунта?"}}
+
+    <main class="page page-auth">
+ {{>Form fields=fields formTitle="Вход"}}
+    
     </main>
    {{> Footer}}
+ 
 </div>
