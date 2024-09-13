@@ -14,6 +14,7 @@ https://www.figma.com/design/in5kTc9x09ySvXLZPFH1I2/Chat_external_link-(Copy)?no
 
 Сделана персональная копия для возможности редактирования
 
-## Примеры сверстанных страниц, прямые ссылки
+## Ссылка на Netlify
 
-будет добавлено
+https://inesterovich-messenger.netlify.app/
+
