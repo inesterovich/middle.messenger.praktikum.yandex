@@ -17,6 +17,3 @@ https://www.figma.com/design/in5kTc9x09ySvXLZPFH1I2/Chat_external_link-(Copy)?no
 ## Примеры сверстанных страниц, прямые ссылки
 
 будет добавлено
-
-
-

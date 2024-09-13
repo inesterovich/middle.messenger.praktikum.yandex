@@ -1,1 +1,1 @@
-export { default as Label } from './Label.hbs?raw';
+export { default as Label } from "./Label.hbs?raw";

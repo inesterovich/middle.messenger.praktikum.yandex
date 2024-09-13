@@ -1,1 +1,1 @@
-export { default as AuthPage } from './AuthPage.hbs?raw';
+export { default as AuthPage } from "./AuthPage.hbs?raw";
