@@ -1,5 +1,5 @@
-<div class="form-field">
-    {{>Label labelFor=labelFor labelText=labelText }}
+<div class="form-field {{extraClass}}">
+    {{>Label labelFor=labelFor labelText=labelText labelClass=labelClass }}
     {{>Input id=id type=inputType placeholder=placeholder name=name value=value }}
     {{#if error}}
         {{>ErrorMessage errorMessage=errorMessage }}

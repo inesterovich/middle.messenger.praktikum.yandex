@@ -9,12 +9,14 @@ import { Form } from './components/Form';
 import { Button } from './components/Button';
 import { Footer } from './components/Footer';
 import { Link } from './components/Link';
+import {Avatar } from './components/Avatar'
 
 
 Handlebars.registerPartial('Label', Label);
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('ErrorMessage', ErrorMessage);
 Handlebars.registerPartial('Field', Field);
+Handlebars.registerPartial('Avatar', Avatar)
 Handlebars.registerPartial('Form', Form);
 Handlebars.registerPartial('Button', Button);
 Handlebars.registerPartial('Link', Link);
@@ -35,7 +37,8 @@ export class App {
                 placeholder: 'Логин',
                 name: 'login',
                 value: '',
-                errorMessage: 'Неверный логин'
+                        errorMessage: 'Неверный логин',
+                        extraClass: 'field-vertical',
                 },
                 {
                     id:'password',
@@ -45,7 +48,8 @@ export class App {
                     placeholder: 'Пароль',
                     name: 'password',
                     value: '',
-                    errorMessage: 'Неверный пароль'
+                    errorMessage: 'Неверный пароль',
+                    extraClass: 'field-vertical',
                 },
                 
                 ],
@@ -74,7 +78,8 @@ export class App {
                     placeholder: 'Почта',
                     name: 'email',
                     value: '',
-                    errorMessage: 'Неверный email'
+                        errorMessage: 'Неверный email',
+                        extraClass: 'field-vertical',
                     },
                 {
                 id:'login',
@@ -84,7 +89,8 @@ export class App {
                 placeholder: 'Логин',
                 name: 'login',
                 value: '',
-                errorMessage: 'Неверный логин'
+                    errorMessage: 'Неверный логин',
+                    extraClass: 'field-vertical',
                 },
                 {
                     id:'first_name',
@@ -94,7 +100,8 @@ export class App {
                     placeholder: 'Имя',
                     name: 'first_name',
                     value: '',
-                    errorMessage: 'Введите имя'
+                    errorMessage: 'Введите имя',
+                    extraClass: 'field-vertical',
                 },
                 {
                     id:'second_name',
@@ -104,7 +111,8 @@ export class App {
                     placeholder: 'Фамилия',
                     name: 'second_name',
                     value: '',
-                    errorMessage: 'Введите фамилию'
+                    errorMessage: 'Введите фамилию',
+                    extraClass: 'field-vertical',
                 },
                 {
                     id:'phone',
@@ -114,18 +122,20 @@ export class App {
                     placeholder: 'Телефон',
                     name: 'phone',
                     value: '',
-                    errorMessage: 'Введите телефон'
+                    errorMessage: 'Введите телефон',
+                    extraClass: 'field-vertical',
                     },
                 
                 {
                     id:'password',
                     labelFor: 'password',
                     labelText: 'Пароль',
-                    inputType: 'text',
+                    inputType: 'password',
                     placeholder: 'Пароль',
                     name: 'password',
                     value: '',
-                    errorMessage: 'Неверный пароль'
+                    errorMessage: 'Неверный пароль',
+                    extraClass: 'field-vertical',
                 },
                 
                 ],
@@ -143,6 +153,98 @@ export class App {
                 },
                 ]
             },
+            profilePage: {
+                fields: [
+                    {
+                        id:'email',
+                        labelFor: 'email',
+                        labelText: 'Почта',
+                        inputType: 'text',
+                        placeholder: 'Почта',
+                        name: 'email',
+                        value: '',
+                        errorMessage: 'Неверный email',
+                        extraClass: 'field-gorizontal',
+                        
+                        },
+                    {
+                    id:'login',
+                    labelFor: 'login',
+                    labelText: 'Логин',
+                    inputType: 'text',
+                    placeholder: 'Логин',
+                    name: 'login',
+                    value: '',
+                        errorMessage: 'Неверный логин',
+                        extraClass: 'field-gorizontal',
+                        
+                    },
+                    {
+                        id:'first_name',
+                        labelFor: 'first_name',
+                        labelText: 'Имя',
+                        inputType: 'text',
+                        placeholder: 'Имя',
+                        name: 'first_name',
+                        value: '',
+                        errorMessage: 'Введите имя',
+                        extraClass:'field-gorizontal',
+                    },
+                    {
+                        id:'second_name',
+                        labelFor: 'second_name',
+                        labelText: 'Фамилия',
+                        inputType: 'text',
+                        placeholder: 'Фамилия',
+                        name: 'second_name',
+                        value: '',
+                        errorMessage: 'Введите фамилию',
+                        extraClass:'field-gorizontal',
+                    },{
+                        id:'chat_name',
+                        labelFor: 'chat_name',
+                        labelText: 'Имя в чате',
+                        inputType: 'text',
+                        placeholder: 'Имя в чате',
+                        name: 'chat_name',
+                        value: '',
+                        errorMessage: 'Введите логин чата',
+                        extraClass:'field-gorizontal',
+                    },
+                    {
+                        id:'phone',
+                        labelFor: 'phone',
+                        labelText: 'Телефон',
+                        inputType: 'text',
+                        placeholder: 'Телефон',
+                        name: 'phone',
+                        value: '',
+                        errorMessage: 'Введите телефон',
+                        extraClass:'field-gorizontal',
+                        },
+                  
+                    
+                ],
+                buttons: [{
+                    id: 'editData',
+                    mode: 'secondary',
+                    type: 'button',
+                    text: 'Изменить данные'
+                },
+                {
+                    id: 'editPassword',
+                    mode: 'secondary',
+                    type: 'button',
+                    text: 'Изменить пароль'
+                    },
+                    {
+                        id: 'logout',
+                        mode: 'danger',
+                        type: 'button',
+                        text: 'Выйти'
+                    },
+                ]
+            }
         }
     }
 
@@ -169,15 +271,15 @@ export class App {
         switch (this.state) {
             case 'auth':
                 template = Handlebars.compile(Pages.AuthPage);
-                this.appElement.innerHTML = template({ fields: this.pagesContent.authPage.fields, buttons: this.pagesContent.authPage.buttons})
+                this.appElement.innerHTML = template(this.pagesContent.authPage)
                 break;
             case 'register':
                 template = Handlebars.compile(Pages.RegisterPage);
-                this.appElement.innerHTML = template({
-                    fields: this.pagesContent.registerPage.fields,
-                buttons: this.pagesContent.registerPage.buttons})
+                this.appElement.innerHTML = template(this.pagesContent.registerPage)
                 break;
             case 'profile':
+                template = Handlebars.compile(Pages.ProfilePage);
+                this.appElement.innerHTML = template(this.pagesContent.profilePage);
                 break;
             case 'editProfile':
                 break;

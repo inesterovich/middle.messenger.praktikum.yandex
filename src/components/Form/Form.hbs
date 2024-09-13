@@ -1,6 +1,9 @@
 
-     <form class="form" action="">
-        <h2 class="form-title">{{formTitle}}</h2>
+     <form class="form {{additionalClass}}" action="">
+        {{#if formTitle}}
+         <h2 class="form-title">{{formTitle}}</h2>
+        {{/if}}
+       
         {{#each fields }}
        {{> Field this}}
         {{/each }}

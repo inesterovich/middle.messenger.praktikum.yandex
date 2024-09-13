@@ -1,0 +1,19 @@
+<div class="app">
+
+    <section class="page page-profile">
+ <aside class="aside">
+    {{>Button id="button-aside" mode="danger" type="button" image="src/static/Arrow.svg"  }}
+   </aside>
+   <main class="profile-content">
+    <div class="avatar-wrapper">
+       {{>Avatar }}
+        <p>Иван</p>
+
+    </div>
+    {{>Form fields=fields additionalClass="form-profile"}}
+
+   </main>
+    </section>
+    {{>Footer }}
+  
+</div>

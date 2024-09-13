@@ -1,4 +1,8 @@
 <button id="{{id}}" class="button button-{{mode}}" type="{{type}}"
 {{#if disabled}}
   disabled
-{{/if}}>{{text}}</button>
+{{/if}}>
+{{#if image}}
+<img src="{{image}}" alt="{{altText}}">
+{{/if}}
+{{text}}</button>
