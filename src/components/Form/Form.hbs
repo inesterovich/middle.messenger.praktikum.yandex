@@ -1,0 +1,20 @@
+
+     <form class="form {{additionalClass}}" action="">
+        {{#if formTitle}}
+         <h2 class="form-title">{{formTitle}}</h2>
+        {{/if}}
+       
+        {{#each fields }}
+       {{> Field this}}
+        {{/each }}
+
+        {{#if buttons.length}}
+        <div class="form-buttons">
+        {{#each buttons}}
+        {{>Button this}}
+        {{/each}}
+        </div>
+        {{/if }}
+
+     </form>
+ 
