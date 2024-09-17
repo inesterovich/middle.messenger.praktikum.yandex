@@ -11,6 +11,7 @@ import { Footer } from "./components/Footer";
 import { Link } from "./components/Link";
 import { Avatar } from "./components/Avatar";
 
+
 Handlebars.registerPartial("Label", Label);
 Handlebars.registerPartial("Input", Input);
 Handlebars.registerPartial("ErrorMessage", ErrorMessage);
@@ -21,10 +22,45 @@ Handlebars.registerPartial("Button", Button);
 Handlebars.registerPartial("Link", Link);
 Handlebars.registerPartial("Footer", Footer);
 
+type FieldProps = {
+    id: string;
+    labelFor: string;
+    labelText: string;
+    inputType: string;
+    placeholder: string;
+    name: string;
+    value: string;
+    errorMessage?: string;
+    extraClass?: string;
+}
+
+type ButtonProps = {
+    id: string;
+    mode: 'primary' | 'secondary' | 'danger';
+    type: 'button' | 'submit';
+    text: string;
+}
+
+interface IPageConfig {
+    fields: FieldProps[],
+    buttons: ButtonProps[]
+}
+
+
 export class App {
+
+    state: string;
+    appElement: HTMLElement ;
+
+    pagesContent: {
+        authPage: IPageConfig;
+        registerPage: IPageConfig;
+        profilePage: IPageConfig;
+    }
+
   constructor() {
     this.state = "auth";
-    this.appElement = document.getElementById("app");
+    this.appElement = document.getElementById("app")!;
     this.pagesContent = {
       authPage: {
         fields: [
@@ -244,17 +280,32 @@ export class App {
     };
   }
 
-  changePage(page) {
+  changePage(page: string) {
     this.state = page;
     this.render();
   }
 
   attachListeners() {
-    const footerLinks = document.querySelectorAll(".footer-link");
+    const footerLinks: NodeListOf<HTMLElement> = document.querySelectorAll(".footer-link");
     footerLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.changePage(e.target.dataset.page);
+          e.preventDefault();
+
+          debugger;
+
+          if (e.target instanceof HTMLElement)
+          {
+              
+              if (e.target.dataset.page) {
+                this.changePage(e.target.dataset.page); 
+              } else {
+                  throw new Error('page name does not received')
+              }
+           
+           }
+          
+      
+      
       });
     });
   }
@@ -283,7 +334,7 @@ export class App {
         break;
       case "notFound":
         template = Handlebars.compile(Pages.NotFoundPage);
-        this.appElement.innerHTML = template();
+        this.appElement.innerHTML = template({});
         break;
       default:
         break;
@@ -291,11 +342,6 @@ export class App {
 
     this.attachListeners();
 
-    /* 
-        const template = Handlebars.compile(Pages.RegisterPage);
 
-        this.appElement.innerHTML = template({
-            fields: this.pagesContent.registerPage
-        }) */
   }
 }
