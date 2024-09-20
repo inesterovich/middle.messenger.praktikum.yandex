@@ -10,6 +10,7 @@ import { Button } from "./components/Button";
 import { Footer } from "./components/Footer";
 import { Link } from "./components/Link";
 import { Avatar } from "./components/Avatar";
+import { BlockProps } from "./utils/Block";
 
 
 Handlebars.registerPartial("Label", Label);
@@ -34,7 +35,7 @@ type FieldProps = {
     extraClass?: string;
 }
 
-type ButtonProps = {
+export interface ButtonProps extends BlockProps  {
     id: string;
     mode: 'primary' | 'secondary' | 'danger';
     type: 'button' | 'submit';

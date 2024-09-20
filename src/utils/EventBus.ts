@@ -1,16 +1,16 @@
 
 type CallBackType = (...args: unknown[]) => void;
 
-type EventNamesType = 'init' | 'render';
+type EventNamesType = 'init' | "flow:component-did-mount" | "flow:component-did-update" | "flow:render";
 
 
-export class EventBuss {
-    listeners: Record<EventNamesType, CallBackType[]>
+export class EventBus {
+    listeners: Partial<Record<EventNamesType, CallBackType[]>>
 
     constructor() {
 
         this.listeners = {
-
+            
         }
     }
 
@@ -18,7 +18,10 @@ export class EventBuss {
         if (!this.listeners[eventName]) {
             this.listeners[eventName] = [];
         } 
-            this.listeners[eventName].push(callback);
+
+            this.listeners[eventName]?.push(callback);
+     
+           
       
     }
 
@@ -27,7 +30,7 @@ export class EventBuss {
             throw new Error(`Нет события: ${eventName}`);
           }
       
-          this.listeners[eventName] = this.listeners[eventName].filter(
+          this.listeners[eventName] = this.listeners[eventName]?.filter(
             listener => listener !== callback
           );
     }
@@ -38,7 +41,7 @@ export class EventBuss {
             throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[eventName].forEach(listener => {
+    this.listeners[eventName]?.forEach(listener => {
         listener(...args);
     });
     }
