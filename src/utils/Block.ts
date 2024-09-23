@@ -22,9 +22,9 @@ export class Block<P extends  BlockProps> {
         FLOW_CDU: "flow:component-did-update",
         FLOW_RENDER: "flow:render",
     }
-    _element:HTMLElement|null = null;
+  protected  _element:HTMLElement|null = null;
 
-    _meta: {
+  protected  _meta: {
         tagName: string,
         props?: P
     }| null = null;
@@ -44,10 +44,11 @@ export class Block<P extends  BlockProps> {
         
         this.eventBus = () => eventBus;
         this._registerEvents(eventBus); // а что если  this.eventBus?
+        eventBus.emit(Block.EVENTS.INIT);
         
     }
 
-  private  _makeProxyProps(props: P) {
+   protected  _makeProxyProps(props: P) {
         // Как избавиться от self ?
         const self = this;
 
@@ -64,9 +65,10 @@ export class Block<P extends  BlockProps> {
                     return typeof value === 'function' ? value.bind(this) : value
 
                 } else {
-                    throw new Error('property can not be a symbol yet')
+                    throw new Error('property can not be a symbol yet');
+                     // Непонятно, что делать с symbol
                 }
-                // Непонятно, что делать с symbol
+               
             },
             set(target: BlockProps, prop, newValue) {
                 if (typeof prop === 'string') {
@@ -92,15 +94,16 @@ export class Block<P extends  BlockProps> {
         return proxyProps
     }
 
-    private _registerEvents(eventBus: EventBus) {
+    protected _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+
         //
     }
 
-    _createResources() {
+   protected _createResources() {
 
         if (this._meta !== null) {
             const { tagName } = this._meta;
@@ -109,11 +112,11 @@ export class Block<P extends  BlockProps> {
       
       }
 
-    private _componentDidMount() {
+    protected _componentDidMount() {
         this.componentDidMount();
         // Как именно переопределяется метод пользователя. Мы же его вызываем всегда без пропсов
      }
-    public componentDidMount(oldProps?: unknown) {
+    public componentDidMount(oldProps?: P) {
 
     }
 
@@ -121,7 +124,7 @@ export class Block<P extends  BlockProps> {
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
       }
 
-    private _componentDidUpdate(oldProps: unknown, newProps: unknown) {
+    protected _componentDidUpdate(oldProps: P, newProps: P) {
         const response = this.componentDidUpdate(oldProps, newProps);
 
         if (!response) {
@@ -130,11 +133,11 @@ export class Block<P extends  BlockProps> {
           this._render();
     }
 
-    public componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    public componentDidUpdate(oldProps: P, newProps: P): boolean {
         return true;
     }
 
-    public setProps = (nextProps: unknown) => {
+    public setProps = (nextProps: P) => {
         if (!nextProps) {
             return
         }
@@ -150,7 +153,7 @@ export class Block<P extends  BlockProps> {
         return this.element;
       }
     
-    _createDocumentElement(tagName: string) {
+   protected _createDocumentElement(tagName: string) {
         // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
         return document.createElement(tagName);
       }
@@ -163,7 +166,7 @@ export class Block<P extends  BlockProps> {
     }
     
 
-    private _render() {
+    protected _render() {
         
   // Этот небезопасный метод для упрощения логики
   // Используйте шаблонизатор из npm или напишите свой безопасный
@@ -181,4 +184,22 @@ export class Block<P extends  BlockProps> {
         return ''
     }
 }
+
+
+
+
+
+
+
+
+
+/*
+
+1. Компонент блока - доработать с учетом событий. В нём нет метода render
+2. Переписать проект на компоненты
+3. Паттерн MVC
+4. Stylelint, eslint
+5. Написать fetch и класс для работы с запросами
+
+*/
 

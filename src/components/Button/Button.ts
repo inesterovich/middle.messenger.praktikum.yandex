@@ -1,20 +1,33 @@
 import { ButtonProps } from "../../App";
 import { Block } from "../../utils/Block";
+import { compile } from "handlebars";
+import ButtonTemplate from './Button.hbs?raw';
 
-export class Button extends Block<ButtonProps> {
+
+
+
+ class Button extends Block<ButtonProps> {
     constructor(props:ButtonProps) {
         super('button', props)
     }
 
     public render(): string {
 
-        const { } = this.props;
 
-        
-        return ''
+        const template = compile<ButtonProps>(ButtonTemplate);
+
+        return template(this.props);
+
+       
+
     }
 
 
-}
+ }
+
+export default Button;
+
+
+
 
 

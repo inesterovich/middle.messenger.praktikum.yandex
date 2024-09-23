@@ -1,5 +1,5 @@
 
-type CallBackType = (...args: unknown[]) => void;
+type CallBackType = (...args: any[]) => void; // Временно выключил
 
 type EventNamesType = 'init' | "flow:component-did-mount" | "flow:component-did-update" | "flow:render";
 
