@@ -10,7 +10,8 @@ import { Button } from "./components/Button";
 import { Footer } from "./components/Footer";
 import { Link } from "./components/Link";
 import { Avatar } from "./components/Avatar";
-import { BlockProps } from "./utils/Block";
+import { BlockProps } from "./types";
+
 
 
 Handlebars.registerPartial("Label", Label);
@@ -19,7 +20,7 @@ Handlebars.registerPartial("ErrorMessage", ErrorMessage);
 Handlebars.registerPartial("Field", Field);
 Handlebars.registerPartial("Avatar", Avatar);
 Handlebars.registerPartial("Form", Form);
-Handlebars.registerPartial("Button", Button);
+
 Handlebars.registerPartial("Link", Link);
 Handlebars.registerPartial("Footer", Footer);
 

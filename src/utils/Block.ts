@@ -1,3 +1,4 @@
+import { BlockProps } from "../types";
 import { EventBus } from "./EventBus";
 
 
@@ -10,9 +11,6 @@ type EVENTS = {
     FLOW_RENDER: "flow:render";
 }
 
-export interface BlockProps {
-    [key: string]: unknown
-}
 
 
 export class Block<P extends  BlockProps> {
@@ -137,7 +135,7 @@ export class Block<P extends  BlockProps> {
         return true;
     }
 
-    public setProps = (nextProps: P) => {
+    public setProps = (nextProps: Partial<P>) => {
         if (!nextProps) {
             return
         }
