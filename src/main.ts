@@ -6,7 +6,7 @@ import { render } from "./utils/render";
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const button = new Button({ id: '1', mode: 'primary', text: 'default text', type: 'button', settings: { withInternalID: true} });
+    const button = new Button({  mode: 'primary', text: 'default text', type: 'button', settings: { withInternalID: true} });
     render('#app', button);
 
     setTimeout(() => {

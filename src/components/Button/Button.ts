@@ -1,21 +1,22 @@
 
-import { Block } from "../framework/Block";
+
 import { compile } from "handlebars";
 import ButtonTemplate from './Button.hbs?raw';
-import { ButtonProps } from "../../types";
+import { BlockProps, ButtonProps } from "../../types";
+import Block from "../../framework/Block";
 
 
 
 
- class Button extends Block<ButtonProps> {
-    constructor(props:ButtonProps) {
-        super('button', props)
+ class Button extends Block {
+    constructor(props: BlockProps) {
+        super(props)
     }
 
     public render(): string {
 
 
-        const template = compile<ButtonProps>(ButtonTemplate);
+        const template = compile<BlockProps>(ButtonTemplate);
 
         return template(this.props);
 

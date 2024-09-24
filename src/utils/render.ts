@@ -1,7 +1,8 @@
+import Block from "../framework/Block";
 import { BlockProps } from "../types";
-import { Block } from "../components/framework/Block";
 
-export function render<T extends BlockProps>(query: string, block: Block<T>) {
+
+export function render(query: string, block: Block) {
     const root = document.querySelector(query);
 
     const blockContent = block.getContent();
