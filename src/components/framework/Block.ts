@@ -1,6 +1,8 @@
 import { BlockProps } from "../../types";
 import { EventBus } from "./EventBus";
 import { getKeys } from "../../utils/object.utils";
+import { makeUUID } from "../../utils/id.utils";
+
 
 
 
@@ -23,6 +25,7 @@ export class Block<P extends  BlockProps> {
         FLOW_CDU: "flow:component-did-update",
         FLOW_RENDER: "flow:render",
     }
+  protected _id: string | null = null;
   protected  _element:HTMLElement|null = null;
 
   protected  _meta: {
@@ -41,7 +44,17 @@ export class Block<P extends  BlockProps> {
             props
         }
 
-           this.props = this._makeProxyProps(props)
+        const settings = props.settings;
+
+
+        this._id = makeUUID();
+
+        const innerProps = settings?.withInternalID ? {
+            ...props,
+            _id: this._id
+        } : { ...props };
+
+           this.props = this._makeProxyProps(innerProps)
         
         this.eventBus = () => eventBus;
         this._registerEvents(eventBus); // а что если  this.eventBus?
@@ -175,8 +188,13 @@ export class Block<P extends  BlockProps> {
       }
     
    protected _createDocumentElement(tagName: string) {
-        // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-        return document.createElement(tagName);
+       // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
+       const element = document.createElement(tagName);
+       if (this._id) {
+        element.setAttribute('data-id', this._id);;
+       }
+      
+        return element;
       }
       
 

@@ -1,7 +1,13 @@
 
 
+export interface BlockSettings {
+    withInternalID?: boolean;
+}
+
 export interface BlockProps {
-    events?: ListenerEvents
+    _id?: string;
+    events?: ListenerEvents;
+    settings?: BlockSettings;
     [key: string]: unknown;
    
 }
