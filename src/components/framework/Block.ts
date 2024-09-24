@@ -1,5 +1,6 @@
-import { BlockProps } from "../types";
+import { BlockProps } from "../../types";
 import { EventBus } from "./EventBus";
+import { getKeys } from "../../utils/object.utils";
 
 
 
@@ -10,6 +11,8 @@ type EVENTS = {
     FLOW_CDU: "flow:component-did-update";
     FLOW_RENDER: "flow:render";
 }
+
+
 
 
 
@@ -113,7 +116,27 @@ export class Block<P extends  BlockProps> {
     protected _componentDidMount() {
         this.componentDidMount();
         // Как именно переопределяется метод пользователя. Мы же его вызываем всегда без пропсов
-     }
+    }
+    
+    protected _addEvents() {
+        const { events = {} } = this.props;
+
+      
+        
+        getKeys(events).forEach((eventName) => {
+
+            const callback = events[eventName];
+
+            if (callback) {
+                this._element?.addEventListener(eventName, callback )
+            }
+           
+        })
+
+     
+
+       
+    }
     public componentDidMount(oldProps?: P) {
 
     }
@@ -174,6 +197,7 @@ export class Block<P extends  BlockProps> {
         if (this._element !== null) {
             const block = this.render();
             this._element.innerHTML = block;
+            this._addEvents();
         }
 
     }

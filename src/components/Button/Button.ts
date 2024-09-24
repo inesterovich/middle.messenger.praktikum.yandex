@@ -1,5 +1,5 @@
 
-import { Block } from "../../utils/Block";
+import { Block } from "../framework/Block";
 import { compile } from "handlebars";
 import ButtonTemplate from './Button.hbs?raw';
 import { ButtonProps } from "../../types";
