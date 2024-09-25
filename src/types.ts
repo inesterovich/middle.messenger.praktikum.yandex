@@ -5,7 +5,7 @@ export interface BlockSettings {
 }
 
 export interface BlockProps {
-    _id?: string;
+   
     events?: ListenerEvents;
     settings?: BlockSettings;
     [key: string]: unknown;

@@ -1,7 +1,11 @@
+import { ListenerEvents } from '../types';
+import { getKeys } from '../utils/object.utils';
 import EventBus, { EventCallback } from './EventBus';
 import Handlebars from 'handlebars';
 
 interface BlockProps {
+    events?: ListenerEvents;
+    children?: Record<string, Block>;
   [key: string]: any;
 }
 
@@ -38,10 +42,12 @@ export default class Block {
 
   private _addEvents(): void {
     const { events = {} } = this.props;
-    Object.keys(events).forEach(eventName => {
-      if (this._element) {
-        this._element.addEventListener(eventName, events[eventName]);
-      }
+      getKeys(events).forEach(eventName => {
+          const callback = events[eventName];
+          if (callback) {
+            this._element?.addEventListener(eventName, callback);
+          }
+     
     });
   }
 
