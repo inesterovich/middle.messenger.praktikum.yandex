@@ -5,7 +5,6 @@ import Handlebars from 'handlebars';
 
 export interface BlockProps {
     events?: ListenerEvents;
-    children?: Record<string, Block>;
   [key: string]: any;
 }
 

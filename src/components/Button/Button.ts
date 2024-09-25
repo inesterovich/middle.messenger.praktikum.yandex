@@ -1,24 +1,31 @@
 
 
-import { compile } from "handlebars";
+
 import ButtonTemplate from './Button.hbs?raw';
 
 import Block, { BlockProps } from "../../framework/Block";
+import { Img } from "../Img";
 
 
+interface ButtonProps extends BlockProps {
+    text: string;
+    mode: 'primary'|'secondary'| 'danger' | 'disabled',
+    type: 'button' | 'submit'
+    Image?: Img;
+}
 
 
- class Button extends Block {
-    constructor(props: BlockProps) {
+class Button extends Block {
+     
+   declare protected props: ButtonProps;
+    constructor(props: ButtonProps) {
         super(props)
     }
 
     public render(): string {
 
 
-        const template = compile<BlockProps>(ButtonTemplate);
-
-        return template(this.props);
+        return ButtonTemplate
 
        
 
