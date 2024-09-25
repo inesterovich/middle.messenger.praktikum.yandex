@@ -2,8 +2,8 @@
 
 import { compile } from "handlebars";
 import ButtonTemplate from './Button.hbs?raw';
-import { BlockProps, ButtonProps } from "../../types";
-import Block from "../../framework/Block";
+
+import Block, { BlockProps } from "../../framework/Block";
 
 
 

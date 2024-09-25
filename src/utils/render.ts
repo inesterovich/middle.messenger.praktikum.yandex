@@ -1,5 +1,4 @@
 import Block from "../framework/Block";
-import { BlockProps } from "../types";
 
 
 export function render(query: string, block: Block) {

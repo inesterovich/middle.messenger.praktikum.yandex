@@ -4,13 +4,7 @@ export interface BlockSettings {
     withInternalID?: boolean;
 }
 
-export interface BlockProps {
-   
-    events?: ListenerEvents;
-    settings?: BlockSettings;
-    [key: string]: unknown;
-   
-}
+
 
 export type BlockType = {
     _id?: string;
@@ -36,10 +30,4 @@ export type ListenerEvents = Partial<Record<keyof HTMLElementEventMap, (e: Event
 
 
 
-export interface ButtonProps extends BlockProps  {
-    id: string;
-    mode: 'primary' | 'secondary' | 'danger';
-    type: 'button' | 'submit';
-    text: string;
-    
-}
+

@@ -3,7 +3,7 @@ import { getKeys } from '../utils/object.utils';
 import EventBus, { EventCallback } from './EventBus';
 import Handlebars from 'handlebars';
 
-interface BlockProps {
+export interface BlockProps {
     events?: ListenerEvents;
     children?: Record<string, Block>;
   [key: string]: any;

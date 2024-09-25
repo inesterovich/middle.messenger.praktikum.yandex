@@ -10,7 +10,7 @@ import { Button } from "./components/Button";
 import { Footer } from "./components/Footer";
 import { Link } from "./components/Link";
 import { Avatar } from "./components/Avatar";
-import { BlockProps, ButtonProps } from "./types";
+
 
 
 
@@ -40,7 +40,7 @@ type FieldProps = {
 
 interface IPageConfig {
     fields: FieldProps[],
-    buttons: ButtonProps[]
+    buttons: any[]
 }
 
 
