@@ -31,7 +31,7 @@ export default class Block {
 
   constructor(propsWithChildren: BlockProps = {}) {
     const eventBus = new EventBus();
-    const { props, children, lists } = this._getChildrenPropsAndProps(propsWithChildren);
+    const { props, children, lists } = this._getChildrenPropsAndChildren(propsWithChildren);
     this.props = this._makePropsProxy({ ...props });
     this.children = children;
     this.lists = lists;
@@ -86,7 +86,7 @@ export default class Block {
     return true;
   }
 
-  private _getChildrenPropsAndProps(propsAndChildren: BlockProps): {
+  private _getChildrenPropsAndChildren(propsAndChildren: BlockProps): {
     children: Record<string, Block>,
     props: BlockProps,
     lists: Record<string, any[]>
