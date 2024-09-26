@@ -1,1 +1,2 @@
-export { default as ProfilePage } from "./ProfilePage.hbs?raw";
+import { default as ProfilePage } from "./ProfilePage";
+export { ProfilePage };

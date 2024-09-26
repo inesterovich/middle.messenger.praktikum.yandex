@@ -4,16 +4,18 @@
 import BlankPageTemplate from './BlankPage.hbs?raw';
 
 import Block, { BlockProps } from "../../framework/Block";
-import Form from '../../components/Form/Form';
-import { Field } from '../../components/Field';
-import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
 
 
 
 
-interface BlankPageProps extends BlockProps {
 
+interface BlankPageProps extends BlockProps {
+    footerClick: (page: string) => void
+}
+
+interface BlankPagePropsWithChildren extends BlankPageProps {
+    Footer: Footer;
 }
 
 
@@ -22,10 +24,12 @@ class BlankPage extends Block {
    declare protected props: BlankPageProps;
     constructor(props: BlankPageProps) {
      
-
-        super({
+        const preparedPropsWidthChildren: BlankPagePropsWithChildren = {
             ...props,
-        })
+            Footer: new Footer({ footerClick : props.footerClick})
+        }
+
+        super(preparedPropsWidthChildren)
 
        
 

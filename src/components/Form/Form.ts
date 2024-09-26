@@ -9,6 +9,7 @@ import { Button } from '../Button';
 
 
 interface FormPropsWithChildren extends BlockProps {
+    additionalClass?: string;
     FieldItems: Field[],
     ButtonItems: Button[],
     formTitle: string;

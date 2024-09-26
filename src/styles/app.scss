@@ -52,12 +52,16 @@ body {
         background-color: transparent;
         border: none;
       }
+
+      &.button-round {
+        width: 28px;
+        height: 28px;
+        background-color: transparent;
+        border: none;
+      }
     }
 
-    .button-aside {
-      width: 28px;
-      height: 28px;
-    }
+   
   }
 
   .page {

@@ -1,1 +1,3 @@
-export { default as ServerErrorPage } from "./ServerErrorPage.hbs?raw";
+import { default as ServerErrorPage } from "./ServerErrorPage";
+export { ServerErrorPage };
+

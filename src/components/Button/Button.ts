@@ -9,7 +9,7 @@ import { Img } from "../Img";
 
 export interface ButtonPropsWithChildren extends BlockProps {
     text: string;
-    mode: 'primary'|'secondary'| 'danger' | 'disabled',
+    mode: 'primary'|'secondary'| 'round' | 'danger' | 'disabled',
     type: 'button' | 'submit'
     Image?: Img;
 }

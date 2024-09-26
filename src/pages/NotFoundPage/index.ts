@@ -1,1 +1,2 @@
-export { default as NotFoundPage } from "./NotFoundPage.hbs?raw";
+import { default as NotFoundPage } from "./NotFoundPage";
+export { NotFoundPage };

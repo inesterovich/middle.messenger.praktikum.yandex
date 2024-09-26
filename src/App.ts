@@ -81,8 +81,9 @@ export class App {
 
 
 
-  render() {
-   
+    render() {
+      
+       
 
     switch (this.state) {
         case "auth":
@@ -91,7 +92,7 @@ export class App {
             if (this.appElement) {
                 this.appElement.replaceChildren(authPage.getContent());
 
-    
+
               }
 
         return '';
@@ -105,14 +106,30 @@ export class App {
     
       return '';
       case "profile":
-      
+        const profilePage = new Pages.ProfilePage({footerClick: this.changePage.bind(this)});
+        if (this.appElement) {
+            this.appElement.replaceChildren(profilePage.getContent());
+
+          }
+
       return '';
       case "editProfile":
         return '';
-      case "serverError":
+        case "serverError":
+            
+        const serverErrorPage = new Pages.ServerErrorPage({footerClick: this.changePage.bind(this)});
+        if (this.appElement) {
+            this.appElement.replaceChildren(serverErrorPage.getContent());
+
+          }
        
       return '';
       case "notFound":
+            const notFoundPage = new Pages.NotFoundPage({footerClick: this.changePage.bind(this)});
+            if (this.appElement) {
+                this.appElement.replaceChildren(notFoundPage.getContent());
+    
+              }
       
       return '';
       default:
@@ -133,7 +150,7 @@ export class App {
 //2.1. Вернуть все компоненты в AuthPage
 //3. Переписать футер на компоненты
 //4. Сделать примитивный роутинг
-!5. Написать остальные страницы
+//5. Написать остальные страницы
 6. Сделать страницу с лентой и списком чатов
 5. Сбор данных из формы
 7. Валидация формы

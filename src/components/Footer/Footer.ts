@@ -51,9 +51,29 @@ class Footer extends Block {
                     footerClick('register')
                 }
             }),
-            LinkProfile: new Link({ href: '/profile', className: 'footer-link', dataPage: 'profile', text: 'Профиль' }),
-            LinkServerError: new Link({ href: '/serverError', className: 'footer-link', dataPage: 'serverError', text: 'Ошибка сервера' }),
-            LinkNotFound: new Link({ href: '/notFound', className: 'footer-link', dataPage: 'notFound', text: 'Ошибка 404' })
+            LinkProfile: new Link({
+                href: '/profile', className: 'footer-link', dataPage: 'profile', text: 'Профиль',
+                onClick: (e) => {
+                    e.preventDefault();
+                    footerClick('profile');
+                }
+        
+            }),
+            LinkServerError: new Link({
+                href: '/serverError', className: 'footer-link', dataPage: 'serverError', text: 'Ошибка сервера',
+                onClick: (e) => {
+                    e.preventDefault();
+                    footerClick('serverError');
+                }
+            }),
+            LinkNotFound: new Link({
+                href: '/notFound', className: 'footer-link', dataPage: 'notFound', text: 'Ошибка 404',
+            onClick: (e) => {
+                e.preventDefault();
+                footerClick('notFound');
+            }
+        
+            })
         
         
         }

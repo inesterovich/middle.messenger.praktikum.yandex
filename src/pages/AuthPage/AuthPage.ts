@@ -31,7 +31,7 @@ class AuthPage extends Block {
     constructor(props: AuthPageProps) {
    
 
-        const testFieldConfig: FieldProps[] = [{
+        const fieldsProps: FieldProps[] = [{
             id: 'login',
             labelText: "Логин",
             inputType: "text",
@@ -56,7 +56,7 @@ class AuthPage extends Block {
           },
         ]
 
-        const buttonParams: ButtonPropsWithChildren[] =  [{
+        const buttonsProps: ButtonPropsWithChildren[] =  [{
             id: "submit",
             mode: "primary",
             type: "submit",
@@ -73,8 +73,8 @@ class AuthPage extends Block {
             ...props,
             AuthForm: new Form({
                 formTitle: 'Авторизация',
-                FieldItems: testFieldConfig.map((childProps) => new Field(childProps)),
-                ButtonItems: buttonParams.map((childProps) => new Button(childProps))
+                FieldItems: fieldsProps.map((childProps) => new Field(childProps)),
+                ButtonItems: buttonsProps.map((childProps) => new Button(childProps))
 
         }), Footer: new Footer({ footerClick: props.footerClick})
         }
