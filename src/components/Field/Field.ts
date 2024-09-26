@@ -8,17 +8,18 @@ import { Label,  } from '../Label';
 import { Input } from '../Input';
 import { ErrorMessage } from '../ErrorMessage';
 
-export interface FieldProps extends BlockProps {
-    additionalFieldClass: string;
+export interface FieldProps {
+    id: string;
+    extraClass: string;
     labelClass?: string;
     labelText: string;
     inputType: 'text' | 'password' | 'email' | 'phone';
     placeholder: string;
     name: string;
     value: string;
-    isError?: boolean;
-
+    isError: boolean;
     errorMessage?: string;
+    events?: BlockProps['events']
 }
 
 interface FieldPropsWithChildren extends BlockProps {
@@ -38,14 +39,14 @@ class Field extends Block {
      
    declare protected props: FieldPropsWithChildren;
     constructor(props: FieldProps) {
-        const {  labelClass = '', labelText, name, value, inputType, placeholder, additionalFieldClass,isError = false, errorMessage= '', events = {} } = props;
+        const {  labelClass = '', labelText, name, value, inputType, placeholder, extraClass,isError = false, errorMessage= '', events = {} } = props;
 
         const LabelInstance = new Label({ labelFor: name, labelClass, labelText });
         const InputInstance = new Input({ type: inputType, placeholder, value, name });
         const ErrorMessageInstance = new ErrorMessage({ errorMessage });
 
         const preparedPropsWithChilren: FieldPropsWithChildren = {
-            extraClass: additionalFieldClass, 
+            extraClass, 
             Label: LabelInstance,
             Input: InputInstance,
             isError,

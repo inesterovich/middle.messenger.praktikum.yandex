@@ -32,14 +32,14 @@ class AuthPage extends Block {
    
 
         const testFieldConfig: FieldProps[] = [{
-    
+            id: 'login',
             labelText: "Логин",
             inputType: "text",
             placeholder: "Логин",
             name: "login",
             value: "",
             labelClass: '',
-            additionalFieldClass: "field-vertical",
+            extraClass: "field-vertical",
             isError: false,
 
         },
@@ -51,7 +51,8 @@ class AuthPage extends Block {
             name: "password",
             value: "",
             errorMessage: "Неверный пароль",
-           additionalFieldClass: "field-vertical",
+            extraClass: "field-vertical",
+           isError: false
           },
         ]
 

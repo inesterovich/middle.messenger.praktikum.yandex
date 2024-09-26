@@ -37,7 +37,8 @@ export class App {
             name: "login",
             value: "",
             errorMessage: "Неверный логин",
-            additionalFieldClass: "field-vertical",
+                extraClass: "field-vertical",
+            isError: false
           },
           {
             id: "password",
@@ -47,7 +48,8 @@ export class App {
             name: "password",
             value: "",
             errorMessage: "Неверный пароль",
-           additionalFieldClass: "field-vertical",
+              extraClass: "field-vertical",
+           isError: false
           },
         ],
         buttons: [
@@ -95,7 +97,7 @@ export class App {
         return '';
         case "register":
             
-            const registerPage = new BlankPage({});
+            const registerPage = new Pages.RegisterPage({ footerClick: this.changePage.bind(this)});
 
             if (this.appElement) {
                 this.appElement.replaceChildren(registerPage.getContent())
