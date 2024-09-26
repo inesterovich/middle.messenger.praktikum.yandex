@@ -92,7 +92,7 @@ export class App {
             if (this.appElement) {
                 this.appElement.replaceChildren(authPage.getContent());
 
-
+                debugger;
               }
 
         return '';
