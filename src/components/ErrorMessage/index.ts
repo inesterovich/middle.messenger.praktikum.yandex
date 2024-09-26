@@ -1,1 +1,2 @@
-export { default as ErrorMessage } from "./ErrorMessage.hbs?raw";
+import { default as ErrorMessage } from './ErrorMessage'; 
+export { ErrorMessage }; 

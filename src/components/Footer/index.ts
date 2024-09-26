@@ -1,1 +1,3 @@
-export { default as Footer } from "./Footer.hbs?raw";
+import { default as Footer } from './Footer'; 
+export { Footer }; 
+

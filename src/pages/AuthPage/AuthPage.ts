@@ -8,6 +8,7 @@ import Form from '../../components/Form/Form';
 import { Field } from '../../components/Field';
 import { Label } from '../../components/Label';
 import { FieldTextProps } from '../../components/Field/Field';
+import { Footer } from '../../components/Footer';
 
 
 
@@ -39,7 +40,7 @@ class AuthPage extends Block {
             AuthForm: new Form({
                 formTitle: 'Авторизация',
                 FieldItems: [ new Field(testFieldConfig) ]
-        })
+        }), Footer: new Footer({})
         })
     }
 

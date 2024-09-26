@@ -1,1 +1,2 @@
-export { default as Link } from "./Link.hbs?raw";
+import { default as Link } from './Link'; 
+export { Link }; 

@@ -1,1 +1,2 @@
-export { default as Avatar } from "./Avatar.hbs?raw";
+import { default as Avatar } from './Avatar'; 
+export { Avatar }; 

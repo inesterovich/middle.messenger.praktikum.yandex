@@ -1,19 +1,9 @@
 <footer class="footer">
-    {{>Link href="/auth" class="footer-link" data-page="auth"
-    text="Авторизация"
-     }}
-     {{>Link href="/register" class="footer-link" data-page="register"
-    text="Регистрация"
-     }}
-     {{>Link href="/profile" class="footer-link" data-page="profile"
-    text="Профиль"
-     }}
-     {{>Link href="/serverError" class="footer-link" data-page="serverError"
-    text="Ошибка сервера"
-     }}
-     {{>Link href="/notFound" class="footer-link" data-page="notFound"
-    text="Ошибка 404"
-     }}
+    {{{LinkAuth}}}
+    {{{LinkRegister}}}
+    {{{LinkProfile}}}
+    {{{LinkServerError}}}
+    {{{LinkNotFound}}}
 </footer>
 
 
