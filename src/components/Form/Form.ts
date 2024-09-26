@@ -23,9 +23,17 @@ class Form extends Block {
    declare protected props: FormPropsWithChildren;
     constructor(props: FormPropsWithChildren) {
      
-        super(props);
+        super({
+            ...props,
+            events: {
+                submit: (e) => {
+                    e.preventDefault();
+                    this.onSubmit.bind(this)()
+                }
+            }
+        });
     }
-/*
+
     private onSubmit() {
         const form = this._element;
 
@@ -46,7 +54,7 @@ class Form extends Block {
             console.log(formValues);
             
         }
-    } */
+    } 
      
 
     public render(): string {

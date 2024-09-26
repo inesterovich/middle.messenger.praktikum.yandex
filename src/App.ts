@@ -18,58 +18,11 @@ export class App {
     state: string;
     private appElement: HTMLElement | null;
 
-    pagesContent: {
-        authPage: IPageConfig;
-     
-    }
-
+ 
   constructor() {
     this.state = "auth";
     this.appElement = document.getElementById("app")!;
-    this.pagesContent = {
-      authPage: {
-        fields: [
-          {
-            id: "login",
-            labelText: "Логин",
-            inputType: "text",
-            placeholder: "Логин",
-            name: "login",
-            value: "",
-            errorMessage: "Неверный логин",
-                extraClass: "field-vertical",
-            isError: false
-          },
-          {
-            id: "password",
-            labelText: "Пароль",
-            inputType: "password",
-            placeholder: "Пароль",
-            name: "password",
-            value: "",
-            errorMessage: "Неверный пароль",
-              extraClass: "field-vertical",
-           isError: false
-          },
-        ],
-        buttons: [
-          {
-            id: "submit",
-            mode: "primary",
-            type: "submit",
-            text: "Авторизоваться",
-          },
-          {
-            id: "register",
-            mode: "secondary",
-            type: "button",
-            text: "Нет аккаунта?",
-          },
-        ],
-      },
-     
-   
-    };
+
   }
 
     changePage(page: string) {
@@ -92,7 +45,7 @@ export class App {
             if (this.appElement) {
                 this.appElement.replaceChildren(authPage.getContent());
 
-                debugger;
+            
               }
 
         return '';
