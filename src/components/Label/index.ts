@@ -1,1 +1,2 @@
-export { default as Label } from "./Label.hbs?raw";
+import { default as Label } from './Label'; 
+export { Label }; 

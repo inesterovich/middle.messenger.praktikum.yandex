@@ -1,1 +1,2 @@
-export { default as Field } from "./Field.hbs?raw";
+import { default as Field } from './Field'; 
+export { Field }; 
