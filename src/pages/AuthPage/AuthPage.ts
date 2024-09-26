@@ -6,7 +6,6 @@ import AuthPageTemplate from './AuthPage.hbs?raw';
 import Block, { BlockProps } from "../../framework/Block";
 import Form from '../../components/Form/Form';
 import { Field } from '../../components/Field';
-import { Label } from '../../components/Label';
 import { FieldTextProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
 
@@ -14,7 +13,7 @@ import { Footer } from '../../components/Footer';
 
 
 interface AuthPageProps extends BlockProps {
-
+footerClick: (page: string) => void
   
 }
 
@@ -23,6 +22,7 @@ class AuthPage extends Block {
      
    declare protected props: AuthPageProps;
     constructor(props: AuthPageProps) {
+        debugger;
 
         const testFieldConfig: FieldTextProps = {
     
@@ -40,8 +40,11 @@ class AuthPage extends Block {
             AuthForm: new Form({
                 formTitle: 'Авторизация',
                 FieldItems: [ new Field(testFieldConfig) ]
-        }), Footer: new Footer({})
+        }), Footer: new Footer({ footerClick: props.footerClick})
         })
+
+       
+
     }
 
     public render(): string {

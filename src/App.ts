@@ -1,5 +1,6 @@
 import Handlebars from "handlebars";
 import * as Pages from "./pages";
+import { BlankPage } from "./pages/BlankPage";
 
 
 
@@ -82,8 +83,10 @@ export class App {
     };
   }
 
-  changePage(page: string) {
-    this.state = page;
+    changePage(page: string) {
+   
+        this.state = page;
+      
     this.render();
   }
 
@@ -95,13 +98,19 @@ export class App {
     switch (this.state) {
         case "auth":
             
-            const authPage = new Pages.AuthPage({});
+            const authPage = new Pages.AuthPage({footerClick: this.changePage.bind(this)});
             if (this.appElement) {
-                this.appElement.replaceWith(authPage.getContent());
+                this.appElement.replaceChildren(authPage.getContent());
               }
 
         return '';
-      case "register":
+        case "register":
+            
+            const registerPage = new BlankPage({});
+
+            if (this.appElement) {
+                this.appElement.replaceChildren(registerPage.getContent())
+            }
     
       return '';
       case "profile":
