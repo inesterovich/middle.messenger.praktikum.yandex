@@ -6,7 +6,7 @@ import AuthPageTemplate from './AuthPage.hbs?raw';
 import Block, { BlockProps } from "../../framework/Block";
 import Form from '../../components/Form/Form';
 import { Field } from '../../components/Field';
-import { FieldTextProps } from '../../components/Field/Field';
+import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
 
 
@@ -17,16 +17,20 @@ footerClick: (page: string) => void
   
 }
 
+interface AuthPagePropsWithChildren extends AuthPageProps {
+    AuthForm: Form;
+    Footer: Footer;
+}
+
 
 class AuthPage extends Block {
      
-   declare protected props: AuthPageProps;
+   declare protected props: AuthPagePropsWithChildren;
     constructor(props: AuthPageProps) {
         debugger;
 
-        const testFieldConfig: FieldTextProps = {
+        const testFieldConfig: FieldProps[] = [{
     
-            labelFor: "login",
             labelText: "Логин",
             inputType: "text",
             placeholder: "Логин",
@@ -34,14 +38,29 @@ class AuthPage extends Block {
             value: "",
             labelClass: '',
             additionalFieldClass: "field-vertical",
-        }
-        super({
+            isError: false,
+
+        },
+        {
+            id: "password",
+            labelText: "Пароль",
+            inputType: "password",
+            placeholder: "Пароль",
+            name: "password",
+            value: "",
+            errorMessage: "Неверный пароль",
+           additionalFieldClass: "field-vertical",
+          },
+        ]
+
+        const preparedPropsWidthChildren: AuthPagePropsWithChildren = {
             ...props,
             AuthForm: new Form({
                 formTitle: 'Авторизация',
-                FieldItems: [ new Field(testFieldConfig) ]
+                FieldItems: testFieldConfig.map((childProps) => new Field(childProps))
         }), Footer: new Footer({ footerClick: props.footerClick})
-        })
+        }
+        super(preparedPropsWidthChildren)
 
        
 

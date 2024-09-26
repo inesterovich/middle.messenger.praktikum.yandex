@@ -6,7 +6,7 @@ import BlankPageTemplate from './BlankPage.hbs?raw';
 import Block, { BlockProps } from "../../framework/Block";
 import Form from '../../components/Form/Form';
 import { Field } from '../../components/Field';
-import { FieldTextProps } from '../../components/Field/Field';
+import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
 
 

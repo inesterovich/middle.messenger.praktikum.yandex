@@ -1,20 +1,9 @@
 import Handlebars from "handlebars";
 import * as Pages from "./pages";
 import { BlankPage } from "./pages/BlankPage";
+import { FieldProps } from "./components/Field/Field";
 
 
-
-type FieldProps = {
-    id: string;
-    labelFor: string;
-    labelText: string;
-    inputType: string;
-    placeholder: string;
-    name: string;
-    value: string;
-    errorMessage?: string;
-    extraClass?: string;
-}
 
 
 
@@ -42,25 +31,23 @@ export class App {
         fields: [
           {
             id: "login",
-            labelFor: "login",
             labelText: "Логин",
             inputType: "text",
             placeholder: "Логин",
             name: "login",
             value: "",
             errorMessage: "Неверный логин",
-            extraClass: "field-vertical",
+            additionalFieldClass: "field-vertical",
           },
           {
             id: "password",
-            labelFor: "password",
             labelText: "Пароль",
             inputType: "password",
             placeholder: "Пароль",
             name: "password",
             value: "",
             errorMessage: "Неверный пароль",
-            extraClass: "field-vertical",
+           additionalFieldClass: "field-vertical",
           },
         ],
         buttons: [
@@ -138,9 +125,10 @@ export class App {
 /* 
 //1. Написать новый App, вернуть в main
 //2. Отренедрить страница
+!2.0.1. Переименовать типы
 !2.1. Вернуть все компоненты в AuthPage
-!3. Переписать футер на компоненты
-!4. Сделать примитивный роутинг
+//3. Переписать футер на компоненты
+//4. Сделать примитивный роутинг
 !5. Написать остальные страницы
 6. Сделать страницу с лентой и списком чатов
 5. Сбор данных из формы

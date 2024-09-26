@@ -13,14 +13,24 @@ interface FooterProps extends BlockProps {
   
 }
 
+interface FooterPropsWithChildren extends FooterProps {
+    LinkAuth: Link;
+    LinkRegister: Link;
+    LinkProfile: Link;
+    LinkServerError: Link;
+    LinkNotFound: Link;
+
+}
+
 
 class Footer extends Block {
      
-   declare protected props: FooterProps;
+   declare protected props: FooterPropsWithChildren;
     constructor(props: FooterProps) {
 
         const { footerClick } = props;
-        super({
+
+        const footerPropsWithChildren: FooterPropsWithChildren ={
             ...props,
 
             LinkAuth: new Link({
@@ -46,7 +56,8 @@ class Footer extends Block {
             LinkNotFound: new Link({ href: '/notFound', className: 'footer-link', dataPage: 'notFound', text: 'Ошибка 404' })
         
         
-        })
+        }
+        super(footerPropsWithChildren)
     }
 
     public render(): string {

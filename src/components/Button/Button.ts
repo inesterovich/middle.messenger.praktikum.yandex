@@ -7,7 +7,7 @@ import Block, { BlockProps } from "../../framework/Block";
 import { Img } from "../Img";
 
 
-interface ButtonProps extends BlockProps {
+interface ButtonPropsWithChildren extends BlockProps {
     text: string;
     mode: 'primary'|'secondary'| 'danger' | 'disabled',
     type: 'button' | 'submit'
@@ -17,8 +17,8 @@ interface ButtonProps extends BlockProps {
 
 class Button extends Block {
      
-   declare protected props: ButtonProps;
-    constructor(props: ButtonProps) {
+   declare protected props: ButtonPropsWithChildren;
+    constructor(props: ButtonPropsWithChildren) {
         super(props)
     }
 

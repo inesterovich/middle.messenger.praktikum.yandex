@@ -7,7 +7,7 @@ import Block, { BlockProps } from "../../framework/Block";
 import Field from '../Field/Field';
 
 
-interface FormProps extends BlockProps {
+interface FormPropsWithChildren extends BlockProps {
     FieldItems: Field[],
     formTitle: string;
   
@@ -16,8 +16,8 @@ interface FormProps extends BlockProps {
 
 class Form extends Block {
      
-   declare protected props: FormProps;
-    constructor(props: FormProps) {
+   declare protected props: FormPropsWithChildren;
+    constructor(props: FormPropsWithChildren) {
         super(props)
     }
 
