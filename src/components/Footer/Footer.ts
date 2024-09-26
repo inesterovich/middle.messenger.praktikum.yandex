@@ -46,7 +46,7 @@ class Footer extends Block {
                 dataPage: 'register',
                 text: 'Регистрация',
                 onClick: (e) => {
-                    debugger
+                  
                     e.preventDefault();
                     footerClick('register')
                 }

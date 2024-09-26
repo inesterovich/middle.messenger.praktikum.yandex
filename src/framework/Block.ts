@@ -1,4 +1,5 @@
 import { ListenerEvents } from '../types';
+import { makeUUID } from '../utils/id.utils';
 import { getKeys } from '../utils/object.utils';
 import EventBus, { EventCallback } from './EventBus';
 import Handlebars from 'handlebars';
@@ -133,12 +134,16 @@ export default class Block {
   private _render(): void {
     console.log('Render');
     const propsAndStubs = { ...this.props };
-    const _tmpId =  Math.floor(100000 + Math.random() * 900000);
+    const _tmpId =  makeUUID();
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
+      
+    
 
-    Object.entries(this.lists).forEach(([key]) => {
+  
+      Object.entries(this.lists).forEach(([key]) => {
+          
       propsAndStubs[key] = `<div data-id="__l_${_tmpId}"></div>`;
     });
 

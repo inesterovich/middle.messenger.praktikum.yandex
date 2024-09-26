@@ -88,6 +88,8 @@ export class App {
             const authPage = new Pages.AuthPage({footerClick: this.changePage.bind(this)});
             if (this.appElement) {
                 this.appElement.replaceChildren(authPage.getContent());
+
+    
               }
 
         return '';
@@ -125,8 +127,8 @@ export class App {
 /* 
 //1. Написать новый App, вернуть в main
 //2. Отренедрить страница
-!2.0.1. Переименовать типы
-!2.1. Вернуть все компоненты в AuthPage
+//2.0.1. Переименовать типы
+//2.1. Вернуть все компоненты в AuthPage
 //3. Переписать футер на компоненты
 //4. Сделать примитивный роутинг
 !5. Написать остальные страницы

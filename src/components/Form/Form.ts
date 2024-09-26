@@ -5,10 +5,12 @@ import FormTemplate from './Form.hbs?raw';
 
 import Block, { BlockProps } from "../../framework/Block";
 import Field from '../Field/Field';
+import { Button } from '../Button';
 
 
 interface FormPropsWithChildren extends BlockProps {
     FieldItems: Field[],
+    ButtonItems: Button[],
     formTitle: string;
   
 }

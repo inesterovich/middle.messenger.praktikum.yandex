@@ -7,7 +7,7 @@ import Block, { BlockProps } from "../../framework/Block";
 import { Img } from "../Img";
 
 
-interface ButtonPropsWithChildren extends BlockProps {
+export interface ButtonPropsWithChildren extends BlockProps {
     text: string;
     mode: 'primary'|'secondary'| 'danger' | 'disabled',
     type: 'button' | 'submit'

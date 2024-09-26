@@ -8,6 +8,8 @@ import Form from '../../components/Form/Form';
 import { Field } from '../../components/Field';
 import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
+import { Button } from '../../components/Button';
+import { ButtonPropsWithChildren } from '../../components/Button/Button';
 
 
 
@@ -27,7 +29,7 @@ class AuthPage extends Block {
      
    declare protected props: AuthPagePropsWithChildren;
     constructor(props: AuthPageProps) {
-        debugger;
+   
 
         const testFieldConfig: FieldProps[] = [{
     
@@ -53,11 +55,26 @@ class AuthPage extends Block {
           },
         ]
 
+        const buttonParams: ButtonPropsWithChildren[] =  [{
+            id: "submit",
+            mode: "primary",
+            type: "submit",
+            text: "Авторизоваться",
+          },
+          {
+            id: "register",
+            mode: "secondary",
+            type: "button",
+            text: "Нет аккаунта?",
+          }]
+
         const preparedPropsWidthChildren: AuthPagePropsWithChildren = {
             ...props,
             AuthForm: new Form({
                 formTitle: 'Авторизация',
-                FieldItems: testFieldConfig.map((childProps) => new Field(childProps))
+                FieldItems: testFieldConfig.map((childProps) => new Field(childProps)),
+                ButtonItems: buttonParams.map((childProps) => new Button(childProps))
+
         }), Footer: new Footer({ footerClick: props.footerClick})
         }
         super(preparedPropsWidthChildren)

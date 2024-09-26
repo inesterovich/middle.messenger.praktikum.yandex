@@ -21,7 +21,7 @@ class BlankPage extends Block {
      
    declare protected props: BlankPageProps;
     constructor(props: BlankPageProps) {
-        debugger;
+     
 
         super({
             ...props,
