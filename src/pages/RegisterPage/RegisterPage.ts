@@ -39,7 +39,7 @@ class RegisterPage extends Block {
             name: "email",
             value: "",
             isError: false,
-            errorMessage: "Неверный email",
+            errorMessage: "латиница, может включать цифры и спецсимволы вроде дефиса и подчёркивания, обязательно должна быть «собака» (@) и точка после неё, но перед точкой обязательно должны быть буквы",
             extraClass: "field-vertical",
           },
           {
@@ -49,7 +49,7 @@ class RegisterPage extends Block {
             placeholder: "Логин",
             name: "login",
             value: "",
-            errorMessage: "Неверный логин",
+            errorMessage: "Логин может быть от 3 до 20 сиволов, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (может содержать только дефис)",
               extraClass: "field-vertical",
             isError: false,
           },
@@ -60,7 +60,7 @@ class RegisterPage extends Block {
             placeholder: "Имя",
             name: "first_name",
             value: "",
-            errorMessage: "Введите имя",
+            errorMessage: "Поле может содержать только символы латиницы, кириллицы, дефис. Первый символ - заглавный",
               extraClass: "field-vertical",
             isError: false
           },
@@ -71,7 +71,7 @@ class RegisterPage extends Block {
             placeholder: "Фамилия",
             name: "second_name",
             value: "",
-            errorMessage: "Введите фамилию",
+            errorMessage: "Поле может содержать только символы латиницы, кириллицы, дефис. Первый символ - заглавный",
               extraClass: "field-vertical",
             isError: false
           },
@@ -82,7 +82,7 @@ class RegisterPage extends Block {
             placeholder: "Телефон",
             name: "phone",
             value: "",
-            errorMessage: "Введите телефон",
+            errorMessage: "от 10 до 15 символов, состоит из цифр, может начинаться с плюса",
               extraClass: "field-vertical",
             isError: false
           },
@@ -94,7 +94,7 @@ class RegisterPage extends Block {
             placeholder: "Пароль",
             name: "password",
             value: "",
-            errorMessage: "Неверный пароль",
+            errorMessage: "Пароль может быть от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра",
               extraClass: "field-vertical",
             isError: false
           },

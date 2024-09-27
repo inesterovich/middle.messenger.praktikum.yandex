@@ -10,6 +10,7 @@ import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { ButtonPropsWithChildren } from '../../components/Button/Button';
+import { handleValidation } from '../../textConfig';
 
 
 
@@ -40,6 +41,7 @@ class AuthPage extends Block {
             value: "",
             labelClass: '',
             extraClass: "field-vertical",
+            errorMessage: 'Логин может быть от 3 до 20 сиволов, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (может содержать только дефис)',
             isError: false,
 
         },
@@ -50,7 +52,7 @@ class AuthPage extends Block {
             placeholder: "Пароль",
             name: "password",
             value: "",
-            errorMessage: "Неверный пароль",
+            errorMessage: "Пароль может быть от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра",
             extraClass: "field-vertical",
            isError: false
           },
@@ -73,7 +75,8 @@ class AuthPage extends Block {
             ...props,
             AuthForm: new Form({
                 formTitle: 'Авторизация',
-                FieldItems: fieldsProps.map((childProps) => new Field(childProps)),
+                FieldItems: fieldsProps.map((childProps) => new Field({
+                    ...childProps})),
                 ButtonItems: buttonsProps.map((childProps) => new Button(childProps))
 
         }), Footer: new Footer({ footerClick: props.footerClick})

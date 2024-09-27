@@ -1,8 +1,12 @@
-import { ListenerEvents } from '../types';
+
 import { makeUUID } from '../utils/id.utils';
 import { getKeys } from '../utils/object.utils';
 import EventBus, { EventCallback } from './EventBus';
 import Handlebars from 'handlebars';
+
+export type ListenerEvents = Partial<Record<keyof HTMLElementEventMap, (e: Event) => any>>
+
+
 
 export interface BlockProps {
     events?: ListenerEvents;
@@ -124,7 +128,10 @@ export default class Block {
       return;
     }
 
-    Object.assign(this.props, nextProps);
+      Object.assign(this.props, {
+          ...this.props,
+          ...nextProps
+      });
   };
 
   get element(): HTMLElement | null {
