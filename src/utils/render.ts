@@ -1,17 +1,17 @@
-import Block from "../framework/Block";
+import Block from '../framework/Block';
 
 
 export function render(query: string, block: Block) {
-    const root = document.querySelector(query);
+  const root = document.querySelector(query);
 
-    const blockContent = block.getContent();
+  const blockContent = block.getContent();
 
-    if (blockContent) {
-        root?.appendChild(blockContent);
-        block.dispatchComponentDidMount();
-    }
+  if (blockContent) {
+    root?.appendChild(blockContent);
+    block.dispatchComponentDidMount();
+  }
 
-    return root;
+  return root;
 
    
 }

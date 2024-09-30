@@ -4,12 +4,12 @@ import { getKeys } from '../utils/object.utils';
 import EventBus, { EventCallback } from './EventBus';
 import Handlebars from 'handlebars';
 
-export type ListenerEvents = Partial<Record<keyof HTMLElementEventMap, (e: Event) => any>>
+export type ListenerEvents = Partial<Record<keyof HTMLElementEventMap, (e: Event) => any>>;
 
 
 
 export interface BlockProps {
-    events?: ListenerEvents;
+  events?: ListenerEvents;
   [key: string]: any;
 }
 
@@ -46,11 +46,11 @@ export default class Block {
 
   private _addEvents(): void {
     const { events = {} } = this.props;
-      getKeys(events).forEach(eventName => {
-          const callback = events[eventName];
-          if (callback) {
-            this._element?.addEventListener(eventName, callback);
-          }
+    getKeys(events).forEach(eventName => {
+      const callback = events[eventName];
+      if (callback) {
+        this._element?.addEventListener(eventName, callback);
+      }
      
     });
   }
@@ -77,6 +77,7 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private _componentDidUpdate(oldProps: BlockProps, newProps: BlockProps): void {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
@@ -87,6 +88,8 @@ export default class Block {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected componentDidUpdate(oldProps: BlockProps, newProps: BlockProps): boolean {
+      
+    console.log(oldProps, newProps);
     return true;
   }
 
@@ -128,10 +131,10 @@ export default class Block {
       return;
     }
 
-      Object.assign(this.props, {
-          ...this.props,
-          ...nextProps
-      });
+    Object.assign(this.props, {
+      ...this.props,
+      ...nextProps,
+    });
   };
 
   get element(): HTMLElement | null {
@@ -141,7 +144,7 @@ export default class Block {
   private _render(): void {
     console.log('Render');
     const propsAndStubs = { ...this.props };
-    const _tmpId =  makeUUID();
+    const tmpId =  makeUUID();
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
@@ -149,9 +152,9 @@ export default class Block {
     
 
   
-      Object.entries(this.lists).forEach(([key]) => {
+    Object.entries(this.lists).forEach(([key]) => {
           
-      propsAndStubs[key] = `<div data-id="__l_${_tmpId}"></div>`;
+      propsAndStubs[key] = `<div data-id="__l_${tmpId}"></div>`;
     });
 
     const fragment = this._createDocumentElement('template');
@@ -173,7 +176,7 @@ export default class Block {
           listCont.content.append(`${item}`);
         }
       });
-      const stub = fragment.content.querySelector(`[data-id="__l_${_tmpId}"]`);
+      const stub = fragment.content.querySelector(`[data-id="__l_${tmpId}"]`);
       if (stub) {
         stub.replaceWith(listCont.content);
       }

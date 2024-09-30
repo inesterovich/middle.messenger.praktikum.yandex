@@ -1,90 +1,89 @@
-import Handlebars from "handlebars";
-import * as Pages from "./pages";
-import { BlankPage } from "./pages/BlankPage";
-import { FieldProps } from "./components/Field/Field";
+import * as Pages from './pages';
+import { FieldProps } from './components/Field/Field';
 
 
 
 
 
 export interface IPageConfig {
-    fields: FieldProps[],
-    buttons: any[]
+  fields: FieldProps[],
+  buttons: any[]
 }
 
 
 export class App {
 
-    state: string;
-    private appElement: HTMLElement | null;
+  state: string;
+
+  private appElement: HTMLElement | null;
 
  
   constructor() {
-    this.state = "auth";
-    this.appElement = document.getElementById("app")!;
+    this.state = 'auth';
+    this.appElement = document.getElementById('app')!;
 
   }
 
-    changePage(page: string) {
+  changePage(page: string) {
    
-        this.state = page;
+    this.state = page;
       
     this.render();
   }
 
 
 
-    render() {
+  render() {
       
        
 
     switch (this.state) {
-        case "auth":
+      case 'auth':
             
-            const authPage = new Pages.AuthPage({footerClick: this.changePage.bind(this)});
-            if (this.appElement) {
-                this.appElement.replaceChildren(authPage.getContent());
+        const authPage = new Pages.AuthPage({ footerClick: this.changePage.bind(this) });
+        if (this.appElement) {
+          this.appElement.replaceChildren(authPage.getContent());
 
             
-              }
+        }
 
         return '';
-        case "register":
+      case 'register':
             
-            const registerPage = new Pages.RegisterPage({ footerClick: this.changePage.bind(this)});
+        const registerPage = new Pages.RegisterPage({ footerClick: this.changePage.bind(this) });
 
-            if (this.appElement) {
-                this.appElement.replaceChildren(registerPage.getContent())
-            }
+        if (this.appElement) {
+          this.appElement.replaceChildren(registerPage.getContent());
+        }
     
-      return '';
-      case "profile":
-        const profilePage = new Pages.ProfilePage({footerClick: this.changePage.bind(this)});
-        if (this.appElement) {
-            this.appElement.replaceChildren(profilePage.getContent());
-
-          }
-
-      return '';
-      case "editProfile":
         return '';
-        case "serverError":
-            
-        const serverErrorPage = new Pages.ServerErrorPage({footerClick: this.changePage.bind(this)});
+      case 'profile':
+        const profilePage = new Pages.ProfilePage({ footerClick: this.changePage.bind(this) });
         if (this.appElement) {
-            this.appElement.replaceChildren(serverErrorPage.getContent());
+          this.appElement.replaceChildren(profilePage.getContent());
 
-          }
+        }
+
+        return '';
+      case 'editProfile':
+        return '';
+      case 'serverError':
+            
+        const serverErrorPage = new Pages.ServerErrorPage({ footerClick: this.changePage.bind(this) });
+        if (this.appElement) {
+          this.appElement.replaceChildren(serverErrorPage.getContent());
+
+        }
        
-      return '';
-      case "notFound":
-            const notFoundPage = new Pages.NotFoundPage({footerClick: this.changePage.bind(this)});
-            if (this.appElement) {
-                this.appElement.replaceChildren(notFoundPage.getContent());
+        return '';
+      case 'notFound':
+        const notFoundPage = new Pages.NotFoundPage({ footerClick: this.changePage.bind(this) });
+        if (this.appElement) {
+          this.appElement.replaceChildren(notFoundPage.getContent());
     
-              }
+        }
       
-      return '';
+        return '';
       default:
         return '';
     }

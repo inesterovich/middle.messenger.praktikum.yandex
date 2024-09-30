@@ -1,5 +1,5 @@
-declare module "*.hbs?raw" {
-    const value: string;
+declare module '*.hbs?raw' {
+  const value: string;
     
-    export default value;
- }
+  export default value;
+}

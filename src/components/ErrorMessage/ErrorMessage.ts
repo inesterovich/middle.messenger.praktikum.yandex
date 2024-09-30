@@ -3,33 +3,34 @@
 
 import ErrorMessageTemplate from './ErrorMessage.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import { Img } from "../Img";
+import Block, { BlockProps } from '../../framework/Block';
+
 
 
 interface ErrorMessageProps extends BlockProps {
-    errorMessage: string;
+  errorMessage: string;
 }
 
 
 class ErrorMessage extends Block {
      
-   declare protected props: ErrorMessageProps;
-    constructor(props: ErrorMessageProps) {
-        super(props)
-    }
+  declare protected props: ErrorMessageProps;
 
-    public render(): string {
+  constructor(props: ErrorMessageProps) {
+    super(props);
+  }
 
-        // !TODO: доделать компонент аватара - сделать его более функциональным, с разной версткой
-        return ErrorMessageTemplate
+  public render(): string {
+
+    // !TODO: доделать компонент аватара - сделать его более функциональным, с разной версткой
+    return ErrorMessageTemplate;
 
        
 
-    }
+  }
 
 
- }
+}
 
 export default ErrorMessage;
 
