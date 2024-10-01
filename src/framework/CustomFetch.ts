@@ -7,54 +7,62 @@ enum METHODS {
   PATCH = 'PATCH',
 }
 
-type Options = {
+type RequestOptions = {
   method: METHODS,
   timeout: number,
   headers?: Record<string, string>;
-  data?: any
+  searchParams?: Record<string, string>;
+  body?: Record<string, any>;
+
 };
 
 
-type OptionsWithoutMethod = Omit<Options, 'method'>;
+type RequestOptionsWithoutMethod = Omit<RequestOptions, 'method'>;
+type RequestOptionsWithoutMethodAndBody = Omit<RequestOptions, 'method' | 'body'>;
 
-function queryStringify(data: Record<string, any>) {
-  if (typeof data !== 'object') {
-    throw new Error('Data must be object');
-  }
-  
-  // Здесь достаточно и [object Object] для объекта
-  const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
-  }, '?');
+
+function getUrl (url: string, queryData?: RequestOptions['searchParams']) {
+    
+    const encodedUrl = new URL(url);
+
+    if (queryData && typeof queryData === 'object' && Object.keys(queryData).length !== 0) {
+        for (const key in queryData) {
+            encodedUrl.searchParams.set(key, queryData[key])
+        }
+    }
+
+   
+
+    return encodedUrl;
+
 }
 
 
-export class MyFetch {
+export class CustomFetch {
 
-  get(url: string, options: OptionsWithoutMethod = {
+  get(url: string, options: RequestOptionsWithoutMethodAndBody = {
     timeout: 0,
   }): Promise<XMLHttpRequest> {
     return this.request(url, { ...options, method: METHODS.GET });
   } 
 
-  post = (url: string, options:OptionsWithoutMethod = { timeout: 5000 }) => {
+  post = (url: string, options:RequestOptionsWithoutMethod = { timeout: 5000 }) => {
     return this.request(url, { ...options, method: METHODS.POST });
   };
     
-  put = (url: string, options:OptionsWithoutMethod = { timeout: 5000 }) => {
+  put = (url: string, options:RequestOptionsWithoutMethod = { timeout: 5000 }) => {
     return this.request(url, { ...options, method: METHODS.PUT });
   };
 
-  delete = (url: string, options:OptionsWithoutMethod = { timeout: 5000 }) => {
+  delete = (url: string, options:RequestOptionsWithoutMethod = { timeout: 5000 }) => {
     return this.request(url, { ...options, method: METHODS.DELETE });
   };
 
-  request = (url: string, options: Options = {
+  request = (url: string, options: RequestOptions = {
     method: METHODS.GET,
     timeout: 5000,
   }): Promise<XMLHttpRequest> => {
-    const { headers = {}, method, data, timeout } = options;
+    const { headers = {}, method, timeout, searchParams = {}, body = {} } = options;
       
     return new Promise(function (resolve, reject) {
       if (!method) {
@@ -64,12 +72,12 @@ export class MyFetch {
       
       const xhr = new XMLHttpRequest();
       const isGet = method === METHODS.GET;
+        
+      const requestUrl = getUrl(url, isGet ? searchParams : undefined);
       
       xhr.open(
         method, 
-        isGet && !!data
-          ? `${url}${queryStringify(data)}`
-          : url,
+        requestUrl
       );
       
       Object.keys(headers).forEach(key => {
@@ -86,10 +94,12 @@ export class MyFetch {
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
       
-      if (isGet || !data) {
+      if (isGet) {
         xhr.send();
       } else {
-        xhr.send(data);
+          
+          const stringfiedBody = JSON.stringify(body);
+        xhr.send(stringfiedBody);
       }
     });
   };
