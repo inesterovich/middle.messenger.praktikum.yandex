@@ -7,7 +7,7 @@ import Block, { BlockProps } from '../../framework/Block';
 import { Label  } from '../Label';
 import { Input } from '../Input';
 import { ErrorMessage } from '../ErrorMessage';
-import { handleValidation } from '../../textConfig';
+import { handleValidation } from '../../framework/handleValidation';
 
 export interface FieldProps {
   id: string;
@@ -41,35 +41,35 @@ class Field extends Block {
   declare protected props: FieldPropsWithChildren;
 
   constructor(props: FieldProps) {
-    const {  labelClass = '', labelText, name, value, inputType, placeholder, extraClass, isError = false, errorMessage = '', events = {} } = props;
-
-    const LabelInstance = new Label({ labelFor: name, labelClass, labelText });
-    const InputInstance = new Input({
-      type: inputType, placeholder, value, name,
-      events: {
-        blur: (e) => {
-          handleValidation(e, InputInstance);
-        },
-      },
-        
-    });
-
-        
-    const ErrorMessageInstance = new ErrorMessage({ errorMessage });
-
+      const { labelClass = '', labelText, name, value, inputType, placeholder, extraClass, isError = false, errorMessage = '', events = {} } = props;
+    
     
 
     const preparedPropsWithChilren: FieldPropsWithChildren = {
       extraClass, 
-      Label: LabelInstance,
-      Input: InputInstance,
+      Label: new Label({ labelFor: name, labelClass, labelText }),
+      Input: new Input({
+        type: inputType, placeholder, value, name,
+        events: {
+            blur: (e) => {
+                this.validate.bind(this)(e)
+          //  handleValidation(e, InputInstance);
+          },
+        },
+          
+      }),
       isError,
-      ErrorMessage: ErrorMessageInstance,
+      ErrorMessage: new ErrorMessage({ errorMessage }),
       ...events,
     };
 
     /* Получаем текстовые параметры, а здесь формируем экземпляры классов */
     super(preparedPropsWithChilren);
+  }
+    
+    protected validate(e: Event) {
+        const isValid = handleValidation(e);
+        this.setProps({ isError: !isValid})
   }
 
   public render(): string {

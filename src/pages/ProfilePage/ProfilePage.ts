@@ -12,6 +12,7 @@ import { Button } from '../../components/Button/';
 import { ButtonPropsWithChildren } from '../../components/Button/Button';
 import { Img } from '../../components/Img';
 import { Avatar } from '../../components/Avatar';
+import { FieldNames, fieldNames, validationErrors } from '../../framework/constants';
 
 
 
@@ -35,80 +36,16 @@ class ProfilePage extends Block {
 
   constructor(props: ProfilePageProps) {
 
-
-    const fieldsProps: FieldProps[] = [
-      {
-        id: 'email',
-   
-        labelText: 'Почта',
-        inputType: 'text',
-        placeholder: 'Почта',
-        name: 'email',
+    const formFields: FieldNames[] = ['email', 'login', 'first_name', 'second_name', 'phone', 'password']
+      
+    const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
+        ...fieldNames[fieldName],
         value: '',
-        errorMessage: 'Неверный email',
-        extraClass: 'field-gorizontal',
-        isError: false,
-      },
-      {
-        id: 'login',
-             
-        labelText: 'Логин',
-        inputType: 'text',
-        placeholder: 'Логин',
-        name: 'login',
-        value: '',
-        errorMessage: 'Неверный логин',
-        extraClass: 'field-gorizontal',
-        isError: false,
-      },
-      {
-        id: 'first_name',
-             
-        labelText: 'Имя',
-        inputType: 'text',
-        placeholder: 'Имя',
-        name: 'first_name',
-        value: '',
-        errorMessage: 'Введите имя',
-        extraClass: 'field-gorizontal',
-        isError: false,
-      },
-      {
-        id: 'second_name',
-       
-        labelText: 'Фамилия',
-        inputType: 'text',
-        placeholder: 'Фамилия',
-        name: 'second_name',
-        value: '',
-        errorMessage: 'Введите фамилию',
-        extraClass: 'field-gorizontal',
-        isError: false,
-      },
-      {
-        id: 'display_name',
-       
-        labelText: 'Имя в чате',
-        inputType: 'text',
-        placeholder: 'Имя в чате',
-        name: 'display_name',
-        value: '',
-        errorMessage: 'Введите логин чата',
-        extraClass: 'field-gorizontal',
-        isError: false,
-      },
-      {
-        id: 'phone',
-        labelText: 'Телефон',
-        inputType: 'text',
-        placeholder: 'Телефон',
-        name: 'phone',
-        value: '',
-        errorMessage: 'Введите телефон',
-        extraClass: 'field-gorizontal',
-        isError: false,
-      },
-    ];
+        isError: false, 
+        errorMessage: validationErrors[fieldName],
+        extraClass: 'field-gorizontal'
+    }))
+      debugger;
         
     const buttonsProps: ButtonPropsWithChildren[] =  [
       {

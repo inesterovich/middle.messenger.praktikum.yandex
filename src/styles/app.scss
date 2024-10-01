@@ -142,6 +142,7 @@ body {
 }
 
 .form {
+  width: 340px;
   border-radius: 12px;
   box-shadow: 0px 0px 10px 0px rgba(34, 60, 80, 0.2);
   padding: 50px 30px 30px 30px;
@@ -164,6 +165,7 @@ body {
         border: none;
         border-bottom: 1px solid $blue;
         line-height: 25px;
+        width: 100%;
       }
     }
 
@@ -179,13 +181,28 @@ body {
         font-weight: 600;
       }
 
+      .input-wrapper {
+
+        width: 250px;
+      }
+
       .field-input {
         border: none !important;
+
+       
+   
       }
+
+      
     }
+
+    .error {
+        color: $red;
+      }
   }
 
   &.form-profile {
+    width: 510px;
     box-shadow: none;
   }
 

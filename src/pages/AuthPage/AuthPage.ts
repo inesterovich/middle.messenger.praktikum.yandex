@@ -10,6 +10,7 @@ import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { ButtonPropsWithChildren } from '../../components/Button/Button';
+import { FieldNames, fieldNames, validationErrors } from '../../framework/constants';
 
 
 
@@ -32,32 +33,14 @@ class AuthPage extends Block {
 
   constructor(props: AuthPageProps) {
    
-
-    const fieldsProps: FieldProps[] = [{
-      id: 'login',
-      labelText: 'Логин',
-      inputType: 'text',
-      placeholder: 'Логин',
-      name: 'login',
-      value: '',
-      labelClass: '',
-      extraClass: 'field-vertical',
-      errorMessage: 'Логин может быть от 3 до 20 сиволов, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (может содержать только дефис)',
-      isError: false,
-
-    },
-    {
-      id: 'password',
-      labelText: 'Пароль',
-      inputType: 'password',
-      placeholder: 'Пароль',
-      name: 'password',
-      value: '',
-      errorMessage: 'Пароль может быть от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра',
-      extraClass: 'field-vertical',
-      isError: false,
-    },
-    ];
+    const formFields: FieldNames[] = ['login', 'password']
+      
+    const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
+        ...fieldNames[fieldName],
+        value: '',
+        isError: false, 
+        errorMessage: validationErrors[fieldName]
+    }))
 
     const buttonsProps: ButtonPropsWithChildren[] =  [{
       id: 'submit',

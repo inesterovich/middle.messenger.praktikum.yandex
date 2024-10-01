@@ -86,11 +86,14 @@ export default class Block {
     this._render();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
   protected componentDidUpdate(oldProps: BlockProps, newProps: BlockProps): boolean {
       
-    console.log(oldProps, newProps);
-    return true;
+      if (oldProps && newProps) {
+          return true
+      }
+
+    return false;
   }
 
   private _getChildrenPropsAndChildren(propsAndChildren: BlockProps): {
@@ -142,7 +145,7 @@ export default class Block {
   }
 
   private _render(): void {
-    console.log('Render');
+   
     const propsAndStubs = { ...this.props };
     const tmpId =  makeUUID();
     Object.entries(this.children).forEach(([key, child]) => {

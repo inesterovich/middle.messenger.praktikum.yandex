@@ -1,7 +1,11 @@
 <div class="form-field {{extraClass}}">
    {{{Label}}}
-   {{{Input}}}
-   {{#if error}}
+
+   <div class="input-wrapper">
+    {{{Input}}}
+   {{#if isError}}
    {{{ErrorMessage}}}
    {{/if}}
+   </div>
+   
 </div>
