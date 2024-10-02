@@ -5,7 +5,7 @@ import ProfilePageTemplate from './ProfilePage.hbs?raw';
 
 import Block, { BlockProps } from '../../framework/Block';
 import { Footer } from '../../components/Footer';
-import Form from '../../components/Form/Form';
+import {Form} from '../../components/Form';
 import { Field } from '../../components/Field';
 import { FieldProps } from '../../components/Field/Field';
 import { Button } from '../../components/Button/';

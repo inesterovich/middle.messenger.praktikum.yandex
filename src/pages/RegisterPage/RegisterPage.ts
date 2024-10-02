@@ -4,7 +4,7 @@
 import RegisterPageTemplate from './RegisterPage.hbs?raw';
 
 import Block, { BlockProps } from '../../framework/Block';
-import Form from '../../components/Form/Form';
+import {Form} from '../../components/Form';
 import { Field } from '../../components/Field';
 import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
