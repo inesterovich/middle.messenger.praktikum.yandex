@@ -10,7 +10,6 @@ import { Field } from '../../components/Field';
 import { FieldProps } from '../../components/Field/Field';
 import { Button } from '../../components/Button/';
 import { ButtonPropsWithChildren } from '../../components/Button/Button';
-import { Img } from '../../components/Img';
 import { Avatar } from '../../components/Avatar';
 import { FieldNames, fieldNames, validationErrors } from '../../framework/constants';
 
@@ -71,24 +70,22 @@ class ProfilePage extends Block {
     const preparedPropsWidthChildren: ProfilePagePropsWithChildren = {
       ...props,
         Avatar: new Avatar({
-            Img:
-                new Img({
                     src: '/Union.svg',
                     altText: 'Avatar default picture'
-                })
-        }),
+                }
+        ),
       GoBackButton: new Button({
         mode: 'round',
         type: 'button',
         text: '',
-        Image: new Img({
+        image: {
           src: '/Arrow.svg',
           altText: 'goBack image',
-        }),
+        },
       }),
-      ProfileForm: new Form({
-        FieldItems:  fieldsProps.map((childProps) => new Field(childProps)),
-        ButtonItems:  buttonsProps.map((childProps) => new Button(childProps)),
+        ProfileForm: new Form({
+            fields: fieldsProps,
+            buttons: buttonsProps,
         formTitle: '',
         additionalClass: 'form-profile',
       }),

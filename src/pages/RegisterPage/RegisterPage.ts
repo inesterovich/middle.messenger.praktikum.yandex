@@ -41,7 +41,7 @@ class RegisterPage extends Block {
       }))
 
 
-    const buttonParams: ButtonPropsWithChildren[] =  [{
+    const buttonsProps: ButtonPropsWithChildren[] =  [{
       id: 'register',
       mode: 'primary',
       type: 'submit',
@@ -58,9 +58,9 @@ class RegisterPage extends Block {
     const preparedPropsWidthChildren: RegisterPagePropsWithChildren = {
       ...props,
       RegisterForm: new Form({
-        formTitle: 'Авторизация',
-        FieldItems: fieldsProps.map((childProps) => new Field(childProps)),
-        ButtonItems: buttonParams.map((childProps) => new Button(childProps)),
+          formTitle: 'Авторизация',
+          fields: fieldsProps,
+          buttons: buttonsProps,
 
       }), Footer: new Footer({ footerClick: props.footerClick }),
     };

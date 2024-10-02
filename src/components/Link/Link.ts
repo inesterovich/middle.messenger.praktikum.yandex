@@ -7,7 +7,7 @@ import Block, { BlockProps } from '../../framework/Block';
 
 
 
-interface LinkProps extends BlockProps {
+export interface LinkProps extends BlockProps {
   href: string;
   className: string;
   dataPage: string;

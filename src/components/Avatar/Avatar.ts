@@ -5,20 +5,26 @@ import AvatarTemplate from './Avatar.hbs?raw';
 
 import Block, { BlockProps } from '../../framework/Block';
 import { Img } from '../Img';
+import { ImgProps } from '../Img/Img';
 
+interface AvatarProps {
+    src: ImgProps['src'];
+    altText: ImgProps['altText']
+}
 
-
-interface AvatarProps extends BlockProps {
+interface AvatarPropsWithChildren extends BlockProps {
    Img: Img
 }
 
 
 class Avatar extends Block {
      
-  declare protected props: AvatarProps;
+  declare protected props: AvatarPropsWithChildren;
 
-  constructor(props: AvatarProps) {
-    super(props);
+    constructor(props: AvatarProps) {
+        const { src, altText } = props;
+      const preparedPropsWithChildren: AvatarPropsWithChildren = { Img: new Img({src, altText})}
+    super(preparedPropsWithChildren);
   }
 
   public render(): string {

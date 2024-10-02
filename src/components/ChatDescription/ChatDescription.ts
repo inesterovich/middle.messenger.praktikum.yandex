@@ -7,16 +7,16 @@ import Block, { BlockProps } from '../../framework/Block';
 
 
 
-export interface ChatDescriptionPropsWithChildren extends BlockProps {
+export interface ChatDescriptionProps extends BlockProps {
     description: string;
 }
 
 
 class ChatDescription extends Block {
      
-  declare protected props: ChatDescriptionPropsWithChildren;
+  declare protected props: ChatDescriptionProps;
 
-  constructor(props: ChatDescriptionPropsWithChildren) {
+  constructor(props: ChatDescriptionProps) {
     super(props);
   }
 

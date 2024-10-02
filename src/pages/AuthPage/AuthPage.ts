@@ -9,7 +9,7 @@ import { Field } from '../../components/Field';
 import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
-import { ButtonPropsWithChildren } from '../../components/Button/Button';
+import { ButtonProps, ButtonPropsWithChildren } from '../../components/Button/Button';
 import { FieldNames, fieldNames, validationErrors } from '../../framework/constants';
 
 
@@ -42,7 +42,7 @@ class AuthPage extends Block {
         errorMessage: validationErrors[fieldName]
     }))
 
-    const buttonsProps: ButtonPropsWithChildren[] =  [{
+    const buttonsProps: ButtonProps[] =  [{
       id: 'submit',
       mode: 'primary',
       type: 'submit',
@@ -58,11 +58,10 @@ class AuthPage extends Block {
     const preparedPropsWidthChildren: AuthPagePropsWithChildren = {
       ...props,
       AuthForm: new Form({
-        formTitle: 'Авторизация',
-        FieldItems: fieldsProps.map((childProps) => new Field({
-          ...childProps })),
-        ButtonItems: buttonsProps.map((childProps) => new Button(childProps)),
-
+          formTitle: 'Авторизация',
+          fields: fieldsProps,
+          buttons: buttonsProps,
+       
       }), Footer: new Footer({ footerClick: props.footerClick }),
     };
     super(preparedPropsWidthChildren);

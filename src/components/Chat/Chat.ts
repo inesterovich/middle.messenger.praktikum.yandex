@@ -36,7 +36,7 @@ class Chat extends Block {
     constructor(props: ChatProps) {
         const { imgProps, title, description, time, counter} = props;
         const preparedPropsWithChilren: ChatPropsWithChildren = {
-            Avatar: new Avatar({ Img: new Img(imgProps) }),
+            Avatar: new Avatar(imgProps),
             ChatTitle: new ChatTitle({ title }),
             ChatDescription: new ChatDescription({ description }),
             ChatTime: new ChatTime({ time }),
