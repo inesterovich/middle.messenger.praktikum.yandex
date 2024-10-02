@@ -1,0 +1,19 @@
+
+<div class="app">
+
+    <section class="page page-chats">
+ <aside>
+   {{{ChatsFeed}}}
+ </aside>
+ <main>
+    {{#unless selectedChat}}
+    {{{SelectedChat}}}
+    {{#else}}
+    {{{BlankChat}}}
+    {{/else}}
+    {{/unless}}
+ </main>
+    </section>
+    {{{Footer}}}
+</div>
+

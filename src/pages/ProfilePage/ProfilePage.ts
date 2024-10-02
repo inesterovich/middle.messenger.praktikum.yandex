@@ -45,7 +45,6 @@ class ProfilePage extends Block {
         errorMessage: validationErrors[fieldName],
         extraClass: 'field-gorizontal'
     }))
-      debugger;
         
     const buttonsProps: ButtonPropsWithChildren[] =  [
       {
@@ -71,7 +70,13 @@ class ProfilePage extends Block {
 
     const preparedPropsWidthChildren: ProfilePagePropsWithChildren = {
       ...props,
-      Avatar: new Avatar({}),
+        Avatar: new Avatar({
+            Img:
+                new Img({
+                    src: '/Union.svg',
+                    altText: 'Avatar default picture'
+                })
+        }),
       GoBackButton: new Button({
         mode: 'round',
         type: 'button',

@@ -4,11 +4,12 @@
 import AvatarTemplate from './Avatar.hbs?raw';
 
 import Block, { BlockProps } from '../../framework/Block';
+import { Img } from '../Img';
 
 
 
 interface AvatarProps extends BlockProps {
-   
+   Img: Img
 }
 
 
