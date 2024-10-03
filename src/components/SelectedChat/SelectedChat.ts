@@ -8,13 +8,13 @@ import { SelectedChatHeader } from '../SelectedChatHeader';
 import { MessagesFeed } from '../MessagesFeed';
 import { SelectedChatFooter } from '../SelectedChatFooter';
 import { SelectedChatHeaderProps } from '../SelectedChatHeader/SelectedChatHeader';
-import { MessagesFeedProps } from '../MessagesFeed/MessagesFeed';
 import { SelectedChatFooterProps } from '../SelectedChatFooter/SelectedChatFooter';
+import { MessageProps } from '../Message/Message';
 
 
 export interface SelectedChatProps {
     header: SelectedChatHeaderProps;
-    messages: MessagesFeedProps;
+    messages: MessageProps[];
     footer: SelectedChatFooterProps
 }
 
@@ -35,7 +35,7 @@ class SelectedChat extends Block {
      
         const preparedPropsWithChilren: SelectedChatPropsWithChildren = {
             SelectedChatHeader: new SelectedChatHeader(header),
-            MessagesFeed: new MessagesFeed(messages),
+            MessagesFeed: new MessagesFeed({ messages}),
             SelectedChatFooter: new SelectedChatFooter(footer)
         }
       

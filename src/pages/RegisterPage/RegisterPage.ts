@@ -58,7 +58,7 @@ class RegisterPage extends Block {
     const preparedPropsWidthChildren: RegisterPagePropsWithChildren = {
       ...props,
       RegisterForm: new Form({
-          formTitle: 'Авторизация',
+          formTitle: 'Регистрация',
           fields: fieldsProps,
           buttons: buttonsProps,
 

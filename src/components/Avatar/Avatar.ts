@@ -8,11 +8,15 @@ import { Img } from '../Img';
 import { ImgProps } from '../Img/Img';
 
 export interface AvatarProps {
+    wrapperClassName?: string;
     src: ImgProps['src'];
-    altText: ImgProps['altText']
+    altText: ImgProps['altText'];
+    caption?: string
 }
 
 interface AvatarPropsWithChildren extends BlockProps {
+    wrapperClassName: AvatarProps['wrapperClassName'];
+    caption: AvatarProps['caption'];
    Img: Img
 }
 
@@ -22,8 +26,12 @@ class Avatar extends Block {
   declare protected props: AvatarPropsWithChildren;
 
     constructor(props: AvatarProps) {
-        const { src, altText } = props;
-      const preparedPropsWithChildren: AvatarPropsWithChildren = { Img: new Img({src, altText})}
+        const { src, altText, caption = undefined, wrapperClassName = undefined } = props;
+        const preparedPropsWithChildren: AvatarPropsWithChildren = {
+            wrapperClassName,
+            caption,
+            Img: new Img({ src, altText })
+        }
     super(preparedPropsWithChildren);
   }
 

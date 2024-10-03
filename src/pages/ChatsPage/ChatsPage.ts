@@ -9,6 +9,7 @@ import ChatsFeed, { ChatsFeedProps } from '../../components/ChatsFeed/ChatsFeed'
 
 import mockChatProps from '../../mocks/chats_mock.json';
 import { BlankChat } from '../../components/BlankChat';
+import { SelectedChat } from '../../components/SelectedChat';
 
 
 
@@ -19,6 +20,7 @@ interface ChatsPageProps extends BlockProps {
 
 interface ChatsPagePropsWithChildren extends BlockProps {
     selectedChat: number | string | false;
+    SelectedChat: SelectedChat;
     ChatsFeed: ChatsFeed;
     BlankChat: BlankChat;
   Footer: Footer;
@@ -46,7 +48,7 @@ class ChatsPage extends Block {
                 fields: [
                     {
                         id: 'search-chats',
-                        labelText: '', labelClass: '', inputType: 'text', placeholder: 'Поиск', extraClass: 'search-chats', value: '', name: 'searchChats', isError: false
+                       inputType: 'text', placeholder: 'Поиск', extraClass: 'search-chats', value: '', name: 'searchChats', isError: false
                     }],
                 additionalClass: 'form-chats',
                 buttons: []
@@ -54,7 +56,43 @@ class ChatsPage extends Block {
         }; // Сделать моковые данные 
      
         const preparedPropsWidthChildren: ChatsPagePropsWithChildren = {
-        selectedChat: false,
+            selectedChat: 1,
+            SelectedChat: new SelectedChat({
+                header: {
+                    avatar: {
+                        src: '/Union.svg',
+                        altText: 'user Avatar'
+                    },
+                    button: {
+                        text: '',
+                        type: 'button',
+                        mode: 'round', image: {
+                            src: '/DropdownButton.svg',
+                            altText: 'Future Drowdown'
+                        }
+                    },
+                    userName: 'Test User'
+                }, messages: [],
+                footer: {
+                    messageForm: {
+                        fields: [{
+                            id: 'message', errorMessage: '', extraClass: 'field-message', name: 'message', placeholder: 'Сообщение', inputType: 'text', value: '', isError: false
+                        }],
+                        additionalClass: 'form-message',
+                        buttons: [{
+                            mode: 'round',
+                            type: 'submit',
+                            text: '',
+                            image: {
+                                src: '/Arrow.svg',
+                                altText: 'goBack image',
+                            }
+                        }
+                            ]
+                    
+                    }
+                }
+            }),
         ChatsFeed: new ChatsFeed(chatsfeed),
         BlankChat: new BlankChat(),
       Footer: new Footer({ footerClick  }),

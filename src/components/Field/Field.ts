@@ -13,7 +13,7 @@ export interface FieldProps {
   id: string;
   extraClass: string;
   labelClass?: string;
-  labelText: string;
+  labelText?: string;
   inputType: 'text' | 'password' | 'email' | 'phone';
   placeholder: string;
   name: string;
@@ -25,7 +25,7 @@ export interface FieldProps {
 
 interface FieldPropsWithChildren extends BlockProps {
   extraClass: string;
-  Label: Label;
+  Label?: Label;
   Input: Input;
   ErrorMessage: ErrorMessage;
   isError?: boolean;
@@ -41,13 +41,13 @@ class Field extends Block {
   declare protected props: FieldPropsWithChildren;
 
   constructor(props: FieldProps) {
-      const { labelClass = '', labelText, name, value, inputType, placeholder, extraClass, isError = false, errorMessage = '', events = {} } = props;
+      const { labelClass = '', labelText = undefined, name, value, inputType, placeholder, extraClass, isError = false, errorMessage = '', events = {} } = props;
     
     
 
     const preparedPropsWithChilren: FieldPropsWithChildren = {
       extraClass, 
-      Label: new Label({ labelFor: name, labelClass, labelText }),
+      Label: labelText? new Label({ labelFor: name, labelClass, labelText }): undefined,
       Input: new Input({
         type: inputType, placeholder, value, name,
         events: {
