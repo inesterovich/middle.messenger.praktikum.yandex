@@ -7,7 +7,7 @@ import Block, { BlockProps } from '../../framework/Block';
 import { Img } from '../Img';
 import { ImgProps } from '../Img/Img';
 
-interface AvatarProps {
+export interface AvatarProps {
     src: ImgProps['src'];
     altText: ImgProps['altText']
 }

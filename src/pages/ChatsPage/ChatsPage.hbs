@@ -5,15 +5,14 @@
  <aside class="chats-feed-wrapper">
    {{{ChatsFeed}}}
  </aside>
- <main>
-    {{!-- 
-    {{#unless selectedChat}}
+ <main class="chats-content-wrapper">
+    
+    {{#if selectedChat}}
     {{{SelectedChat}}}
-    {{#else}}
+    {{else}}
     {{{BlankChat}}}
-    {{/else}}
-    {{/unless}} 
-    --}}
+    {{/if}} 
+   
     
  </main>
     </section>

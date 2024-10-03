@@ -8,6 +8,7 @@ import { Footer } from '../../components/Footer';
 import ChatsFeed, { ChatsFeedProps } from '../../components/ChatsFeed/ChatsFeed';
 
 import mockChatProps from '../../mocks/chats_mock.json';
+import { BlankChat } from '../../components/BlankChat';
 
 
 
@@ -17,7 +18,9 @@ interface ChatsPageProps extends BlockProps {
 }
 
 interface ChatsPagePropsWithChildren extends BlockProps {
+    selectedChat: number | string | false;
     ChatsFeed: ChatsFeed;
+    BlankChat: BlankChat;
   Footer: Footer;
 }
 
@@ -50,8 +53,10 @@ class ChatsPage extends Block {
             }
         }; // Сделать моковые данные 
      
-    const preparedPropsWidthChildren: ChatsPagePropsWithChildren = {
+        const preparedPropsWidthChildren: ChatsPagePropsWithChildren = {
+        selectedChat: false,
         ChatsFeed: new ChatsFeed(chatsfeed),
+        BlankChat: new BlankChat(),
       Footer: new Footer({ footerClick  }),
     };
 
