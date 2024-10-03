@@ -4,6 +4,7 @@ $white2: #fbfbfb;
 $blue: #3369f3;
 $lightGray: #efefef;
 $lightGray2: #eaeaea;
+$gray: #999999;
 $red: #ff0000;
 
 body {
@@ -11,6 +12,7 @@ body {
   font-size: 13px;
   line-height: 13px;
   overflow: hidden;
+  margin: 0;
 }
 
 #app {
@@ -70,6 +72,26 @@ body {
     justify-content: center;
     align-items: center;
 
+    .avatar-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+    
+            padding: 45px;
+    
+            background-color: $lightGray;
+            border-radius: 50%;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+      }
+
     &.page-error,
     &.page-notFound {
       flex-direction: column;
@@ -113,26 +135,111 @@ body {
         flex-direction: column;
       }
 
-      .avatar {
-        width: 40px;
-        height: 40px;
-
-        padding: 45px;
-
-        background-color: $lightGray;
-        border-radius: 50%;
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-
-      .avatar-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+     
     }
+
+    &.page-chats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .chats-feed-wrapper {
+            width: 25vw;
+            background-color: $white2;
+        }
+
+        .feed-header {
+            height: 102px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            border-bottom: 1px solid $lightGray2;
+
+            .link-profile {
+                margin: 0;
+                padding-top: 21px;
+                padding-right: 10px;
+            }
+        }
+
+        .feed-main {
+            height: calc(100vh - 102px);
+            overflow-y: auto;
+
+            .chat {
+                display: grid;
+                align-items: center;
+    grid-template-columns: 1fr 10fr 1fr;
+                padding: 12px 10px;
+                column-gap: 10px;
+                border-bottom: 1px solid #eaeaea;
+
+                .avatar-wrapper {
+                    .avatar {
+                        padding: 0;
+                        width: 47px;
+                        height: 47px;
+                        border-radius: 50%;
+    
+                        img {
+                            border-radius: 50%;
+                        }
+                       
+                    }
+                }
+
+                .chat-content {
+                    overflow: hidden;
+                    .chat-title {
+                        font-weight: 600;
+                        color: $black
+                    }
+                    .chat-description {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        font-size: 12px;
+                        line-height: 12px;
+                        color: $gray
+                    }
+                   
+                }
+                
+                .chat-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+                .chat-time {
+                font-size: 9px;
+                color: $gray;
+                
+                 }
+
+                 .chat-counter {
+                 background-color: blue;
+                 font-size: 11px;
+                 color: $white;
+    width: 20px;
+    height: 20px;
+    display: block;
+    text-align: center;
+  
+    line-height: 20px;
+    border-radius: 50%;
+                 }
+                }
+
+               
+            }
+        }
+
+        
+    }
+
+
+ 
+
+ 
   }
 
   .footer {
@@ -196,6 +303,12 @@ body {
       
     }
 
+    .field-input {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
     .error {
         color: $red;
       }
@@ -204,6 +317,19 @@ body {
   &.form-profile {
     width: 510px;
     box-shadow: none;
+  }
+
+  &.form-chats {
+    width: 100%;
+    border-radius: initial;
+    padding: initial;
+    box-shadow: none;
+
+    .search-chats {
+        width: 95%;
+        margin: 0 auto;
+       
+    }
   }
 
   .form-buttons {

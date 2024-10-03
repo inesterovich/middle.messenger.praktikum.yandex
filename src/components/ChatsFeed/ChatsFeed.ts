@@ -11,6 +11,8 @@ import { LinkProps } from '../Link/Link';
 import { ChatProps } from '../Chat/Chat';
 
 
+
+
 export interface ChatsFeedProps  {
     profile: LinkProps;
     chats: ChatProps[];
@@ -20,7 +22,7 @@ export interface ChatsFeedProps  {
 export interface ChatsFeedPropsWithChildren extends BlockProps {
     ProfileLink: Link;
     ChatItems: Chat[];
-    SearchChatForm: Form
+    SearchChatsForm: Form
 }
 
 
@@ -35,7 +37,7 @@ class ChatsFeed extends Block {
         const preparedPropsWithChildren: ChatsFeedPropsWithChildren = {
             ProfileLink: new Link(profile),
             ChatItems: chats.map((chatProps) => new Chat(chatProps)),
-            SearchChatForm: new Form(searchForm)
+            SearchChatsForm: new Form(searchForm)
         }
     super(preparedPropsWithChildren);
   }

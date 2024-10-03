@@ -18,7 +18,8 @@ interface FooterPropsWithChildren extends FooterProps {
   LinkRegister: Link;
   LinkProfile: Link;
   LinkServerError: Link;
-  LinkNotFound: Link;
+    LinkNotFound: Link;
+    LinkChats: Link;
 
 }
 
@@ -62,6 +63,13 @@ class Footer extends Block {
           footerClick('profile');
         },
         
+      }),
+      LinkChats: new Link({
+        href: '/chats', className: 'footer-link', dataPage: 'chats', text: 'Чаты',
+        onClick: (e) => {
+          e.preventDefault();
+          footerClick('chats');
+        },
       }),
       LinkServerError: new Link({
         href: '/serverError', className: 'footer-link', dataPage: 'serverError', text: 'Ошибка сервера',

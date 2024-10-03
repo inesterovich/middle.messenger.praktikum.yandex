@@ -14,7 +14,7 @@ export interface FormProps {
     additionalClass?: string;
     fields: FieldProps[];
     buttons: ButtonProps[];
-    formTitle: string;
+    formTitle?: string;
 }
 interface FormPropsWithChildren extends BlockProps {
   additionalClass?: FormProps['additionalClass'];
