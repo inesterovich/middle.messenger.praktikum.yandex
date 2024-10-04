@@ -1,12 +1,12 @@
-import SelectedChatTemplate from "./SelectedChat.hbs?raw";
+import SelectedChatTemplate from './SelectedChat.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import { SelectedChatHeader } from "../SelectedChatHeader";
-import { MessagesFeed } from "../MessagesFeed";
-import { SelectedChatFooter } from "../SelectedChatFooter";
-import { SelectedChatHeaderProps } from "../SelectedChatHeader/SelectedChatHeader";
-import { SelectedChatFooterProps } from "../SelectedChatFooter/SelectedChatFooter";
-import { MessageProps } from "../Message/Message";
+import Block, { BlockProps } from '../../framework/Block';
+import { SelectedChatHeader } from '../SelectedChatHeader';
+import { MessagesFeed } from '../MessagesFeed';
+import { SelectedChatFooter } from '../SelectedChatFooter';
+import { SelectedChatHeaderProps } from '../SelectedChatHeader/SelectedChatHeader';
+import { SelectedChatFooterProps } from '../SelectedChatFooter/SelectedChatFooter';
+import { MessageProps } from '../Message/Message';
 
 export interface SelectedChatProps {
   header: SelectedChatHeaderProps;

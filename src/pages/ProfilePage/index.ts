@@ -1,2 +1,2 @@
-import { default as ProfilePage } from "./ProfilePage";
+import { default as ProfilePage } from './ProfilePage';
 export { ProfilePage };

@@ -1,4 +1,4 @@
-import { FieldNames, validationRules } from "./constants";
+import { FieldNames, validationRules } from './constants';
 
 export const handleValidation = (e: Event) => {
   if (e instanceof FocusEvent && e.target instanceof HTMLInputElement) {

@@ -1,33 +1,36 @@
-import FormTemplate from "./Form.hbs?raw";
+import FormTemplate from './Form.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import Field, { FieldProps } from "../Field/Field";
-import { Button } from "../Button";
-import { ButtonProps } from "../Button/Button";
+import Block, { BlockProps } from '../../framework/Block';
+import Field, { FieldProps } from '../Field/Field';
+import { Button } from '../Button';
+import { ButtonProps } from '../Button/Button';
 
 //  Можно саму форму переделать, чтобы наружу ни один компонент не торчал - подавать только текст
 export interface FormProps {
   additionalClass?: string;
   fields: FieldProps[];
   buttons: ButtonProps[];
+  buttonGroupClass?: string;
   formTitle?: string;
 }
 interface FormPropsWithChildren extends BlockProps {
-  additionalClass?: FormProps["additionalClass"];
+  additionalClass?: FormProps['additionalClass'];
+  buttonGroupClass?: FormProps['buttonGroupClass'];
   FieldItems: Field[];
   ButtonItems: Button[];
-  formTitle: FormProps["formTitle"];
+  formTitle: FormProps['formTitle'];
 }
 
 class Form extends Block {
   protected declare props: FormPropsWithChildren;
 
   constructor(props: FormProps) {
-    const { additionalClass, formTitle, fields, buttons } = props;
+    const { additionalClass, formTitle, fields, buttons, buttonGroupClass } = props;
 
     const preparedPropsWithChildren: FormPropsWithChildren = {
       formTitle,
       additionalClass,
+      buttonGroupClass,
       FieldItems: fields.map((fieldProps) => new Field(fieldProps)),
       ButtonItems: buttons.map((buttonProps) => new Button(buttonProps)),
     };
@@ -51,7 +54,7 @@ class Form extends Block {
       .includes(true);
 
     if (!isValid) {
-      console.log("form has validation error, abort submit");
+      console.log('form has validation error, abort submit');
 
       return;
     }

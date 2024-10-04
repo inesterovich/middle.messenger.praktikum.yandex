@@ -1,6 +1,6 @@
-import LabelTemplate from "./Label.hbs?raw";
+import LabelTemplate from './Label.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
+import Block, { BlockProps } from '../../framework/Block';
 
 interface LabelProps extends BlockProps {
   labelFor: string;

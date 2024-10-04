@@ -1,10 +1,10 @@
-import SelectedChatHeaderTemplate from "./SelectedChatHeader.hbs?raw";
+import SelectedChatHeaderTemplate from './SelectedChatHeader.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import { Avatar } from "../Avatar";
-import { Button } from "../Button";
-import { AvatarProps } from "../Avatar/Avatar";
-import { ButtonProps } from "../Button/Button";
+import Block, { BlockProps } from '../../framework/Block';
+import { Avatar } from '../Avatar';
+import { Button } from '../Button';
+import { AvatarProps } from '../Avatar/Avatar';
+import { ButtonProps } from '../Button/Button';
 
 export interface SelectedChatHeaderProps {
   avatar: AvatarProps;
@@ -14,7 +14,7 @@ export interface SelectedChatHeaderProps {
 
 export interface SelectedChatHeaderPropsWithChildren extends BlockProps {
   UserAvatar: Avatar;
-  userName: SelectedChatHeaderProps["userName"];
+  userName: SelectedChatHeaderProps['userName'];
   DropdownButton: Button;
 }
 

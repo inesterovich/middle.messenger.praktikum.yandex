@@ -1,6 +1,6 @@
-import ErrorMessageTemplate from "./ErrorMessage.hbs?raw";
+import ErrorMessageTemplate from './ErrorMessage.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
+import Block, { BlockProps } from '../../framework/Block';
 
 interface ErrorMessageProps extends BlockProps {
   errorMessage: string;

@@ -1,2 +1,2 @@
-import { default as ChatTime } from "./ChatTime";
+import { default as ChatTime } from './ChatTime';
 export { ChatTime };

@@ -1,8 +1,8 @@
-import SelectedChatFooterTemplate from "./SelectedChatFooter.hbs?raw";
+import SelectedChatFooterTemplate from './SelectedChatFooter.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import { Form } from "../Form";
-import { FormProps } from "../Form/Form";
+import Block, { BlockProps } from '../../framework/Block';
+import { Form } from '../Form';
+import { FormProps } from '../Form/Form';
 
 export interface SelectedChatFooterProps {
   messageForm: FormProps;

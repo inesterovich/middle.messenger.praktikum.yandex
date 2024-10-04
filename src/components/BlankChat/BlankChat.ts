@@ -1,6 +1,6 @@
-import BlankChatTemplate from "./BlankChat.hbs?raw";
+import BlankChatTemplate from './BlankChat.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
+import Block, { BlockProps } from '../../framework/Block';
 
 class BlankChat extends Block {
   constructor(props?: BlockProps) {

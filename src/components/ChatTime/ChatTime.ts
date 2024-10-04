@@ -1,6 +1,6 @@
-import ChatTimeTemplate from "./ChatTime.hbs?raw";
+import ChatTimeTemplate from './ChatTime.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
+import Block, { BlockProps } from '../../framework/Block';
 
 export interface ChatTimeProps extends BlockProps {
   time: string;

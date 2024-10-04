@@ -1,2 +1,2 @@
-import { default as BlankChat } from "./BlankChat";
+import { default as BlankChat } from './BlankChat';
 export { BlankChat };

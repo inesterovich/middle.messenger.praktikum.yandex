@@ -1,2 +1,2 @@
-import { default as ChatCounter } from "./ChatCounter";
+import { default as ChatCounter } from './ChatCounter';
 export { ChatCounter };

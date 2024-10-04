@@ -1,4 +1,4 @@
-import * as Pages from "./pages";
+import * as Pages from './pages';
 
 export class App {
   state: string;
@@ -6,8 +6,8 @@ export class App {
   private appElement: HTMLElement | null;
 
   constructor() {
-    this.state = "auth";
-    this.appElement = document.getElementById("app")!;
+    this.state = 'auth';
+    this.appElement = document.getElementById('app')!;
   }
 
   changePage(page: string) {
@@ -18,7 +18,7 @@ export class App {
 
   render() {
     switch (this.state) {
-      case "auth":
+      case 'auth':
         const authPage = new Pages.AuthPage({
           footerClick: this.changePage.bind(this),
         });
@@ -26,8 +26,8 @@ export class App {
           this.appElement.replaceChildren(authPage.getContent());
         }
 
-        return "";
-      case "register":
+        return '';
+      case 'register':
         const registerPage = new Pages.RegisterPage({
           footerClick: this.changePage.bind(this),
         });
@@ -36,8 +36,8 @@ export class App {
           this.appElement.replaceChildren(registerPage.getContent());
         }
 
-        return "";
-      case "profile":
+        return '';
+      case 'profile':
         const profilePage = new Pages.ProfilePage({
           footerClick: this.changePage.bind(this),
         });
@@ -45,9 +45,9 @@ export class App {
           this.appElement.replaceChildren(profilePage.getContent());
         }
 
-        return "";
+        return '';
 
-      case "chats":
+      case 'chats':
         const chatsPage = new Pages.ChatsPage({
           footerClick: this.changePage.bind(this),
         });
@@ -55,10 +55,10 @@ export class App {
         if (this.appElement) {
           this.appElement.replaceChildren(chatsPage.getContent());
         }
-        return "";
-      case "editProfile":
-        return "";
-      case "serverError":
+        return '';
+      case 'editProfile':
+        return '';
+      case 'serverError':
         const serverErrorPage = new Pages.ServerErrorPage({
           footerClick: this.changePage.bind(this),
         });
@@ -66,8 +66,8 @@ export class App {
           this.appElement.replaceChildren(serverErrorPage.getContent());
         }
 
-        return "";
-      case "notFound":
+        return '';
+      case 'notFound':
         const notFoundPage = new Pages.NotFoundPage({
           footerClick: this.changePage.bind(this),
         });
@@ -75,9 +75,9 @@ export class App {
           this.appElement.replaceChildren(notFoundPage.getContent());
         }
 
-        return "";
+        return '';
       default:
-        return "";
+        return '';
     }
   }
 }

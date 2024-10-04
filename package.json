@@ -12,7 +12,7 @@
     "dev": "vite",
     "prebuild": "tsc --noEmit",
     "lint": "eslint . --ext .ts",
-    "lint:css": "stylelint \"src/**/*.scss\"",
+    "lint:css": "stylelint \"src/**/*.scss\" --fix",
     "lint:fix": "eslint . --ext .ts --fix",
     "build": "yarn run prebuild && vite build",
     "start": "yarn run build && node server.cjs",

@@ -1,9 +1,9 @@
 enum METHODS {
-  GET = "GET",
-  POST = "POST",
-  PUT = "PUT",
-  DELETE = "DELETE",
-  PATCH = "PATCH",
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+  PATCH = 'PATCH',
 }
 
 type RequestOptions = {
@@ -14,18 +14,18 @@ type RequestOptions = {
   body?: Record<string, unknown>;
 };
 
-type RequestOptionsWithoutMethod = Omit<RequestOptions, "method">;
+type RequestOptionsWithoutMethod = Omit<RequestOptions, 'method'>;
 type RequestOptionsWithoutMethodAndBody = Omit<
-  RequestOptions,
-  "method" | "body"
+RequestOptions,
+'method' | 'body'
 >;
 
-function getUrl(url: string, queryData?: RequestOptions["searchParams"]) {
+function getUrl(url: string, queryData?: RequestOptions['searchParams']) {
   const encodedUrl = new URL(url);
 
   if (
     queryData &&
-    typeof queryData === "object" &&
+    typeof queryData === 'object' &&
     Object.keys(queryData).length !== 0
   ) {
     for (const key in queryData) {
@@ -84,7 +84,7 @@ export class CustomFetch {
 
     return new Promise(function (resolve, reject) {
       if (!method) {
-        reject("No method");
+        reject('No method');
         return;
       }
 
