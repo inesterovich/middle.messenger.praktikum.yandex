@@ -19,6 +19,7 @@ export default class Block {
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
+    FLOW_UNMOUNT:'flow:component-did-unmount'
   };
 
   protected _element: HTMLElement | null = null;
@@ -54,22 +55,47 @@ export default class Block {
      
     });
   }
+    
+    protected _removeEvents(): void {
+        const { events = {} } = this.props;
+    getKeys(events).forEach(eventName => {
+      const callback = events[eventName];
+      if (callback) {
+        this._element?.removeEventListener(eventName, callback);
+      }
+     
+    });
+    }
 
   private _registerEvents(eventBus: EventBus): void {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this) as EventCallback);
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this) as EventCallback);
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this) as EventCallback);
-    eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this) as EventCallback);
+      eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this) as EventCallback);
+      eventBus.on(Block.EVENTS.FLOW_UNMOUNT, this._componentDidUnmount.bind(this) as EventCallback);
   }
+    
+    private _unregisterEvents(eventBus: EventBus): void {
+    eventBus.off(Block.EVENTS.INIT, this.init.bind(this) as EventCallback);
+    eventBus.off(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this) as EventCallback);
+    eventBus.off(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this) as EventCallback);
+    eventBus.off(Block.EVENTS.FLOW_RENDER, this._render.bind(this) as EventCallback);
+    eventBus.off(Block.EVENTS.FLOW_UNMOUNT, this._componentDidUnmount.bind(this) as EventCallback);
+    }
 
   protected init(): void {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  private _componentDidMount(): void {
+  protected _componentDidMount(): void {
     this.componentDidMount();
     Object.values(this.children).forEach(child => {child.dispatchComponentDidMount();});
   }
+    
+    protected _componentDidUnmount(): void {
+        this._removeEvents();
+        this._unregisterEvents(this.eventBus());
+    }
 
   protected componentDidMount(): void {}
 
@@ -145,7 +171,7 @@ export default class Block {
   }
 
   private _render(): void {
-   
+      this._removeEvents();
     const propsAndStubs = { ...this.props };
     const tmpId =  makeUUID();
     Object.entries(this.children).forEach(([key, child]) => {
