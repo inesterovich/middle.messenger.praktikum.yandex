@@ -7,7 +7,7 @@ export interface LinkProps extends BlockProps {
   className: string;
   dataPage: string;
   text: string;
-  onClick?: (e: Event) => any;
+  onClick?: (e: Event) => void;
 }
 
 class Link extends Block {

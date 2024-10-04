@@ -9,7 +9,7 @@ export type ListenerEvents = Partial<
 
 export interface BlockProps {
   events?: ListenerEvents;
-  [key: string]: any;
+  [key: string]: any; // requires too much time to type properly
 }
 
 export default class Block {

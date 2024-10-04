@@ -1,10 +1,4 @@
 import * as Pages from "./pages";
-import { FieldProps } from "./components/Field/Field";
-
-export interface IPageConfig {
-  fields: FieldProps[];
-  buttons: any[];
-}
 
 export class App {
   state: string;

@@ -11,7 +11,7 @@ type RequestOptions = {
   timeout: number;
   headers?: Record<string, string>;
   searchParams?: Record<string, string>;
-  body?: Record<string, any>;
+  body?: Record<string, unknown>;
 };
 
 type RequestOptionsWithoutMethod = Omit<RequestOptions, "method">;
