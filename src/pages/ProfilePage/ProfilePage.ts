@@ -5,8 +5,7 @@ import ProfilePageTemplate from './ProfilePage.hbs?raw';
 
 import Block, { BlockProps } from '../../framework/Block';
 import { Footer } from '../../components/Footer';
-import {Form} from '../../components/Form';
-import { Field } from '../../components/Field';
+import { Form } from '../../components/Form';
 import { FieldProps } from '../../components/Field/Field';
 import { Button } from '../../components/Button/';
 import { ButtonPropsWithChildren } from '../../components/Button/Button';
@@ -35,15 +34,15 @@ class ProfilePage extends Block {
 
   constructor(props: ProfilePageProps) {
 
-    const formFields: FieldNames[] = ['email', 'login', 'first_name', 'second_name', 'phone', 'password']
+    const formFields: FieldNames[] = ['email', 'login', 'first_name', 'second_name', 'phone', 'password'];
       
     const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
-        ...fieldNames[fieldName],
-        value: '',
-        isError: false, 
-        errorMessage: validationErrors[fieldName],
-        extraClass: 'field-gorizontal'
-    }))
+      ...fieldNames[fieldName],
+      value: '',
+      isError: false, 
+      errorMessage: validationErrors[fieldName],
+      extraClass: 'field-gorizontal',
+    }));
         
     const buttonsProps: ButtonPropsWithChildren[] =  [
       {
@@ -69,11 +68,11 @@ class ProfilePage extends Block {
 
     const preparedPropsWidthChildren: ProfilePagePropsWithChildren = {
       ...props,
-        Avatar: new Avatar({
-                    src: '/Union.svg',
-                    altText: 'Avatar default picture'
-                }
-        ),
+      Avatar: new Avatar({
+        src: '/Union.svg',
+        altText: 'Avatar default picture',
+      },
+      ),
       GoBackButton: new Button({
         mode: 'round',
         type: 'button',
@@ -83,9 +82,9 @@ class ProfilePage extends Block {
           altText: 'goBack image',
         },
       }),
-        ProfileForm: new Form({
-            fields: fieldsProps,
-            buttons: buttonsProps,
+      ProfileForm: new Form({
+        fields: fieldsProps,
+        buttons: buttonsProps,
         formTitle: '',
         additionalClass: 'form-profile',
       }),

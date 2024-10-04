@@ -13,15 +13,15 @@ import { MessageProps } from '../Message/Message';
 
 
 export interface SelectedChatProps {
-    header: SelectedChatHeaderProps;
-    messages: MessageProps[];
-    footer: SelectedChatFooterProps
+  header: SelectedChatHeaderProps;
+  messages: MessageProps[];
+  footer: SelectedChatFooterProps
 }
 
 export interface SelectedChatPropsWithChildren extends BlockProps {
-    SelectedChatHeader: SelectedChatHeader;
-    MessagesFeed: MessagesFeed;
-    SelectedChatFooter: SelectedChatFooter
+  SelectedChatHeader: SelectedChatHeader;
+  MessagesFeed: MessagesFeed;
+  SelectedChatFooter: SelectedChatFooter
 }
 
 
@@ -29,15 +29,15 @@ class SelectedChat extends Block {
      
   declare protected props: SelectedChatPropsWithChildren;
 
-    constructor(props: SelectedChatProps) {
+  constructor(props: SelectedChatProps) {
 
-        const { header, messages, footer } = props;
+    const { header, messages, footer } = props;
      
-        const preparedPropsWithChilren: SelectedChatPropsWithChildren = {
-            SelectedChatHeader: new SelectedChatHeader(header),
-            MessagesFeed: new MessagesFeed({ messages}),
-            SelectedChatFooter: new SelectedChatFooter(footer)
-        }
+    const preparedPropsWithChilren: SelectedChatPropsWithChildren = {
+      SelectedChatHeader: new SelectedChatHeader(header),
+      MessagesFeed: new MessagesFeed({ messages }),
+      SelectedChatFooter: new SelectedChatFooter(footer),
+    };
       
 
     super(preparedPropsWithChilren);

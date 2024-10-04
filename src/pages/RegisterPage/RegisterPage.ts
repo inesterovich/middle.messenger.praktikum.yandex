@@ -4,11 +4,9 @@
 import RegisterPageTemplate from './RegisterPage.hbs?raw';
 
 import Block, { BlockProps } from '../../framework/Block';
-import {Form} from '../../components/Form';
-import { Field } from '../../components/Field';
+import { Form } from '../../components/Form';
 import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
-import { Button } from '../../components/Button';
 import { ButtonPropsWithChildren } from '../../components/Button/Button';
 import { FieldNames, fieldNames, validationErrors } from '../../framework/constants';
 
@@ -31,14 +29,14 @@ class RegisterPage extends Block {
   declare protected props: RegisterPagePropsWithChildren;
 
   constructor(props: RegisterPageProps) {
-      const formFields: FieldNames[] = ['email', 'login', 'first_name', 'second_name', 'phone', 'password']
+    const formFields: FieldNames[] = ['email', 'login', 'first_name', 'second_name', 'phone', 'password'];
       
-      const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
-          ...fieldNames[fieldName],
-          value: '',
-          isError: false, 
-          errorMessage: validationErrors[fieldName]
-      }))
+    const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
+      ...fieldNames[fieldName],
+      value: '',
+      isError: false, 
+      errorMessage: validationErrors[fieldName],
+    }));
 
 
     const buttonsProps: ButtonPropsWithChildren[] =  [{
@@ -58,9 +56,9 @@ class RegisterPage extends Block {
     const preparedPropsWidthChildren: RegisterPagePropsWithChildren = {
       ...props,
       RegisterForm: new Form({
-          formTitle: 'Регистрация',
-          fields: fieldsProps,
-          buttons: buttonsProps,
+        formTitle: 'Регистрация',
+        fields: fieldsProps,
+        buttons: buttonsProps,
 
       }), Footer: new Footer({ footerClick: props.footerClick }),
     };

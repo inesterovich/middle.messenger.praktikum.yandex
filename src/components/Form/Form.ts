@@ -11,15 +11,15 @@ import { ButtonProps } from '../Button/Button';
 
 //  Можно саму форму переделать, чтобы наружу ни один компонент не торчал - подавать только текст
 export interface FormProps {
-    additionalClass?: string;
-    fields: FieldProps[];
-    buttons: ButtonProps[];
-    formTitle?: string;
+  additionalClass?: string;
+  fields: FieldProps[];
+  buttons: ButtonProps[];
+  formTitle?: string;
 }
 interface FormPropsWithChildren extends BlockProps {
   additionalClass?: FormProps['additionalClass'];
-    FieldItems: Field[];
-    ButtonItems: Button[];
+  FieldItems: Field[];
+  ButtonItems: Button[];
   formTitle: FormProps['formTitle'];
   
 }
@@ -29,15 +29,15 @@ class Form extends Block {
      
   declare protected props: FormPropsWithChildren;
 
-    constructor(props: FormProps) {
+  constructor(props: FormProps) {
 
-        const { additionalClass, formTitle, fields, buttons } = props;
+    const { additionalClass, formTitle, fields, buttons } = props;
       
-        const preparedPropsWithChildren: FormPropsWithChildren = {
-            formTitle, additionalClass,
-            FieldItems: fields.map((fieldProps) => new Field(fieldProps)),
-            ButtonItems: buttons.map((buttonProps) => new Button(buttonProps))
-        }
+    const preparedPropsWithChildren: FormPropsWithChildren = {
+      formTitle, additionalClass,
+      FieldItems: fields.map((fieldProps) => new Field(fieldProps)),
+      ButtonItems: buttons.map((buttonProps) => new Button(buttonProps)),
+    };
      
     super({
       ...preparedPropsWithChildren,
@@ -51,17 +51,17 @@ class Form extends Block {
   }
 
   private onSubmit() {
-      const form = this._element;
-      
-      const isValid = !(this.lists.FieldItems as Field[]).map((Field) => Field.errorStatus).includes(true)
+    const form = this._element;
+    //eslint-disable-next-line
+    const isValid = !(this.lists.FieldItems as Field[]).map((Field) => Field.errorStatus).includes(true);
 
-      if (!isValid) {
-          console.log('form has validation error, abort submit');
+    if (!isValid) {
+      console.log('form has validation error, abort submit');
 
-          return;
-      }
+      return;
+    }
 
-     debugger
+    debugger;
 
     if (form && form instanceof HTMLFormElement) {
             

@@ -20,14 +20,14 @@ import { FieldNames, fieldNames, validationErrors } from '../../framework/consta
 
 interface ChatsPageProps extends BlockProps {
     
-    footerClick: (page: string) => void;
+  footerClick: (page: string) => void;
 }
 
 interface ChatsPagePropsWithChildren extends BlockProps {
-    selectedChat: number | string | false;
-    SelectedChat: SelectedChat;
-    ChatsFeed: ChatsFeed;
-    BlankChat: BlankChat;
+  selectedChat: number | string | false;
+  SelectedChat: SelectedChat;
+  ChatsFeed: ChatsFeed;
+  BlankChat: BlankChat;
   Footer: Footer;
 }
 
@@ -36,83 +36,83 @@ class ChatsPage extends Block {
      
   declare protected props: ChatsPageProps;
 
-    constructor(props: ChatsPageProps) {
+  constructor(props: ChatsPageProps) {
       
-        const { footerClick } = props;
-        const chatsfeed: ChatsFeedProps = {
-            profile: {
-                href: '/profile',
-                className: 'link-profile',
-                dataPage: 'profile',
-                text: 'Профиль'
+    const { footerClick } = props;
+    const chatsfeed: ChatsFeedProps = {
+      profile: {
+        href: '/profile',
+        className: 'link-profile',
+        dataPage: 'profile',
+        text: 'Профиль',
             
-            },
-            chats: mockChatProps,
-            searchForm: {
+      },
+      chats: mockChatProps,
+      searchForm: {
  
-                fields: [
-                    {
-                        id: 'search-chats',
-                       inputType: 'text', placeholder: 'Поиск', extraClass: 'search-chats', value: '', name: 'searchChats', isError: false
-                    }],
-                additionalClass: 'form-chats',
-                buttons: []
-            }
-        }; 
+        fields: [
+          {
+            id: 'search-chats',
+            inputType: 'text', placeholder: 'Поиск', extraClass: 'search-chats', value: '', name: 'searchChats', isError: false,
+          }],
+        additionalClass: 'form-chats',
+        buttons: [],
+      },
+    }; 
 
-        const formFields: FieldNames[] = [ 'message']
+    const formFields: FieldNames[] = [ 'message'];
       
-        const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
-            ...fieldNames[fieldName],
-            value: '',
-            isError: false, 
-            errorMessage: validationErrors[fieldName]
-        }))
+    const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
+      ...fieldNames[fieldName],
+      value: '',
+      isError: false, 
+      errorMessage: validationErrors[fieldName],
+    }));
     
      
-        const preparedPropsWidthChildren: ChatsPagePropsWithChildren = {
-            selectedChat: false,
-            SelectedChat: new SelectedChat({
-                header: {
-                    avatar: {
-                        src: '/Union.svg',
-                        altText: 'user Avatar'
-                    },
-                    button: {
-                        text: '',
-                        type: 'button',
-                        mode: 'round', image: {
-                            src: '/DropdownButton.svg',
-                            altText: 'Future Drowdown'
-                        }
-                    },
-                    userName: 'Test User'
-                }, messages: mockMessages as MessageProps[],
-                footer: {
-                    messageForm: {
-                        fields: fieldsProps,
-                        additionalClass: 'form-message',
-                        buttons: [{
-                            mode: 'round',
-                            type: 'submit',
-                            text: '',
-                            image: {
-                                src: '/Arrow.svg',
-                                altText: 'goBack image',
-                            }
-                        }
-                            ]
+    const preparedPropsWidthChildren: ChatsPagePropsWithChildren = {
+      selectedChat: false,
+      SelectedChat: new SelectedChat({
+        header: {
+          avatar: {
+            src: '/Union.svg',
+            altText: 'user Avatar',
+          },
+          button: {
+            text: '',
+            type: 'button',
+            mode: 'round', image: {
+              src: '/DropdownButton.svg',
+              altText: 'Future Drowdown',
+            },
+          },
+          userName: 'Test User',
+        }, messages: mockMessages as MessageProps[],
+        footer: {
+          messageForm: {
+            fields: fieldsProps,
+            additionalClass: 'form-message',
+            buttons: [{
+              mode: 'round',
+              type: 'submit',
+              text: '',
+              image: {
+                src: '/Arrow.svg',
+                altText: 'goBack image',
+              },
+            },
+            ],
                     
-                    }
-                }
-            }),
-            ChatsFeed: new ChatsFeed({
-                ...chatsfeed,
-                onChatClick: (e) => {
-                    this.setSelectedChat.bind(this)(e)
-                }
-            }),
-        BlankChat: new BlankChat(),
+          },
+        },
+      }),
+      ChatsFeed: new ChatsFeed({
+        ...chatsfeed,
+        onChatClick: (e) => {
+          this.setSelectedChat.bind(this)(e);
+        },
+      }),
+      BlankChat: new BlankChat(),
       Footer: new Footer({ footerClick  }),
     };
 
@@ -120,13 +120,13 @@ class ChatsPage extends Block {
 
        
 
-    }
+  }
     
-    protected setSelectedChat(e: Event) {
-        e.preventDefault();
+  protected setSelectedChat(e: Event) {
+    e.preventDefault();
 
-        this.setProps({selectedChat: 1})
-    }
+    this.setProps({ selectedChat: 1 });
+  }
 
   public render(): string {
 

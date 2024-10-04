@@ -8,7 +8,7 @@ import Block, { BlockProps } from '../../framework/Block';
 
 
 export interface ChatCounterProps extends BlockProps {
-    counter: number;
+  counter: number;
 }
 
 

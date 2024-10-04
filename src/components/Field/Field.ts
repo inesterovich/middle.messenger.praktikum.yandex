@@ -41,18 +41,18 @@ class Field extends Block {
   declare protected props: FieldPropsWithChildren;
 
   constructor(props: FieldProps) {
-      const { labelClass = '', labelText = undefined, name, value, inputType, placeholder, extraClass, isError = false, errorMessage = '', events = {} } = props;
+    const { labelClass = '', labelText = undefined, name, value, inputType, placeholder, extraClass, isError = false, errorMessage = '', events = {} } = props;
     
     
 
     const preparedPropsWithChilren: FieldPropsWithChildren = {
       extraClass, 
-      Label: labelText? new Label({ labelFor: name, labelClass, labelText }): undefined,
+      Label: labelText ? new Label({ labelFor: name, labelClass, labelText }) : undefined,
       Input: new Input({
         type: inputType, placeholder, value, name,
         events: {
-            blur: (e) => {
-                this.validate.bind(this)(e)
+          blur: (e) => {
+            this.validate.bind(this)(e);
       
           },
         },
@@ -67,14 +67,14 @@ class Field extends Block {
     super(preparedPropsWithChilren);
   }
     
-    protected validate(e: Event) {
-        const isValid = handleValidation(e);
-        this.setProps({ isError: !isValid})
-    }
+  protected validate(e: Event) {
+    const isValid = handleValidation(e);
+    this.setProps({ isError: !isValid });
+  }
     
-    public get errorStatus() {
-        return this.props.isError;
- }
+  public get errorStatus() {
+    return this.props.isError;
+  }
 
   public render(): string {
 

@@ -10,15 +10,15 @@ import { AvatarProps } from '../Avatar/Avatar';
 import { ButtonProps } from '../Button/Button';
 
 export interface SelectedChatHeaderProps {
-    avatar: AvatarProps;
-    userName: string;
-    button: ButtonProps;
+  avatar: AvatarProps;
+  userName: string;
+  button: ButtonProps;
 }
 
 export interface SelectedChatHeaderPropsWithChildren extends BlockProps {
-    UserAvatar: Avatar;
-    userName: SelectedChatHeaderProps['userName'];
-    DropdownButton: Button;
+  UserAvatar: Avatar;
+  userName: SelectedChatHeaderProps['userName'];
+  DropdownButton: Button;
 }
 
 
@@ -26,16 +26,16 @@ class SelectedChatHeader extends Block {
      
   declare protected props: SelectedChatHeaderPropsWithChildren;
 
-    constructor(props: SelectedChatHeaderProps) {
+  constructor(props: SelectedChatHeaderProps) {
 
-        const { avatar, button, userName } = props;
+    const { avatar, button, userName } = props;
      
-        const preparedPropsWithChilren: SelectedChatHeaderPropsWithChildren = {
-            UserAvatar: new Avatar(avatar),
-            userName,
+    const preparedPropsWithChilren: SelectedChatHeaderPropsWithChildren = {
+      UserAvatar: new Avatar(avatar),
+      userName,
 
-            DropdownButton: new Button(button)
-        }
+      DropdownButton: new Button(button),
+    };
       
 
     super(preparedPropsWithChilren);

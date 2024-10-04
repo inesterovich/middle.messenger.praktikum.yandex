@@ -9,11 +9,11 @@ import { ImgProps } from '../Img/Img';
 
 
 export interface ButtonProps {
-    id?: string;
-    text: string;
-    mode: 'primary' | 'secondary' | 'round' | 'danger' | 'disabled';
-    type: 'button' | 'submit';
-    image?: ImgProps
+  id?: string;
+  text: string;
+  mode: 'primary' | 'secondary' | 'round' | 'danger' | 'disabled';
+  type: 'button' | 'submit';
+  image?: ImgProps
 }
 export interface ButtonPropsWithChildren extends BlockProps {
   text: ButtonProps['text'];
@@ -27,12 +27,12 @@ class Button extends Block {
      
   declare protected props: ButtonPropsWithChildren;
 
-    constructor(props: ButtonProps) {
-        const { text, mode, type, image = undefined } = props;
-        const preparedPropsWithChildren: ButtonPropsWithChildren = {
-            text, mode, type, 
-            Img: image ? new Img(image): undefined
-      }
+  constructor(props: ButtonProps) {
+    const { text, mode, type, image = undefined } = props;
+    const preparedPropsWithChildren: ButtonPropsWithChildren = {
+      text, mode, type, 
+      Img: image ? new Img(image) : undefined,
+    };
     super(preparedPropsWithChildren);
   }
 

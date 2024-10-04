@@ -21,19 +21,19 @@ type RequestOptionsWithoutMethod = Omit<RequestOptions, 'method'>;
 type RequestOptionsWithoutMethodAndBody = Omit<RequestOptions, 'method' | 'body'>;
 
 
-function getUrl (url: string, queryData?: RequestOptions['searchParams']) {
+function getUrl(url: string, queryData?: RequestOptions['searchParams']) {
     
-    const encodedUrl = new URL(url);
+  const encodedUrl = new URL(url);
 
-    if (queryData && typeof queryData === 'object' && Object.keys(queryData).length !== 0) {
-        for (const key in queryData) {
-            encodedUrl.searchParams.set(key, queryData[key])
-        }
+  if (queryData && typeof queryData === 'object' && Object.keys(queryData).length !== 0) {
+    for (const key in queryData) {
+      encodedUrl.searchParams.set(key, queryData[key]);
     }
+  }
 
    
 
-    return encodedUrl;
+  return encodedUrl;
 
 }
 
@@ -77,7 +77,7 @@ export class CustomFetch {
       
       xhr.open(
         method, 
-        requestUrl
+        requestUrl,
       );
       
       Object.keys(headers).forEach(key => {
@@ -98,7 +98,7 @@ export class CustomFetch {
         xhr.send();
       } else {
           
-          const stringfiedBody = JSON.stringify(body);
+        const stringfiedBody = JSON.stringify(body);
         xhr.send(stringfiedBody);
       }
     });

@@ -6,11 +6,11 @@ import MessageTemplate from './Message.hbs?raw';
 import Block, { BlockProps } from '../../framework/Block';
 
 export interface MessageProps {
-    direction: 'left' | 'right';
-    messageId?: string;
-    messageText: string;
-    status: 'sendng' | 'recieved' | 'read' | 'error';
-    time: string
+  direction: 'left' | 'right';
+  messageId?: string;
+  messageText: string;
+  status: 'sendng' | 'recieved' | 'read' | 'error';
+  time: string
 }
 
 export interface MessagePropsWithChildren extends BlockProps {
@@ -22,13 +22,13 @@ class Message extends Block {
      
   declare protected props: MessagePropsWithChildren;
 
-    constructor(props: MessageProps) {
+  constructor(props: MessageProps) {
 
        
         
-        const preparedPropsWithChilren: MessagePropsWithChildren = {
-           ...props
-        }
+    const preparedPropsWithChilren: MessagePropsWithChildren = {
+      ...props,
+    };
       
 
     super(preparedPropsWithChilren);

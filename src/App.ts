@@ -64,16 +64,16 @@ export class App {
 
         }
 
-            return '';
+        return '';
         
-        case 'chats':
-            const chatsPage = new Pages.ChatsPage({ footerClick: this.changePage.bind(this) });
+      case 'chats':
+        const chatsPage = new Pages.ChatsPage({ footerClick: this.changePage.bind(this) });
 
-            if (this.appElement) {
-                this.appElement.replaceChildren(chatsPage.getContent());
+        if (this.appElement) {
+          this.appElement.replaceChildren(chatsPage.getContent());
       
-              }
-            return '';
+        }
+        return '';
       case 'editProfile':
         return '';
       case 'serverError':

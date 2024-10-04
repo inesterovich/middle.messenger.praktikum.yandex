@@ -10,7 +10,7 @@ import Block, { BlockProps } from '../../framework/Block';
 
 class BlankChat extends Block {
      
-    constructor(props?:BlockProps) {
+  constructor(props?:BlockProps) {
     
     super(props);
   }

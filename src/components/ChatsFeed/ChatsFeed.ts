@@ -14,17 +14,17 @@ import { ChatProps } from '../Chat/Chat';
 
 
 export interface ChatsFeedProps  {
-    profile: LinkProps;
-    chats: ChatProps[];
-    searchForm: FormProps;
-    onChatClick?: (e: Event) => void;
+  profile: LinkProps;
+  chats: ChatProps[];
+  searchForm: FormProps;
+  onChatClick?: (e: Event) => void;
 }
 
 export interface ChatsFeedPropsWithChildren extends BlockProps {
-    ProfileLink: Link;
-    ChatItems: Chat[];
-    SearchChatsForm: Form;
-    onChatClick?: ChatsFeedProps['onChatClick'];
+  ProfileLink: Link;
+  ChatItems: Chat[];
+  SearchChatsForm: Form;
+  onChatClick?: ChatsFeedProps['onChatClick'];
 }
 
 
@@ -32,15 +32,15 @@ class ChatsFeed extends Block {
      
   declare protected props: ChatsFeedPropsWithChildren;
 
-    constructor(props: ChatsFeedProps) {
+  constructor(props: ChatsFeedProps) {
 
-        const { profile, chats, searchForm, onChatClick} = props;
+    const { profile, chats, searchForm, onChatClick } = props;
       
-        const preparedPropsWithChildren: ChatsFeedPropsWithChildren = {
-            ProfileLink: new Link(profile),
-            ChatItems: chats.map((chatProps) => new Chat({...chatProps, onClick: onChatClick })),
-            SearchChatsForm: new Form(searchForm)
-        }
+    const preparedPropsWithChildren: ChatsFeedPropsWithChildren = {
+      ProfileLink: new Link(profile),
+      ChatItems: chats.map((chatProps) => new Chat({ ...chatProps, onClick: onChatClick })),
+      SearchChatsForm: new Form(searchForm),
+    };
     super(preparedPropsWithChildren);
   }
 

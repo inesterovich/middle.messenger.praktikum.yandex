@@ -8,7 +8,7 @@ import Block, { BlockProps } from '../../framework/Block';
 
 
 export interface ChatDescriptionProps extends BlockProps {
-    description: string;
+  description: string;
 }
 
 

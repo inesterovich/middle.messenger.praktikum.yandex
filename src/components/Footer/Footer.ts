@@ -18,8 +18,8 @@ interface FooterPropsWithChildren extends FooterProps {
   LinkRegister: Link;
   LinkProfile: Link;
   LinkServerError: Link;
-    LinkNotFound: Link;
-    LinkChats: Link;
+  LinkNotFound: Link;
+  LinkChats: Link;
 
 }
 

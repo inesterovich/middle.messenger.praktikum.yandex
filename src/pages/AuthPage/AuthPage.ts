@@ -4,12 +4,10 @@
 import AuthPageTemplate from './AuthPage.hbs?raw';
 
 import Block, { BlockProps } from '../../framework/Block';
-import {Form} from '../../components/Form';
-import { Field } from '../../components/Field';
+import { Form } from '../../components/Form';
 import { FieldProps } from '../../components/Field/Field';
 import { Footer } from '../../components/Footer';
-import { Button } from '../../components/Button';
-import { ButtonProps, ButtonPropsWithChildren } from '../../components/Button/Button';
+import { ButtonProps } from '../../components/Button/Button';
 import { FieldNames, fieldNames, validationErrors } from '../../framework/constants';
 
 
@@ -33,14 +31,14 @@ class AuthPage extends Block {
 
   constructor(props: AuthPageProps) {
    
-    const formFields: FieldNames[] = ['login', 'password']
+    const formFields: FieldNames[] = ['login', 'password'];
       
     const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
-        ...fieldNames[fieldName],
-        value: '',
-        isError: false, 
-        errorMessage: validationErrors[fieldName]
-    }))
+      ...fieldNames[fieldName],
+      value: '',
+      isError: false, 
+      errorMessage: validationErrors[fieldName],
+    }));
 
     const buttonsProps: ButtonProps[] =  [{
       id: 'submit',
@@ -58,9 +56,9 @@ class AuthPage extends Block {
     const preparedPropsWidthChildren: AuthPagePropsWithChildren = {
       ...props,
       AuthForm: new Form({
-          formTitle: 'Авторизация',
-          fields: fieldsProps,
-          buttons: buttonsProps,
+        formTitle: 'Авторизация',
+        fields: fieldsProps,
+        buttons: buttonsProps,
        
       }), Footer: new Footer({ footerClick: props.footerClick }),
     };

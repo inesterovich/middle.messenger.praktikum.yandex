@@ -8,7 +8,7 @@ import Block, { BlockProps } from '../../framework/Block';
 
 
 export interface ChatTimeProps extends BlockProps {
-    time: string;
+  time: string;
 }
 
 

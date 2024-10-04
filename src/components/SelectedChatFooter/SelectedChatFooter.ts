@@ -8,11 +8,11 @@ import { Form } from '../Form';
 import { FormProps } from '../Form/Form';
 
 export interface SelectedChatFooterProps {
-   messageForm: FormProps
+  messageForm: FormProps
 }
 
 export interface SelectedChatFooterPropsWithChildren extends BlockProps {
-    MessageForm: Form
+  MessageForm: Form
 }
 
 
@@ -20,13 +20,13 @@ class SelectedChatFooter extends Block {
      
   declare protected props: SelectedChatFooterPropsWithChildren;
 
-    constructor(props: SelectedChatFooterProps) {
+  constructor(props: SelectedChatFooterProps) {
 
-        const { messageForm } = props;
+    const { messageForm } = props;
      
-        const preparedPropsWithChilren: SelectedChatFooterPropsWithChildren = {
-            MessageForm: new Form(messageForm)
-        }
+    const preparedPropsWithChilren: SelectedChatFooterPropsWithChildren = {
+      MessageForm: new Form(messageForm),
+    };
       
 
     super(preparedPropsWithChilren);
