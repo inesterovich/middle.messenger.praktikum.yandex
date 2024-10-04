@@ -70,7 +70,11 @@ class Field extends Block {
     protected validate(e: Event) {
         const isValid = handleValidation(e);
         this.setProps({ isError: !isValid})
-  }
+    }
+    
+    public get errorStatus() {
+        return this.props.isError;
+ }
 
   public render(): string {
 

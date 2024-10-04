@@ -51,9 +51,17 @@ class Form extends Block {
   }
 
   private onSubmit() {
-    const form = this._element;
+      const form = this._element;
+      
+      const isValid = !(this.lists.FieldItems as Field[]).map((Field) => Field.errorStatus).includes(true)
 
-     
+      if (!isValid) {
+          console.log('form has validation error, abort submit');
+
+          return;
+      }
+
+     debugger
 
     if (form && form instanceof HTMLFormElement) {
             
