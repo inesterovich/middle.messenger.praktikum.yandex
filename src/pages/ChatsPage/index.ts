@@ -1,2 +1,2 @@
-import { default as ChatsPage } from "./ChatsPage";
+import { default as ChatsPage } from './ChatsPage';
 export { ChatsPage };

@@ -1,23 +1,23 @@
-import ChatsPageTemplate from "./ChatsPage.hbs?raw";
+import ChatsPageTemplate from './ChatsPage.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import { Footer } from "../../components/Footer";
+import Block, { BlockProps } from '../../framework/Block';
+import { Footer } from '../../components/Footer';
 import ChatsFeed, {
   ChatsFeedProps,
-} from "../../components/ChatsFeed/ChatsFeed";
+} from '../../components/ChatsFeed/ChatsFeed';
 
-import mockChatProps from "../../mocks/chats_mock.json";
-import { BlankChat } from "../../components/BlankChat";
-import { SelectedChat } from "../../components/SelectedChat";
+import mockChatProps from '../../mocks/chats_mock.json';
+import { BlankChat } from '../../components/BlankChat';
+import { SelectedChat } from '../../components/SelectedChat';
 
-import mockMessages from "../../mocks/messages_mock.json";
-import { MessageProps } from "../../components/Message/Message";
-import { FieldProps } from "../../components/Field/Field";
+import mockMessages from '../../mocks/messages_mock.json';
+import { MessageProps } from '../../components/Message/Message';
+import { FieldProps } from '../../components/Field/Field';
 import {
   FieldNames,
   fieldNames,
   validationErrors,
-} from "../../framework/constants";
+} from '../../framework/constants';
 
 interface ChatsPageProps extends BlockProps {
   footerClick: (page: string) => void;
@@ -38,35 +38,35 @@ class ChatsPage extends Block {
     const { footerClick } = props;
     const chatsfeed: ChatsFeedProps = {
       profile: {
-        href: "/profile",
-        className: "link-profile",
-        dataPage: "profile",
-        text: "Профиль",
+        href: '/profile',
+        className: 'link-profile',
+        dataPage: 'profile',
+        text: 'Профиль',
       },
       chats: mockChatProps,
       searchForm: {
         fields: [
           {
-            id: "search-chats",
-            inputType: "text",
-            placeholder: "Поиск",
-            extraClass: "search-chats",
-            value: "",
-            name: "searchChats",
+            id: 'search-chats',
+            inputType: 'text',
+            placeholder: 'Поиск',
+            extraClass: 'search-chats',
+            value: '',
+            name: 'searchChats',
             isError: false,
           },
         ],
-        additionalClass: "form-chats",
+        additionalClass: 'form-chats',
         buttons: [],
       },
     };
 
-    const formFields: FieldNames[] = ["message"];
+    const formFields: FieldNames[] = ['message'];
 
     const fieldsProps: FieldProps[] = formFields.map(
       (fieldName: FieldNames) => ({
         ...fieldNames[fieldName],
-        value: "",
+        value: '',
         isError: false,
         errorMessage: validationErrors[fieldName],
       }),
@@ -77,33 +77,33 @@ class ChatsPage extends Block {
       SelectedChat: new SelectedChat({
         header: {
           avatar: {
-            src: "/Union.svg",
-            altText: "user Avatar",
+            src: '/Union.svg',
+            altText: 'user Avatar',
           },
           button: {
-            text: "",
-            type: "button",
-            mode: "round",
+            text: '',
+            type: 'button',
+            mode: 'round',
             image: {
-              src: "/DropdownButton.svg",
-              altText: "Future Drowdown",
+              src: '/DropdownButton.svg',
+              altText: 'Future Drowdown',
             },
           },
-          userName: "Test User",
+          userName: 'Test User',
         },
         messages: mockMessages as MessageProps[],
         footer: {
           messageForm: {
             fields: fieldsProps,
-            additionalClass: "form-message",
+            additionalClass: 'form-message',
             buttons: [
               {
-                mode: "round",
-                type: "submit",
-                text: "",
+                mode: 'round',
+                type: 'submit',
+                text: '',
                 image: {
-                  src: "/Arrow.svg",
-                  altText: "goBack image",
+                  src: '/Arrow.svg',
+                  altText: 'goBack image',
                 },
               },
             ],

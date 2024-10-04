@@ -1,6 +1,6 @@
-import LinkTemplate from "./Link.hbs?raw";
+import LinkTemplate from './Link.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
+import Block, { BlockProps } from '../../framework/Block';
 
 export interface LinkProps extends BlockProps {
   href: string;

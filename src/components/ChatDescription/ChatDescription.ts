@@ -1,6 +1,6 @@
-import ChatDescriptionTemplate from "./ChatDescription.hbs?raw";
+import ChatDescriptionTemplate from './ChatDescription.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
+import Block, { BlockProps } from '../../framework/Block';
 
 export interface ChatDescriptionProps extends BlockProps {
   description: string;

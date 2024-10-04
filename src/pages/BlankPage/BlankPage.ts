@@ -1,7 +1,7 @@
-import BlankPageTemplate from "./BlankPage.hbs?raw";
+import BlankPageTemplate from './BlankPage.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import { Footer } from "../../components/Footer";
+import Block, { BlockProps } from '../../framework/Block';
+import { Footer } from '../../components/Footer';
 
 interface BlankPageProps extends BlockProps {
   footerClick: (page: string) => void;

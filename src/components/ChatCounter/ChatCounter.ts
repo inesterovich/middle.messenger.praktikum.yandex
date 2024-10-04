@@ -1,6 +1,6 @@
-import ChatCounterTemplate from "./ChatCounter.hbs?raw";
+import ChatCounterTemplate from './ChatCounter.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
+import Block, { BlockProps } from '../../framework/Block';
 
 export interface ChatCounterProps extends BlockProps {
   counter: number;

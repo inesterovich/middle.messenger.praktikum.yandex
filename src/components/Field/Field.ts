@@ -1,23 +1,23 @@
-import FieldTemplate from "./Field.hbs?raw";
+import FieldTemplate from './Field.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import { Label } from "../Label";
-import { Input } from "../Input";
-import { ErrorMessage } from "../ErrorMessage";
-import { handleValidation } from "../../framework/handleValidation";
+import Block, { BlockProps } from '../../framework/Block';
+import { Label } from '../Label';
+import { Input } from '../Input';
+import { ErrorMessage } from '../ErrorMessage';
+import { handleValidation } from '../../framework/handleValidation';
 
 export interface FieldProps {
   id: string;
   extraClass: string;
   labelClass?: string;
   labelText?: string;
-  inputType: "text" | "password" | "email" | "phone";
+  inputType: 'text' | 'password' | 'email' | 'phone';
   placeholder: string;
   name: string;
   value: string;
   isError: boolean;
   errorMessage?: string;
-  events?: BlockProps["events"];
+  events?: BlockProps['events'];
 }
 
 interface FieldPropsWithChildren extends BlockProps {
@@ -36,7 +36,7 @@ class Field extends Block {
 
   constructor(props: FieldProps) {
     const {
-      labelClass = "",
+      labelClass = '',
       labelText,
       name,
       value,
@@ -44,10 +44,10 @@ class Field extends Block {
       placeholder,
       extraClass,
       isError = false,
-      errorMessage = "",
+      errorMessage = '',
       events = {},
     } = props;
-      debugger
+    debugger;
 
     const preparedPropsWithChilren: FieldPropsWithChildren = {
       extraClass,

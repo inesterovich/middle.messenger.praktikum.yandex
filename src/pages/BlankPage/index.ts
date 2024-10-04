@@ -1,2 +1,2 @@
-import { default as BlankPage } from "./BlankPage";
+import { default as BlankPage } from './BlankPage';
 export { BlankPage };

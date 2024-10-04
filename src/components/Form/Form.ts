@@ -1,9 +1,9 @@
-import FormTemplate from "./Form.hbs?raw";
+import FormTemplate from './Form.hbs?raw';
 
-import Block, { BlockProps } from "../../framework/Block";
-import Field, { FieldProps } from "../Field/Field";
-import { Button } from "../Button";
-import { ButtonProps } from "../Button/Button";
+import Block, { BlockProps } from '../../framework/Block';
+import Field, { FieldProps } from '../Field/Field';
+import { Button } from '../Button';
+import { ButtonProps } from '../Button/Button';
 
 //  Можно саму форму переделать, чтобы наружу ни один компонент не торчал - подавать только текст
 export interface FormProps {
@@ -13,10 +13,10 @@ export interface FormProps {
   formTitle?: string;
 }
 interface FormPropsWithChildren extends BlockProps {
-  additionalClass?: FormProps["additionalClass"];
+  additionalClass?: FormProps['additionalClass'];
   FieldItems: Field[];
   ButtonItems: Button[];
-  formTitle: FormProps["formTitle"];
+  formTitle: FormProps['formTitle'];
 }
 
 class Form extends Block {
@@ -51,7 +51,7 @@ class Form extends Block {
       .includes(true);
 
     if (!isValid) {
-      console.log("form has validation error, abort submit");
+      console.log('form has validation error, abort submit');
 
       return;
     }

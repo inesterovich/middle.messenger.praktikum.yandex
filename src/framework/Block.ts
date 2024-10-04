@@ -1,10 +1,10 @@
-import { makeUUID } from "../utils/id.utils";
-import { getKeys } from "../utils/object.utils";
-import EventBus, { EventCallback } from "./EventBus";
-import Handlebars from "handlebars";
+import { makeUUID } from '../utils/id.utils';
+import { getKeys } from '../utils/object.utils';
+import EventBus, { EventCallback } from './EventBus';
+import Handlebars from 'handlebars';
 
 export type ListenerEvents = Partial<
-  Record<keyof HTMLElementEventMap, (e: Event) => any>
+Record<keyof HTMLElementEventMap, (e: Event) => any>
 >;
 
 export interface BlockProps {
@@ -14,11 +14,11 @@ export interface BlockProps {
 
 export default class Block {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render",
-    FLOW_UNMOUNT: "flow:component-did-unmount",
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
+    FLOW_UNMOUNT: 'flow:component-did-unmount',
   };
 
   protected _element: HTMLElement | null = null;
@@ -210,7 +210,7 @@ export default class Block {
       propsAndStubs[key] = `<div data-id="__l_${tmpId}"></div>`;
     });
 
-    const fragment = this._createDocumentElement("template");
+    const fragment = this._createDocumentElement('template');
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
     Object.values(this.children).forEach((child) => {
@@ -221,7 +221,7 @@ export default class Block {
     });
 
     Object.entries(this.lists).forEach(([, child]) => {
-      const listCont = this._createDocumentElement("template");
+      const listCont = this._createDocumentElement('template');
       child.forEach((item) => {
         if (item instanceof Block) {
           listCont.content.append(item.getContent());
@@ -245,12 +245,12 @@ export default class Block {
   }
 
   protected render(): string {
-    return "";
+    return '';
   }
 
   public getContent(): HTMLElement {
     if (!this._element) {
-      throw new Error("Element is not created");
+      throw new Error('Element is not created');
     }
     return this._element;
   }
@@ -262,7 +262,7 @@ export default class Block {
     return new Proxy(props, {
       get(target: BlockProps, prop: string) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: BlockProps, prop: string, value: any) {
         const oldTarget = { ...target };
@@ -271,7 +271,7 @@ export default class Block {
         return true;
       },
       deleteProperty() {
-        throw new Error("No access");
+        throw new Error('No access');
       },
     });
   }
@@ -283,14 +283,14 @@ export default class Block {
   public show(): void {
     const content = this.getContent();
     if (content) {
-      content.style.display = "block";
+      content.style.display = 'block';
     }
   }
 
   public hide(): void {
     const content = this.getContent();
     if (content) {
-      content.style.display = "none";
+      content.style.display = 'none';
     }
   }
 }

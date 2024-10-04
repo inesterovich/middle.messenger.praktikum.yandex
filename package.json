@@ -30,6 +30,7 @@
     "eslint": "8.56.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
     "sass": "^1.78.0",
     "stylelint": "^16.9.0",
     "stylelint-config-standard-scss": "^13.1.0",
