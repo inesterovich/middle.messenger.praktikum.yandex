@@ -18,6 +18,7 @@ export interface ChatProps {
     description: string;
     time: string;
     counter: number;
+    onClick?: (e: Event) => void;
 }
 
 export interface ChatPropsWithChildren extends BlockProps {
@@ -40,7 +41,10 @@ class Chat extends Block {
             ChatTitle: new ChatTitle({ title }),
             ChatDescription: new ChatDescription({ description }),
             ChatTime: new ChatTime({ time }),
-            ChatCounter: new ChatCounter({ counter })
+            ChatCounter: new ChatCounter({ counter }),
+            events: {
+                click: (e) => props.onClick && props.onClick(e)
+            }
         }
       
 

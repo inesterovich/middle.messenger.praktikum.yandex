@@ -56,7 +56,7 @@ class ChatsPage extends Block {
         }; // Сделать моковые данные 
      
         const preparedPropsWidthChildren: ChatsPagePropsWithChildren = {
-            selectedChat: 1,
+            selectedChat: false,
             SelectedChat: new SelectedChat({
                 header: {
                     avatar: {
@@ -93,7 +93,12 @@ class ChatsPage extends Block {
                     }
                 }
             }),
-        ChatsFeed: new ChatsFeed(chatsfeed),
+            ChatsFeed: new ChatsFeed({
+                ...chatsfeed,
+                onChatClick: (e) => {
+                    this.setSelectedChat.bind(this)(e)
+                }
+            }),
         BlankChat: new BlankChat(),
       Footer: new Footer({ footerClick  }),
     };
@@ -102,7 +107,13 @@ class ChatsPage extends Block {
 
        
 
-  }
+    }
+    
+    protected setSelectedChat(e: Event) {
+        e.preventDefault();
+
+        this.setProps({selectedChat: 1})
+    }
 
   public render(): string {
 

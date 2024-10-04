@@ -53,7 +53,7 @@ class Field extends Block {
         events: {
             blur: (e) => {
                 this.validate.bind(this)(e)
-          //  handleValidation(e, InputInstance);
+      
           },
         },
           
