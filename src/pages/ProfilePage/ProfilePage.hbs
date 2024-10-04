@@ -1,19 +1,15 @@
 <div class="app">
 
-    <section class="page page-profile">
- <aside class="aside">
-    {{>Button id="button-aside" mode="danger" type="button" image="/Arrow.svg" altText="goBack image"  }}
-   </aside>
-   <main class="profile-content">
-    <div class="avatar-wrapper">
-       {{>Avatar }}
-        <p>Иван</p>
+  <section class="page page-profile">
+    <aside class="aside">
+      {{{GoBackButton}}}
+    </aside>
+    <main class="profile-content">
+      {{{Avatar}}}
+      {{{ProfileForm}}}
 
-    </div>
-    {{>Form fields=fields additionalClass="form-profile"}}
+    </main>
+  </section>
+  {{{Footer}}}
 
-   </main>
-    </section>
-    {{>Footer }}
-  
 </div>

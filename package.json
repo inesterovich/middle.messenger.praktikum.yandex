@@ -6,12 +6,16 @@
   "type": "module",
   "private": true,
   "engines": {
-    "node": ">=18"
+    "node": "16.20"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "start": "vite build && node server.cjs",
+    "prebuild": "tsc --noEmit",
+    "lint": "eslint . --ext .ts",
+    "lint:css": "stylelint \"src/**/*.scss\" --fix",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "build": "yarn run prebuild && vite build",
+    "start": "yarn run build && node server.cjs",
     "preview": "vite preview"
   },
   "repository": "https://github.com/inesterovich/web-messenger.git",
@@ -21,7 +25,18 @@
     "handlebars": "^4.7.8"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6",
+    "@typescript-eslint/parser": "6",
+    "eslint": "8.56.0",
+    "eslint-config-airbnb-typescript": "17",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
     "sass": "^1.78.0",
-    "vite": "^5.4.3"
+    "stylelint": "15",
+    "stylelint-config-standard-scss": "9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2",
+    "vite": "4",
+    "vite-plugin-checker": "^0.8.0"
   }
 }

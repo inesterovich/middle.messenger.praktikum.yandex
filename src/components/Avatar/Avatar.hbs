@@ -1,4 +1,9 @@
-<div class="avatar">
-  <img src="/Union.svg" alt="Avatar default picture" />
+<div class="avatar-wrapper {{wrapperClassName}}">
+  <div class="avatar">
+    {{{Img}}}
+  </div>
 
+  {{#if caption}}
+    <p>{{caption}}</p>
+  {{/if}}
 </div>
