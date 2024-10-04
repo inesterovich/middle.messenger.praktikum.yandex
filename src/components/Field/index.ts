@@ -1,2 +1,2 @@
-import { default as Field } from './Field'; 
-export { Field }; 
+import { default as Field } from "./Field";
+export { Field };

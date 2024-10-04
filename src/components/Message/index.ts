@@ -1,3 +1,2 @@
-
-import { default as Message } from './Message'; 
-export { Message }; 
+import { default as Message } from "./Message";
+export { Message };

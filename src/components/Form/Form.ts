@@ -1,13 +1,9 @@
+import FormTemplate from "./Form.hbs?raw";
 
-
-
-import FormTemplate from './Form.hbs?raw';
-
-import Block, { BlockProps } from '../../framework/Block';
-import Field, { FieldProps } from '../Field/Field';
-import { Button } from '../Button';
-import { ButtonProps } from '../Button/Button';
-
+import Block, { BlockProps } from "../../framework/Block";
+import Field, { FieldProps } from "../Field/Field";
+import { Button } from "../Button";
+import { ButtonProps } from "../Button/Button";
 
 //  Можно саму форму переделать, чтобы наружу ни один компонент не торчал - подавать только текст
 export interface FormProps {
@@ -17,28 +13,25 @@ export interface FormProps {
   formTitle?: string;
 }
 interface FormPropsWithChildren extends BlockProps {
-  additionalClass?: FormProps['additionalClass'];
+  additionalClass?: FormProps["additionalClass"];
   FieldItems: Field[];
   ButtonItems: Button[];
-  formTitle: FormProps['formTitle'];
-  
+  formTitle: FormProps["formTitle"];
 }
 
-
 class Form extends Block {
-     
-  declare protected props: FormPropsWithChildren;
+  protected declare props: FormPropsWithChildren;
 
   constructor(props: FormProps) {
-
     const { additionalClass, formTitle, fields, buttons } = props;
-      
+
     const preparedPropsWithChildren: FormPropsWithChildren = {
-      formTitle, additionalClass,
+      formTitle,
+      additionalClass,
       FieldItems: fields.map((fieldProps) => new Field(fieldProps)),
       ButtonItems: buttons.map((buttonProps) => new Button(buttonProps)),
     };
-     
+
     super({
       ...preparedPropsWithChildren,
       events: {
@@ -53,10 +46,12 @@ class Form extends Block {
   private onSubmit() {
     const form = this._element;
     //eslint-disable-next-line
-    const isValid = !(this.lists.FieldItems as Field[]).map((Field) => Field.errorStatus).includes(true);
+    const isValid = !(this.lists.FieldItems as Field[])
+      .map((Field) => Field.errorStatus)
+      .includes(true);
 
     if (!isValid) {
-      console.log('form has validation error, abort submit');
+      console.log("form has validation error, abort submit");
 
       return;
     }
@@ -64,10 +59,8 @@ class Form extends Block {
     debugger;
 
     if (form && form instanceof HTMLFormElement) {
-            
       const formValues: Record<string, string> = {};
 
-       
       Array.from(form.elements).forEach((field) => {
         if (field instanceof HTMLInputElement) {
           formValues[field.name] = field.value;
@@ -75,26 +68,12 @@ class Form extends Block {
       });
 
       console.log(formValues);
-            
     }
-  } 
-     
-
-  public render(): string {
-
-
-    return FormTemplate;
-
-       
-
   }
 
-
+  public render(): string {
+    return FormTemplate;
+  }
 }
 
 export default Form;
-
-
-
-
-

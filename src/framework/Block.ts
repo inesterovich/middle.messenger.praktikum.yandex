@@ -1,12 +1,11 @@
+import { makeUUID } from "../utils/id.utils";
+import { getKeys } from "../utils/object.utils";
+import EventBus, { EventCallback } from "./EventBus";
+import Handlebars from "handlebars";
 
-import { makeUUID } from '../utils/id.utils';
-import { getKeys } from '../utils/object.utils';
-import EventBus, { EventCallback } from './EventBus';
-import Handlebars from 'handlebars';
-
-export type ListenerEvents = Partial<Record<keyof HTMLElementEventMap, (e: Event) => any>>;
-
-
+export type ListenerEvents = Partial<
+  Record<keyof HTMLElementEventMap, (e: Event) => any>
+>;
 
 export interface BlockProps {
   events?: ListenerEvents;
@@ -15,11 +14,11 @@ export interface BlockProps {
 
 export default class Block {
   static EVENTS = {
-    INIT: 'init',
-    FLOW_CDM: 'flow:component-did-mount',
-    FLOW_CDU: 'flow:component-did-update',
-    FLOW_RENDER: 'flow:render',
-    FLOW_UNMOUNT:'flow:component-did-unmount',
+    INIT: "init",
+    FLOW_CDM: "flow:component-did-mount",
+    FLOW_CDU: "flow:component-did-update",
+    FLOW_RENDER: "flow:render",
+    FLOW_UNMOUNT: "flow:component-did-unmount",
   };
 
   protected _element: HTMLElement | null = null;
@@ -36,7 +35,8 @@ export default class Block {
 
   constructor(propsWithChildren: BlockProps = {}) {
     const eventBus = new EventBus();
-    const { props, children, lists } = this._getChildrenPropsAndChildren(propsWithChildren);
+    const { props, children, lists } =
+      this._getChildrenPropsAndChildren(propsWithChildren);
     this.props = this._makePropsProxy({ ...props });
     this.children = children;
     this.lists = lists;
@@ -47,40 +47,62 @@ export default class Block {
 
   private _addEvents(): void {
     const { events = {} } = this.props;
-    getKeys(events).forEach(eventName => {
+    getKeys(events).forEach((eventName) => {
       const callback = events[eventName];
       if (callback) {
         this._element?.addEventListener(eventName, callback);
       }
-     
     });
   }
-    
+
   protected _removeEvents(): void {
     const { events = {} } = this.props;
-    getKeys(events).forEach(eventName => {
+    getKeys(events).forEach((eventName) => {
       const callback = events[eventName];
       if (callback) {
         this._element?.removeEventListener(eventName, callback);
       }
-     
     });
   }
 
   private _registerEvents(eventBus: EventBus): void {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this) as EventCallback);
-    eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this) as EventCallback);
-    eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this) as EventCallback);
-    eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this) as EventCallback);
-    eventBus.on(Block.EVENTS.FLOW_UNMOUNT, this._componentDidUnmount.bind(this) as EventCallback);
+    eventBus.on(
+      Block.EVENTS.FLOW_CDM,
+      this._componentDidMount.bind(this) as EventCallback,
+    );
+    eventBus.on(
+      Block.EVENTS.FLOW_CDU,
+      this._componentDidUpdate.bind(this) as EventCallback,
+    );
+    eventBus.on(
+      Block.EVENTS.FLOW_RENDER,
+      this._render.bind(this) as EventCallback,
+    );
+    eventBus.on(
+      Block.EVENTS.FLOW_UNMOUNT,
+      this._componentDidUnmount.bind(this) as EventCallback,
+    );
   }
-    
+
   private _unregisterEvents(eventBus: EventBus): void {
     eventBus.off(Block.EVENTS.INIT, this.init.bind(this) as EventCallback);
-    eventBus.off(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this) as EventCallback);
-    eventBus.off(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this) as EventCallback);
-    eventBus.off(Block.EVENTS.FLOW_RENDER, this._render.bind(this) as EventCallback);
-    eventBus.off(Block.EVENTS.FLOW_UNMOUNT, this._componentDidUnmount.bind(this) as EventCallback);
+    eventBus.off(
+      Block.EVENTS.FLOW_CDM,
+      this._componentDidMount.bind(this) as EventCallback,
+    );
+    eventBus.off(
+      Block.EVENTS.FLOW_CDU,
+      this._componentDidUpdate.bind(this) as EventCallback,
+    );
+    eventBus.off(
+      Block.EVENTS.FLOW_RENDER,
+      this._render.bind(this) as EventCallback,
+    );
+    eventBus.off(
+      Block.EVENTS.FLOW_UNMOUNT,
+      this._componentDidUnmount.bind(this) as EventCallback,
+    );
   }
 
   protected init(): void {
@@ -89,9 +111,11 @@ export default class Block {
 
   protected _componentDidMount(): void {
     this.componentDidMount();
-    Object.values(this.children).forEach(child => {child.dispatchComponentDidMount();});
+    Object.values(this.children).forEach((child) => {
+      child.dispatchComponentDidMount();
+    });
   }
-    
+
   protected _componentDidUnmount(): void {
     this._removeEvents();
     this._unregisterEvents(this.eventBus());
@@ -104,7 +128,10 @@ export default class Block {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private _componentDidUpdate(oldProps: BlockProps, newProps: BlockProps): void {
+  private _componentDidUpdate(
+    oldProps: BlockProps,
+    newProps: BlockProps,
+  ): void {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -112,9 +139,10 @@ export default class Block {
     this._render();
   }
 
- 
-  protected componentDidUpdate(oldProps: BlockProps, newProps: BlockProps): boolean {
-      
+  protected componentDidUpdate(
+    oldProps: BlockProps,
+    newProps: BlockProps,
+  ): boolean {
     if (oldProps && newProps) {
       return true;
     }
@@ -123,9 +151,9 @@ export default class Block {
   }
 
   private _getChildrenPropsAndChildren(propsAndChildren: BlockProps): {
-    children: Record<string, Block>,
-    props: BlockProps,
-    lists: Record<string, any[]>
+    children: Record<string, Block>;
+    props: BlockProps;
+    lists: Record<string, any[]>;
   } {
     const children: Record<string, Block> = {};
     const props: BlockProps = {};
@@ -173,23 +201,19 @@ export default class Block {
   private _render(): void {
     this._removeEvents();
     const propsAndStubs = { ...this.props };
-    const tmpId =  makeUUID();
+    const tmpId = makeUUID();
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
-      
-    
 
-  
     Object.entries(this.lists).forEach(([key]) => {
-          
       propsAndStubs[key] = `<div data-id="__l_${tmpId}"></div>`;
     });
 
-    const fragment = this._createDocumentElement('template');
+    const fragment = this._createDocumentElement("template");
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
-    Object.values(this.children).forEach(child => {
+    Object.values(this.children).forEach((child) => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
       if (stub) {
         stub.replaceWith(child.getContent());
@@ -197,8 +221,8 @@ export default class Block {
     });
 
     Object.entries(this.lists).forEach(([, child]) => {
-      const listCont = this._createDocumentElement('template');
-      child.forEach(item => {
+      const listCont = this._createDocumentElement("template");
+      child.forEach((item) => {
         if (item instanceof Block) {
           listCont.content.append(item.getContent());
         } else {
@@ -221,12 +245,12 @@ export default class Block {
   }
 
   protected render(): string {
-    return '';
+    return "";
   }
 
   public getContent(): HTMLElement {
     if (!this._element) {
-      throw new Error('Element is not created');
+      throw new Error("Element is not created");
     }
     return this._element;
   }
@@ -238,7 +262,7 @@ export default class Block {
     return new Proxy(props, {
       get(target: BlockProps, prop: string) {
         const value = target[prop];
-        return typeof value === 'function' ? value.bind(target) : value;
+        return typeof value === "function" ? value.bind(target) : value;
       },
       set(target: BlockProps, prop: string, value: any) {
         const oldTarget = { ...target };
@@ -247,7 +271,7 @@ export default class Block {
         return true;
       },
       deleteProperty() {
-        throw new Error('No access');
+        throw new Error("No access");
       },
     });
   }
@@ -259,14 +283,14 @@ export default class Block {
   public show(): void {
     const content = this.getContent();
     if (content) {
-      content.style.display = 'block';
+      content.style.display = "block";
     }
   }
 
   public hide(): void {
     const content = this.getContent();
     if (content) {
-      content.style.display = 'none';
+      content.style.display = "none";
     }
   }
 }

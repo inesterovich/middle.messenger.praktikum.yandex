@@ -1,2 +1,2 @@
-import { default as Link } from './Link'; 
-export { Link }; 
+import { default as Link } from "./Link";
+export { Link };

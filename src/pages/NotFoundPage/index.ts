@@ -1,2 +1,2 @@
-import { default as NotFoundPage } from './NotFoundPage';
+import { default as NotFoundPage } from "./NotFoundPage";
 export { NotFoundPage };

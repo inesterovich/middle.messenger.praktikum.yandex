@@ -1,15 +1,12 @@
+import ChatTemplate from "./Chat.hbs?raw";
 
-
-
-import ChatTemplate from './Chat.hbs?raw';
-
-import Block, { BlockProps } from '../../framework/Block';
-import { ChatTitle } from '../ChatTitle';
-import { ChatDescription } from '../ChatDescription';
-import { Avatar } from '../Avatar';
-import { ImgProps } from '../Img/Img';
-import { ChatTime } from '../ChatTime';
-import { ChatCounter } from '../ChatCounter';
+import Block, { BlockProps } from "../../framework/Block";
+import { ChatTitle } from "../ChatTitle";
+import { ChatDescription } from "../ChatDescription";
+import { Avatar } from "../Avatar";
+import { ImgProps } from "../Img/Img";
+import { ChatTime } from "../ChatTime";
+import { ChatCounter } from "../ChatCounter";
 
 export interface ChatProps {
   uid?: string;
@@ -29,10 +26,8 @@ export interface ChatPropsWithChildren extends BlockProps {
   ChatCounter: ChatCounter;
 }
 
-
 class Chat extends Block {
-     
-  declare protected props: ChatPropsWithChildren;
+  protected declare props: ChatPropsWithChildren;
 
   constructor(props: ChatProps) {
     const { imgProps, title, description, time, counter } = props;
@@ -46,26 +41,13 @@ class Chat extends Block {
         click: (e) => props.onClick && props.onClick(e),
       },
     };
-      
 
     super(preparedPropsWithChilren);
   }
 
   public render(): string {
-
-
     return ChatTemplate;
-
-       
-
   }
-
-
 }
 
 export default Chat;
-
-
-
-
-

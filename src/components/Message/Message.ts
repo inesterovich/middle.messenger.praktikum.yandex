@@ -1,54 +1,31 @@
+import MessageTemplate from "./Message.hbs?raw";
 
-
-
-import MessageTemplate from './Message.hbs?raw';
-
-import Block, { BlockProps } from '../../framework/Block';
+import Block, { BlockProps } from "../../framework/Block";
 
 export interface MessageProps {
-  direction: 'left' | 'right';
+  direction: "left" | "right";
   messageId?: string;
   messageText: string;
-  status: 'sendng' | 'recieved' | 'read' | 'error';
-  time: string
+  status: "sendng" | "recieved" | "read" | "error";
+  time: string;
 }
 
-export interface MessagePropsWithChildren extends BlockProps {
-   
-}
-
+export interface MessagePropsWithChildren extends BlockProps {}
 
 class Message extends Block {
-     
-  declare protected props: MessagePropsWithChildren;
+  protected declare props: MessagePropsWithChildren;
 
   constructor(props: MessageProps) {
-
-       
-        
     const preparedPropsWithChilren: MessagePropsWithChildren = {
       ...props,
     };
-      
 
     super(preparedPropsWithChilren);
   }
 
   public render(): string {
-
-
     return MessageTemplate;
-
-       
-
   }
-
-
 }
 
 export default Message;
-
-
-
-
-

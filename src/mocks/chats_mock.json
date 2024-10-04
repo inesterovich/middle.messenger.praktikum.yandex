@@ -1,113 +1,117 @@
-[{
-"id":1,
-"title":"Rollin",
-"description":"vestibulum velit id pretium iaculis diam erat fermentum justo",
-"time":"23:40",
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
+[
+  {
+    "id": 1,
+    "title": "Rollin",
+    "description": "vestibulum velit id pretium iaculis diam erat fermentum justo",
+    "time": "23:40",
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
 
-"counter":9
-},
+    "counter": 9
+  },
 
-{
-"id":2,
-"title":"Francklyn",
-"description":"rhoncus dui vel sem sed",
-"time":"6:56",
+  {
+    "id": 2,
+    "title": "Francklyn",
+    "description": "rhoncus dui vel sem sed",
+    "time": "6:56",
 
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
-"counter":6
-},
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
+    "counter": 6
+  },
 
-{
-"id":3,
-"title":"Cherise",
-"description":"consequat in consequat ut nulla sed accumsan felis ut",
-"time":"11:58",
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
-"counter":7
-},
+  {
+    "id": 3,
+    "title": "Cherise",
+    "description": "consequat in consequat ut nulla sed accumsan felis ut",
+    "time": "11:58",
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
+    "counter": 7
+  },
 
-{"id":4,
-"title":"Arlina",
-"description":"integer non velit donec diam neque vestibulum",
-"time":"23:00",
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
-"counter":9
-},
-{
-"id":5,
-"title":"Kaitlin",
-"description":"elementum ligula vehicula consequat morbi a ipsum integer a nibh",
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
-"time":"21:52",
-"counter":13
-},
-{
-"id":6,
-"title":"Rubin",
-"description":"est phasellus sit amet erat nulla tempus vivamus",
-"time":"6:33",
-"counter":10,
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-}
-},
-{
-"id":7,
-"title":"Verna",
-"description":"ultrices libero non mattis pulvinar",
-"time":"17:03",
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
-"counter":5},
-{
-"id":8,
-"title":"Madelyn",
-"description":"nibh ligula nec sem duis aliquam convallis nunc",
-"time":"21:49",
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
-"counter":8},
-{
-"id":9,
-"title":"Lynnett",
-"description":"felis donec semper sapien a",
-"time":"3:56",
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
-"counter":15
-},
-{
-    "id":10,
-"title":"Dukey",
-"description":"convallis nunc proin at turpis a pede",
-"time":"18:36",
-"imgProps": {
-    "src": "/Union.svg",
-    "altText": "Avatar default picture"
-},
-"counter":15
-}
+  {
+    "id": 4,
+    "title": "Arlina",
+    "description": "integer non velit donec diam neque vestibulum",
+    "time": "23:00",
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
+    "counter": 9
+  },
+  {
+    "id": 5,
+    "title": "Kaitlin",
+    "description": "elementum ligula vehicula consequat morbi a ipsum integer a nibh",
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
+    "time": "21:52",
+    "counter": 13
+  },
+  {
+    "id": 6,
+    "title": "Rubin",
+    "description": "est phasellus sit amet erat nulla tempus vivamus",
+    "time": "6:33",
+    "counter": 10,
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    }
+  },
+  {
+    "id": 7,
+    "title": "Verna",
+    "description": "ultrices libero non mattis pulvinar",
+    "time": "17:03",
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
+    "counter": 5
+  },
+  {
+    "id": 8,
+    "title": "Madelyn",
+    "description": "nibh ligula nec sem duis aliquam convallis nunc",
+    "time": "21:49",
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
+    "counter": 8
+  },
+  {
+    "id": 9,
+    "title": "Lynnett",
+    "description": "felis donec semper sapien a",
+    "time": "3:56",
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
+    "counter": 15
+  },
+  {
+    "id": 10,
+    "title": "Dukey",
+    "description": "convallis nunc proin at turpis a pede",
+    "time": "18:36",
+    "imgProps": {
+      "src": "/Union.svg",
+      "altText": "Avatar default picture"
+    },
+    "counter": 15
+  }
 ]

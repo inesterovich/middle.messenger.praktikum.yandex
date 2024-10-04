@@ -1,11 +1,6 @@
+import LinkTemplate from "./Link.hbs?raw";
 
-
-
-import LinkTemplate from './Link.hbs?raw';
-
-import Block, { BlockProps } from '../../framework/Block';
-
-
+import Block, { BlockProps } from "../../framework/Block";
 
 export interface LinkProps extends BlockProps {
   href: string;
@@ -15,10 +10,8 @@ export interface LinkProps extends BlockProps {
   onClick?: (e: Event) => any;
 }
 
-
 class Link extends Block {
-     
-  declare protected props: LinkProps;
+  protected declare props: LinkProps;
 
   constructor(props: LinkProps) {
     super({
@@ -30,20 +23,8 @@ class Link extends Block {
   }
 
   public render(): string {
-
-
     return LinkTemplate;
-
-       
-
   }
-
-
 }
 
 export default Link;
-
-
-
-
-

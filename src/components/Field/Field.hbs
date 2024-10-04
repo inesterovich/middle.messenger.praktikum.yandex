@@ -1,15 +1,14 @@
 <div class="form-field {{extraClass}}">
 
-    {{#if labelText}}
-     {{{Label}}}
-    {{/if}}
-  
+  {{#if labelText}}
+    {{{Label}}}
+  {{/if}}
 
-   <div class="input-wrapper">
+  <div class="input-wrapper">
     {{{Input}}}
-   {{#if isError}}
-   {{{ErrorMessage}}}
-   {{/if}}
-   </div>
-   
+    {{#if isError}}
+      {{{ErrorMessage}}}
+    {{/if}}
+  </div>
+
 </div>

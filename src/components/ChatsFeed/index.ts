@@ -1,3 +1,2 @@
-
-import { default as Chat } from './ChatsFeed'; 
-export { Chat }; 
+import { default as Chat } from "./ChatsFeed";
+export { Chat };

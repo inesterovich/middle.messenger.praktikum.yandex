@@ -1,3 +1,2 @@
-
-import { default as ChatTitle } from './ChatTitle'; 
-export { ChatTitle }; 
+import { default as ChatTitle } from "./ChatTitle";
+export { ChatTitle };

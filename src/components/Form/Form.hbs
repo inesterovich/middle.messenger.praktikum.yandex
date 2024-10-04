@@ -1,18 +1,14 @@
-
-     <form class="form {{additionalClass}}" action="">
-        {{#if formTitle}}
+<form class="form {{additionalClass}}" action="">
+  {{#if formTitle}}
     <h2 class="form-title">{{formTitle}}</h2>
-        {{/if}}
-         
-      {{{FieldItems}}}
+  {{/if}}
 
+  {{{FieldItems}}}
 
-{{#if ButtonItems.length}}
- <div class="form-buttons">
-        {{{ButtonItems}}}
-       </div>
-{{/if}}
-      
+  {{#if ButtonItems.length}}
+    <div class="form-buttons">
+      {{{ButtonItems}}}
+    </div>
+  {{/if}}
 
-     </form>
- 
+</form>

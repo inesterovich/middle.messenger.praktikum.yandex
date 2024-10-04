@@ -1,21 +1,18 @@
-
 <div class="app">
 
-    <section class="page page-chats">
- <aside class="chats-feed-wrapper">
-   {{{ChatsFeed}}}
- </aside>
- <main class="chats-content-wrapper">
-    
-    {{#if selectedChat}}
-    {{{SelectedChat}}}
-    {{else}}
-    {{{BlankChat}}}
-    {{/if}} 
-   
-    
- </main>
-    </section>
-    {{{Footer}}}
-</div>
+  <section class="page page-chats">
+    <aside class="chats-feed-wrapper">
+      {{{ChatsFeed}}}
+    </aside>
+    <main class="chats-content-wrapper">
 
+      {{#if selectedChat}}
+        {{{SelectedChat}}}
+      {{else}}
+        {{{BlankChat}}}
+      {{/if}}
+
+    </main>
+  </section>
+  {{{Footer}}}
+</div>

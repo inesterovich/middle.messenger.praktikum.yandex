@@ -1,5 +1,4 @@
-import Block from '../framework/Block';
-
+import Block from "../framework/Block";
 
 export function render(query: string, block: Block) {
   const root = document.querySelector(query);
@@ -12,6 +11,4 @@ export function render(query: string, block: Block) {
   }
 
   return root;
-
-   
 }

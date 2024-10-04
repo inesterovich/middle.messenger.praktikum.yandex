@@ -1,2 +1,2 @@
-import { default as Img } from './Img'; 
-export { Img }; 
+import { default as Img } from "./Img";
+export { Img };
