@@ -46,6 +46,8 @@ class ProfilePage extends Block {
         extraClass: "field-gorizontal",
       }),
     );
+      
+      debugger
 
     const buttonsProps: ButtonPropsWithChildren[] = [
       {

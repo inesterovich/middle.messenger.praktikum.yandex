@@ -37,7 +37,7 @@ class Field extends Block {
   constructor(props: FieldProps) {
     const {
       labelClass = "",
-      labelText = undefined,
+      labelText,
       name,
       value,
       inputType,
@@ -47,6 +47,7 @@ class Field extends Block {
       errorMessage = "",
       events = {},
     } = props;
+      debugger
 
     const preparedPropsWithChilren: FieldPropsWithChildren = {
       extraClass,
