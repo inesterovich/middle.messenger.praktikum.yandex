@@ -11,6 +11,11 @@ import mockChatProps from '../../mocks/chats_mock.json';
 import { BlankChat } from '../../components/BlankChat';
 import { SelectedChat } from '../../components/SelectedChat';
 
+import mockMessages from '../../mocks/messages_mock.json';
+import { MessageProps } from '../../components/Message/Message';
+import { FieldProps } from '../../components/Field/Field';
+import { FieldNames, fieldNames, validationErrors } from '../../framework/constants';
+
 
 
 interface ChatsPageProps extends BlockProps {
@@ -53,7 +58,17 @@ class ChatsPage extends Block {
                 additionalClass: 'form-chats',
                 buttons: []
             }
-        }; // Сделать моковые данные 
+        }; 
+
+        const formFields: FieldNames[] = [ 'message']
+      
+        const fieldsProps: FieldProps[] = formFields.map((fieldName: FieldNames) => ({
+            ...fieldNames[fieldName],
+            value: '',
+            isError: false, 
+            errorMessage: validationErrors[fieldName]
+        }))
+    
      
         const preparedPropsWidthChildren: ChatsPagePropsWithChildren = {
             selectedChat: false,
@@ -72,12 +87,10 @@ class ChatsPage extends Block {
                         }
                     },
                     userName: 'Test User'
-                }, messages: [],
+                }, messages: mockMessages as MessageProps[],
                 footer: {
                     messageForm: {
-                        fields: [{
-                            id: 'message', errorMessage: '', extraClass: 'field-message', name: 'message', placeholder: 'Сообщение', inputType: 'text', value: '', isError: false
-                        }],
+                        fields: fieldsProps,
                         additionalClass: 'form-message',
                         buttons: [{
                             mode: 'round',

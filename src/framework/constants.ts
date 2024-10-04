@@ -22,7 +22,7 @@ export const validationErrors: ValidationErrors = {
     email: 'Латиница, может включать цифры и спецсимволы вроде дефиса и подчёркивания, обязательно должна быть «собака» (@) и точка после неё, но перед точкой обязательно должны быть буквы',
     password: 'От 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра',
     phone: 'От 10 до 15 символов, состоит из цифр, может начинается с плюса',
-    message: 'Не должно быть пустым'
+    message: 'Сообщение не может быть пустым'
 }
 
 export const fieldNames: Record<FieldNames, Omit<FieldProps, 'errorMessage' | 'value' | 'isError'>> = {
@@ -86,10 +86,9 @@ export const fieldNames: Record<FieldNames, Omit<FieldProps, 'errorMessage' | 'v
     },
     message: {
         id: 'message',
-        labelText: '',
         inputType: 'text',
         name: 'message',
-        extraClass: 'field-vertical',
-        placeholder: 'Сообщение не может быть пустым'
+        extraClass: 'field-message',
+        placeholder: 'Сообщение'
     }
 }

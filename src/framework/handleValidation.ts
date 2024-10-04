@@ -8,7 +8,7 @@ export const handleValidation = (e: Event) => {
       
       const validationRule = validationRules[e.target.name as FieldNames];
 
-      const isValid = validationRule.test(e.target.value);
+      const isValid = validationRule ? validationRule.test(e.target.value): true;
 
   
    

@@ -2,8 +2,10 @@ $black: #1e1e1e;
 $white: #ffffff;
 $white2: #fbfbfb;
 $blue: #3369f3;
+$lightBlue: #E4EDFD;
 $lightGray: #efefef;
 $lightGray2: #eaeaea;
+$lightGray3: #F8F8F8;
 $gray: #999999;
 $red: #ff0000;
 
@@ -293,6 +295,36 @@ body {
 
                 .messages-feed {
                     height: calc(100% - (54px *  2));
+
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    overflow-y: auto;
+                    padding: 10px;
+                    column-gap: 10px;
+                    row-gap: 10px;
+                   
+
+                    .message {
+                        font-size: 12px;
+                        padding: 11px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: flex-end;
+                        border-radius: 10px;
+                        &.left {
+                            max-width: 40%;
+                            grid-column: 1/3;
+                            background-color: $lightGray3;
+                            border-bottom-left-radius: 0;
+                        
+                        }
+
+                        &.right {
+                            grid-column: 2/3;
+                            background-color: $lightBlue;
+                            border-bottom-right-radius: 0;
+                        }
+                    }
                 }
 
                 .selected-chat-footer {
