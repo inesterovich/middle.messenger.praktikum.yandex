@@ -1,15 +1,15 @@
-import RegisterPageTemplate from './RegisterPage.hbs?raw';
+import RegisterPageTemplate from "./RegisterPage.hbs?raw";
 
-import Block, { BlockProps } from '../../framework/Block';
-import { Form } from '../../components/Form';
-import { FieldProps } from '../../components/Field/Field';
-import { Footer } from '../../components/Footer';
-import { ButtonPropsWithChildren } from '../../components/Button/Button';
+import Block, { BlockProps } from "../../framework/Block";
+import { Form } from "../../components/Form";
+import { FieldProps } from "../../components/Field/Field";
+import { Footer } from "../../components/Footer";
+import { ButtonPropsWithChildren } from "../../components/Button/Button";
 import {
   FieldNames,
   fieldNames,
   validationErrors,
-} from '../../framework/constants';
+} from "../../framework/constants";
 
 interface RegisterPageProps extends BlockProps {
   footerClick: (page: string) => void;
@@ -25,18 +25,18 @@ class RegisterPage extends Block {
 
   constructor(props: RegisterPageProps) {
     const formFields: FieldNames[] = [
-      'email',
-      'login',
-      'first_name',
-      'second_name',
-      'phone',
-      'password',
+      "email",
+      "login",
+      "first_name",
+      "second_name",
+      "phone",
+      "password",
     ];
 
     const fieldsProps: FieldProps[] = formFields.map(
       (fieldName: FieldNames) => ({
         ...fieldNames[fieldName],
-        value: '',
+        value: "",
         isError: false,
         errorMessage: validationErrors[fieldName],
       }),
@@ -44,23 +44,23 @@ class RegisterPage extends Block {
 
     const buttonsProps: ButtonPropsWithChildren[] = [
       {
-        id: 'register',
-        mode: 'primary',
-        type: 'submit',
-        text: 'Зарегистрироваться',
+        id: "register",
+        mode: "primary",
+        type: "submit",
+        text: "Зарегистрироваться",
       },
       {
-        id: 'login',
-        mode: 'secondary',
-        type: 'button',
-        text: 'Войти',
+        id: "login",
+        mode: "secondary",
+        type: "button",
+        text: "Войти",
       },
     ];
 
     const preparedPropsWidthChildren: RegisterPagePropsWithChildren = {
       ...props,
       RegisterForm: new Form({
-        formTitle: 'Регистрация',
+        formTitle: "Регистрация",
         fields: fieldsProps,
         buttons: buttonsProps,
       }),

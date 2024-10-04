@@ -1,12 +1,12 @@
-import MessageTemplate from './Message.hbs?raw';
+import MessageTemplate from "./Message.hbs?raw";
 
-import Block, { BlockProps } from '../../framework/Block';
+import Block, { BlockProps } from "../../framework/Block";
 
 export interface MessageProps {
-  direction: 'left' | 'right';
+  direction: "left" | "right";
   messageId?: string;
   messageText: string;
-  status: 'sendng' | 'recieved' | 'read' | 'error';
+  status: "sendng" | "recieved" | "read" | "error";
   time: string;
 }
 

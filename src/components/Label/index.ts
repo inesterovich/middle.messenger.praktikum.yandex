@@ -1,2 +1,2 @@
-import { default as Label } from './Label';
+import { default as Label } from "./Label";
 export { Label };

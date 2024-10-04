@@ -1,7 +1,7 @@
-import MessagesFeedTemplate from './MessagesFeed.hbs?raw';
+import MessagesFeedTemplate from "./MessagesFeed.hbs?raw";
 
-import Block, { BlockProps } from '../../framework/Block';
-import Message, { MessageProps } from '../Message/Message';
+import Block, { BlockProps } from "../../framework/Block";
+import Message, { MessageProps } from "../Message/Message";
 
 export interface MessagesFeedProps {
   messages: MessageProps[];

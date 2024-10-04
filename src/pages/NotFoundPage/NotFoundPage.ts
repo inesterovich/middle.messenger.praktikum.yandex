@@ -1,7 +1,7 @@
-import NotFoundPageTemplate from './NotFoundPage.hbs?raw';
-import Block, { BlockProps } from '../../framework/Block';
-import { Button } from '../../components/Button';
-import { Footer } from '../../components/Footer';
+import NotFoundPageTemplate from "./NotFoundPage.hbs?raw";
+import Block, { BlockProps } from "../../framework/Block";
+import { Button } from "../../components/Button";
+import { Footer } from "../../components/Footer";
 
 interface NotFoundPageProps extends BlockProps {
   footerClick: (page: string) => void;
@@ -19,9 +19,9 @@ class NotFoundPage extends Block {
     const preparedPropsWithChilren: NotFoundPagePropsWithChildren = {
       ...props,
       GoBackButton: new Button({
-        text: 'Назад к чатам',
-        mode: 'secondary',
-        type: 'button',
+        text: "Назад к чатам",
+        mode: "secondary",
+        type: "button",
       }),
       Footer: new Footer({ footerClick: props.footerClick }),
     };

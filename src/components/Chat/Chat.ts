@@ -1,12 +1,12 @@
-import ChatTemplate from './Chat.hbs?raw';
+import ChatTemplate from "./Chat.hbs?raw";
 
-import Block, { BlockProps } from '../../framework/Block';
-import { ChatTitle } from '../ChatTitle';
-import { ChatDescription } from '../ChatDescription';
-import { Avatar } from '../Avatar';
-import { ImgProps } from '../Img/Img';
-import { ChatTime } from '../ChatTime';
-import { ChatCounter } from '../ChatCounter';
+import Block, { BlockProps } from "../../framework/Block";
+import { ChatTitle } from "../ChatTitle";
+import { ChatDescription } from "../ChatDescription";
+import { Avatar } from "../Avatar";
+import { ImgProps } from "../Img/Img";
+import { ChatTime } from "../ChatTime";
+import { ChatCounter } from "../ChatCounter";
 
 export interface ChatProps {
   uid?: string;

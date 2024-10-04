@@ -28,8 +28,8 @@ module.exports = {
     "@typescript-eslint/no-unsafe-return": "off",
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-useless-constructor": "off",
-      "no-shadow": "off",
-      "@typescript-eslint/no-shadow": "off"
+    "@typescript-eslint/no-useless-constructor": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "off",
   },
 };

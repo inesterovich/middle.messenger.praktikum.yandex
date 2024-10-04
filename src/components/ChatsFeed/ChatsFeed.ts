@@ -1,11 +1,11 @@
-import ChatsFeedTemplate from './ChatsFeed.hbs?raw';
+import ChatsFeedTemplate from "./ChatsFeed.hbs?raw";
 
-import Block, { BlockProps } from '../../framework/Block';
-import { Link } from '../Link';
-import { Chat } from '../Chat';
-import Form, { FormProps } from '../Form/Form';
-import { LinkProps } from '../Link/Link';
-import { ChatProps } from '../Chat/Chat';
+import Block, { BlockProps } from "../../framework/Block";
+import { Link } from "../Link";
+import { Chat } from "../Chat";
+import Form, { FormProps } from "../Form/Form";
+import { LinkProps } from "../Link/Link";
+import { ChatProps } from "../Chat/Chat";
 
 export interface ChatsFeedProps {
   profile: LinkProps;
@@ -18,7 +18,7 @@ export interface ChatsFeedPropsWithChildren extends BlockProps {
   ProfileLink: Link;
   ChatItems: Chat[];
   SearchChatsForm: Form;
-  onChatClick?: ChatsFeedProps['onChatClick'];
+  onChatClick?: ChatsFeedProps["onChatClick"];
 }
 
 class ChatsFeed extends Block {

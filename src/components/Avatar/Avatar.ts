@@ -1,19 +1,19 @@
-import AvatarTemplate from './Avatar.hbs?raw';
+import AvatarTemplate from "./Avatar.hbs?raw";
 
-import Block, { BlockProps } from '../../framework/Block';
-import { Img } from '../Img';
-import { ImgProps } from '../Img/Img';
+import Block, { BlockProps } from "../../framework/Block";
+import { Img } from "../Img";
+import { ImgProps } from "../Img/Img";
 
 export interface AvatarProps {
   wrapperClassName?: string;
-  src: ImgProps['src'];
-  altText: ImgProps['altText'];
+  src: ImgProps["src"];
+  altText: ImgProps["altText"];
   caption?: string;
 }
 
 interface AvatarPropsWithChildren extends BlockProps {
-  wrapperClassName: AvatarProps['wrapperClassName'];
-  caption: AvatarProps['caption'];
+  wrapperClassName: AvatarProps["wrapperClassName"];
+  caption: AvatarProps["caption"];
   Img: Img;
 }
 

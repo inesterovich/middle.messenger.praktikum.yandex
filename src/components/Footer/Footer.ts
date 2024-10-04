@@ -1,8 +1,8 @@
-import FooterTemplate from './Footer.hbs?raw';
+import FooterTemplate from "./Footer.hbs?raw";
 
-import Block, { BlockProps } from '../../framework/Block';
+import Block, { BlockProps } from "../../framework/Block";
 
-import { Link } from '../Link';
+import { Link } from "../Link";
 
 interface FooterProps extends BlockProps {
   footerClick: (page: string) => void;
@@ -27,63 +27,63 @@ class Footer extends Block {
       ...props,
 
       LinkAuth: new Link({
-        href: '/auth',
-        className: 'footer-link',
-        dataPage: 'auth',
-        text: 'Авторизация',
+        href: "/auth",
+        className: "footer-link",
+        dataPage: "auth",
+        text: "Авторизация",
         onClick: (e) => {
           e.preventDefault();
-          footerClick('auth');
+          footerClick("auth");
         },
       }),
       LinkRegister: new Link({
-        href: '/register',
-        className: 'footer-link',
-        dataPage: 'register',
-        text: 'Регистрация',
+        href: "/register",
+        className: "footer-link",
+        dataPage: "register",
+        text: "Регистрация",
         onClick: (e) => {
           e.preventDefault();
-          footerClick('register');
+          footerClick("register");
         },
       }),
       LinkProfile: new Link({
-        href: '/profile',
-        className: 'footer-link',
-        dataPage: 'profile',
-        text: 'Профиль',
+        href: "/profile",
+        className: "footer-link",
+        dataPage: "profile",
+        text: "Профиль",
         onClick: (e) => {
           e.preventDefault();
-          footerClick('profile');
+          footerClick("profile");
         },
       }),
       LinkChats: new Link({
-        href: '/chats',
-        className: 'footer-link',
-        dataPage: 'chats',
-        text: 'Чаты',
+        href: "/chats",
+        className: "footer-link",
+        dataPage: "chats",
+        text: "Чаты",
         onClick: (e) => {
           e.preventDefault();
-          footerClick('chats');
+          footerClick("chats");
         },
       }),
       LinkServerError: new Link({
-        href: '/serverError',
-        className: 'footer-link',
-        dataPage: 'serverError',
-        text: 'Ошибка сервера',
+        href: "/serverError",
+        className: "footer-link",
+        dataPage: "serverError",
+        text: "Ошибка сервера",
         onClick: (e) => {
           e.preventDefault();
-          footerClick('serverError');
+          footerClick("serverError");
         },
       }),
       LinkNotFound: new Link({
-        href: '/notFound',
-        className: 'footer-link',
-        dataPage: 'notFound',
-        text: 'Ошибка 404',
+        href: "/notFound",
+        className: "footer-link",
+        dataPage: "notFound",
+        text: "Ошибка 404",
         onClick: (e) => {
           e.preventDefault();
-          footerClick('notFound');
+          footerClick("notFound");
         },
       }),
     };

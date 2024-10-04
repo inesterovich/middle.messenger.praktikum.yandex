@@ -1,5 +1,5 @@
-import ImgTemplate from './Img.hbs?raw';
-import Block, { BlockProps } from '../../framework/Block';
+import ImgTemplate from "./Img.hbs?raw";
+import Block, { BlockProps } from "../../framework/Block";
 
 export interface ImgProps extends BlockProps {
   src: string;
